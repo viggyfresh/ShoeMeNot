@@ -21,17 +21,9 @@ def hello():
     resp.status_code = 200
     return resp
 
-@app.route("/classify")
-def classify_demo():
-    img = caffe.io.load_image("test4.jpg")
-    prediction = classifier.predict([img], oversample=False).argmax()
-    resp = jsonify({"msg": categories[prediction], "data": prediction})
-    resp.status_code = 200
-    return resp
-
 @app.route("/classify/<id>")
 def classify(id):
-    img = caffe.io.load_image("./shoe_dataset/" + id + ".jpg")
+    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
     global classifier
     prediction = classifier.predict([img], oversample=False).argmax()
     resp = jsonify({"msg": categories[prediction], "data": prediction})
@@ -40,7 +32,7 @@ def classify(id):
 
 @app.route("/compare/<id>")
 def compare(id):
-    img = caffe.io.load_image("./shoe_dataset/" + id + ".jpg")
+    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
     global extractor
     global transformer
     global features
