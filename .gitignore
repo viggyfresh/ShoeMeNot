@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
-backend/shoe_dataset
+backend/static
+backend/vgg.caffemodel
+backend/features.npy
