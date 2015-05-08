@@ -64,4 +64,5 @@ if __name__ == "__main__":
     transformer.set_raw_scale('data', 255)
     extractor.blobs['data'].reshape(1, 3, 224, 224)
     features = np.load('features.npy')
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run()
