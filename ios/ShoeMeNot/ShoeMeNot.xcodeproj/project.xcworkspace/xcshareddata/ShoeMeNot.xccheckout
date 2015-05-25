@@ -14,7 +14,7 @@
 		<string>https://github.com/viggyfresh/ShoeMeNot.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>app/ShoeMeNot/ShoeMeNot.xcodeproj</string>
+	<string>ios/ShoeMeNot/ShoeMeNot.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>EAE0F3F497884A81A8723EA4A053D97563D7793F</key>
