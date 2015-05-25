@@ -25,13 +25,15 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-1334" y="248"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="XtL-6V-Bs5">
             <objects>
                 <navigationController id="Ydr-ET-HXa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" id="x4k-Vq-4tQ"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" id="x4k-Vq-4tQ">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GJL-3h-hlE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -92,7 +94,9 @@
         <scene sceneID="9w2-iM-DR3">
             <objects>
                 <navigationController id="Gw6-Zo-ecZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="camera" id="p6Y-cz-9ec"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="camera" id="p6Y-cz-9ec">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k8x-Aq-2eg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -135,7 +139,9 @@
         <scene sceneID="Uhd-tv-EAY">
             <objects>
                 <navigationController id="SWp-FC-XNi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="fire" id="fm6-xt-QWU"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="fire" id="fm6-xt-QWU">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IgK-Wo-azd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -195,7 +201,9 @@
         <scene sceneID="xao-K8-jSU">
             <objects>
                 <navigationController id="uFw-6P-k7e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Social" image="people" id="TOV-BC-Dv4"/>
+                    <tabBarItem key="tabBarItem" title="Social" image="people" id="TOV-BC-Dv4">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="doT-cq-k9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -237,7 +245,9 @@
         <scene sceneID="Yic-74-B6S">
             <objects>
                 <navigationController id="rQj-GT-cnT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="page" id="R5a-WT-X1c"/>
+                    <tabBarItem key="tabBarItem" title="History" image="page" id="R5a-WT-X1c">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxN-7S-7Jd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
