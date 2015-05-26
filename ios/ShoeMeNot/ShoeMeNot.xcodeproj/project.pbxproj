@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
 		2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB1AB51B15052400B80F60 /* CameraController.swift */; };
 		2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */; };
 		2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBE1B14526E00BFAEFA /* Backend.swift */; };
@@ -238,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +381,8 @@
 		785505161B017762003C58AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ShoeMeNot/ShoeMeNot.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -392,6 +396,8 @@
 		785505171B017762003C58AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ShoeMeNot/ShoeMeNot.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
