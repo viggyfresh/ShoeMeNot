@@ -10,6 +10,7 @@
 		2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */; };
 		2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBE1B14526E00BFAEFA /* Backend.swift */; };
 		2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */; };
+		2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */; };
 		7804BCBC1B1247550048D95A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7804BCBB1B1247550048D95A /* CloudKit.framework */; };
 		785504FA1B017762003C58AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785504F91B017762003C58AF /* AppDelegate.swift */; };
 		785504FC1B017762003C58AF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785504FB1B017762003C58AF /* FirstViewController.swift */; };
@@ -34,6 +35,7 @@
 		2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2FF17FBE1B14526E00BFAEFA /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeHeaderView.swift; sourceTree = "<group>"; };
+		2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeCell.swift; sourceTree = "<group>"; };
 		7804BCBA1B12473F0048D95A /* ShoeMeNot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShoeMeNot.entitlements; sourceTree = "<group>"; };
 		7804BCBB1B1247550048D95A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		785504F41B017762003C58AF /* ShoeMeNot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoeMeNot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				785504FB1B017762003C58AF /* FirstViewController.swift */,
 				785504FD1B017762003C58AF /* SecondViewController.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
+				2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */,
 				2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */,
 				2FF17FBE1B14526E00BFAEFA /* Backend.swift */,
 				2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */,
@@ -240,6 +243,7 @@
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
 				785504FC1B017762003C58AF /* FirstViewController.swift in Sources */,
+				2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */,
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,
 			);

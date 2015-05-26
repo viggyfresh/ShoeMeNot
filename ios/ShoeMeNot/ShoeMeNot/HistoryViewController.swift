@@ -13,19 +13,6 @@ class HistoryViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private var result = "0.jpg"
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
 
 }
 
@@ -40,8 +27,9 @@ extension HistoryViewController : UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-        cell.backgroundColor = UIColor.blackColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShoeCell
+        cell.backgroundColor = UIColor.whiteColor()
+        cell.imageView.image = UIImage(named: result)
         return cell
     }
     

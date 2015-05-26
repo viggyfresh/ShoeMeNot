@@ -3,3 +3,5 @@ Thumbs.db
 backend/static
 backend/vgg.caffemodel
 backend/features.npy
+ios/ShoeMeNot/ShoeMeNot.xcodeproj/xcuserdata/
+ios/ShoeMeNot/ShoeMeNot.xcodeproj/project.xcworkspace/xcuserdata/
