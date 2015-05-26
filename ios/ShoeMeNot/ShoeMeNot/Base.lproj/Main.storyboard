@@ -39,55 +39,77 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Jsf-Nm-gVY" kind="relationship" relationship="rootViewController" id="I1U-yt-GOc"/>
+                        <segue destination="WlZ-3h-dfy" kind="relationship" relationship="rootViewController" id="sbE-TK-nZX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ld2-5v-2BQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-595" y="-1201"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="o4g-MM-DKM">
+        <!--Favorites View Controller-->
+        <scene sceneID="g99-XL-gk5">
             <objects>
-                <viewController id="Jsf-Nm-gVY" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Th1-Wk-fvP"/>
-                        <viewControllerLayoutGuide type="bottom" id="5hh-1H-0YI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z7u-6n-qMZ">
+                <collectionViewController id="WlZ-3h-dfy" customClass="FavoritesViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fz3-Bk-hnI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Favorites" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xyq-xM-zOB">
-                                <rect key="frame" x="16" y="79" width="568" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="CYo-tg-P9D"/>
-                                </constraints>
-                                <color key="textColor" red="0.0019813436300000001" green="0.60297821699999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlN-aX-akd" userLabel="Divider">
-                                <rect key="frame" x="16" y="118" width="568" height="1"/>
-                                <color key="backgroundColor" red="0.0019813436300000001" green="0.60297821699999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="3ms-eb-6HY"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xyq-xM-zOB" secondAttribute="trailing" id="Aai-VQ-vP0"/>
-                            <constraint firstItem="Xyq-xM-zOB" firstAttribute="top" secondItem="vlN-aX-akd" secondAttribute="bottom" constant="-40" id="BOA-Jo-gBI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vlN-aX-akd" secondAttribute="trailing" id="R3L-Dj-rgb"/>
-                            <constraint firstItem="Xyq-xM-zOB" firstAttribute="top" secondItem="Th1-Wk-fvP" secondAttribute="bottom" constant="15" id="adh-DC-XGZ"/>
-                            <constraint firstItem="Xyq-xM-zOB" firstAttribute="leading" secondItem="z7u-6n-qMZ" secondAttribute="leadingMargin" id="glR-Pz-c0S"/>
-                            <constraint firstItem="vlN-aX-akd" firstAttribute="leading" secondItem="z7u-6n-qMZ" secondAttribute="leadingMargin" id="yEQ-5e-pEU"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nLw-TG-yJQ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CgL-2g-2jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QX6-az-zvC">
+                            <size key="itemSize" width="80" height="60"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeCell" id="097-rd-A7V" customClass="ShoeCell" customModule="ShoeMeNot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqp-Ac-ME0">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="imageView" destination="dqp-Ac-ME0" id="OPS-Xb-DDe"/>
+                                    <segue destination="Fgu-7P-hSE" kind="show" id="rrH-Q9-7wi"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeHeaderView" id="ao2-eM-i0V" customClass="ShoeHeaderView" customModule="ShoeMeNot" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-XF-1G8">
+                                    <rect key="frame" x="8" y="14" width="71" height="21"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="Favorites">
+                                            <attributes>
+                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </subviews>
+                            <connections>
+                                <outlet property="label" destination="BTI-XF-1G8" id="iik-Fm-cMJ"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="WlZ-3h-dfy" id="d0j-PI-fW9"/>
+                            <outlet property="delegate" destination="WlZ-3h-dfy" id="quX-1h-dND"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="lja-Ch-EVt"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4A-Cc-GyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="88" y="-1201"/>
         </scene>
@@ -414,4 +436,7 @@
         <image name="page" width="25" height="25"/>
         <image name="people" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rrH-Q9-7wi"/>
+    </inferredMetricsTieBreakers>
 </document>
