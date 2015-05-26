@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB1AB51B15052400B80F60 /* CameraController.swift */; };
 		2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */; };
 		2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBE1B14526E00BFAEFA /* Backend.swift */; };
 		2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FEB1AB51B15052400B80F60 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2FF17FBE1B14526E00BFAEFA /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeHeaderView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				785504FB1B017762003C58AF /* FirstViewController.swift */,
 				785504FD1B017762003C58AF /* SecondViewController.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
+				2FEB1AB51B15052400B80F60 /* CameraController.swift */,
 				2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */,
 				2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */,
 				2FF17FBE1B14526E00BFAEFA /* Backend.swift */,
@@ -185,7 +188,7 @@
 				TargetAttributes = {
 					785504F31B017762003C58AF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 7QE8KH76ZL;
+						DevelopmentTeam = LJSH48WSFV;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */,
 				785504FE1B017762003C58AF /* SecondViewController.swift in Sources */,
 				BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */,
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,
@@ -398,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -417,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
