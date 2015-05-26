@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  DiscoverViewController.swift
 //  ShoeMeNot
 //
 //  Created by Neal Khosla on 5/26/15.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FavoritesViewController: UICollectionViewController {
+class DiscoverViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private var result = "0.jpg"
     
 }
 
-extension FavoritesViewController : UICollectionViewDataSource {
+extension DiscoverViewController : UICollectionViewDataSource {
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -34,7 +34,7 @@ extension FavoritesViewController : UICollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
-        headerView.label.text = "Favorites"
+        headerView.label.text = "Discover"
         return headerView
     }
 }
