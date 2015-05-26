@@ -125,7 +125,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEU-WC-gD8">
                                 <rect key="frame" x="279" y="290" width="54" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -235,7 +235,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Social" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVT-fR-8C0">
                                 <rect key="frame" x="279" y="290" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -347,17 +347,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEi-uv-Hbs">
-                                <rect key="frame" x="0.0" y="64" width="361" height="265"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEi-uv-Hbs">
+                                <rect key="frame" x="200" y="86" width="200" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="3ed-fi-C17"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="4Bq-du-j5e"/>
+                                    <constraint firstAttribute="height" constant="150" id="619-CH-hoQ"/>
+                                    <constraint firstAttribute="width" constant="360" id="8op-kL-37g"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="ImB-Oq-lph"/>
+                                    <constraint firstAttribute="width" constant="200" id="qJw-9q-mLc"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3ed-fi-C17"/>
+                                        <exclude reference="4Bq-du-j5e"/>
+                                        <exclude reference="8op-kL-37g"/>
+                                        <exclude reference="ImB-Oq-lph"/>
+                                    </mask>
+                                </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="METADATA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvB-Ga-ykx">
-                                <rect key="frame" x="369" y="72" width="215" height="257"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METADATA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvB-Ga-ykx">
+                                <rect key="frame" x="150.5" y="244" width="300" height="294"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="MmH-cH-9Nd"/>
+                                    <constraint firstAttribute="height" constant="294" id="p4h-6p-9Tc"/>
+                                    <constraint firstAttribute="width" constant="300" id="vol-dI-oo7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MmH-cH-9Nd"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="centerX" secondItem="SvB-Ga-ykx" secondAttribute="centerX" id="NEX-Ar-xa1"/>
+                            <constraint firstAttribute="centerX" secondItem="uEi-uv-Hbs" secondAttribute="centerX" id="ZFa-7B-Ezw"/>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="22" id="dx8-fm-W74"/>
+                            <constraint firstItem="eWz-Aa-tZf" firstAttribute="top" secondItem="SvB-Ga-ykx" secondAttribute="bottom" constant="13" id="v0r-Ca-3Na"/>
+                            <constraint firstItem="SvB-Ga-ykx" firstAttribute="top" secondItem="uEi-uv-Hbs" secondAttribute="bottom" constant="8" symbolic="YES" id="vUP-Qb-Exc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="v0r-Ca-3Na"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mainShoeImage" destination="uEi-uv-Hbs" id="ByC-3E-ybd"/>
