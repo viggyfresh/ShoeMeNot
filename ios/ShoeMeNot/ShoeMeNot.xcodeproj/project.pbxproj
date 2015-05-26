@@ -22,6 +22,7 @@
 		785505121B017762003C58AF /* ShoeMeNotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785505111B017762003C58AF /* ShoeMeNotTests.swift */; };
 		BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */; };
 		BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */; };
+		BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		785505111B017762003C58AF /* ShoeMeNotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeMeNotTests.swift; sourceTree = "<group>"; };
 		BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeViewController.swift; sourceTree = "<group>"; };
 		BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2FF17FBE1B14526E00BFAEFA /* Backend.swift */,
 				2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */,
 				BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */,
+				BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */,
 				BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */,
 				785505021B017762003C58AF /* Images.xcassets */,
 				785505041B017762003C58AF /* LaunchScreen.xib */,
@@ -256,6 +259,7 @@
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
 				785504FC1B017762003C58AF /* FirstViewController.swift in Sources */,
 				2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */,
+				BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */,
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,
 			);
