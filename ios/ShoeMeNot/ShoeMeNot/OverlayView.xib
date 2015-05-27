@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraController" customModule="ShoeMeNot" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraOverlay" destination="iN0-l3-epB" id="LeD-I9-Lno"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-lz-S8p">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <items>
+                        <barButtonItem title="X" id="aWs-sk-blz">
+                            <connections>
+                                <action selector="cancel:" destination="-1" id="yXS-3D-e3t"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zg1-g8-GIr"/>
+                        <barButtonItem image="camera-rot" id="XwN-uU-t6q">
+                            <connections>
+                                <action selector="takePicture:" destination="-1" id="KtZ-oA-6ge"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYr-Od-QeU">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <items/>
+                </toolbar>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="trace" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-nV-IvK">
+                    <rect key="frame" x="176" y="107" width="249" height="385"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="249" id="Mga-lQ-QZi"/>
+                        <constraint firstAttribute="height" constant="385" id="RJ1-PS-tfI"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="VYr-Od-QeU" firstAttribute="trailing" secondItem="p6M-lz-S8p" secondAttribute="trailing" id="8er-TV-NHx"/>
+                <constraint firstItem="p6M-lz-S8p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F19-Le-Qfl"/>
+                <constraint firstItem="VYr-Od-QeU" firstAttribute="leading" secondItem="p6M-lz-S8p" secondAttribute="leading" id="FP2-Mm-awT"/>
+                <constraint firstItem="LT6-nV-IvK" firstAttribute="top" secondItem="VYr-Od-QeU" secondAttribute="bottom" constant="63" id="QYu-b1-eRh"/>
+                <constraint firstAttribute="bottom" secondItem="p6M-lz-S8p" secondAttribute="bottom" id="asy-dK-FBQ"/>
+                <constraint firstItem="VYr-Od-QeU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eY6-Zg-tEm"/>
+                <constraint firstItem="LT6-nV-IvK" firstAttribute="centerX" secondItem="VYr-Od-QeU" secondAttribute="centerX" id="ofS-Co-l1o"/>
+                <constraint firstItem="LT6-nV-IvK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xwI-Fv-ynF"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera-rot" width="25" height="25"/>
+        <image name="trace" width="309" height="484"/>
+    </resources>
+</document>

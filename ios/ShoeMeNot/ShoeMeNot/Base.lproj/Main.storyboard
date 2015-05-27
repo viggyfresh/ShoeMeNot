@@ -54,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="10" id="QX6-az-zvC">
-                            <size key="itemSize" width="299" height="224"/>
+                            <size key="itemSize" width="270" height="205"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="10"/>
@@ -64,11 +64,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="299" height="224"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="270" height="205"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqp-Ac-ME0">
-                                            <rect key="frame" x="0.0" y="0.0" width="299" height="224"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="205"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -135,9 +135,52 @@
                     <view key="view" contentMode="scaleToFill" id="FyT-Zz-zSS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrZ-cm-IWf">
+                                <rect key="frame" x="249" y="374" width="102" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="UJu-08-zfE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <state key="normal" title="Take Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="useCamera:" destination="uSW-cr-gVW" eventType="touchUpInside" id="CUx-oh-6Xq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QA-ND-nzV">
+                                <rect key="frame" x="199" y="416" width="203" height="34"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <state key="normal" title="Choose from Camera Roll">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="useCameraRoll:" destination="uSW-cr-gVW" eventType="touchUpInside" id="2iC-Hd-DPE"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0DV-ik-Ua3">
+                                <rect key="frame" x="160" y="114" width="280" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="TAN-Ta-n8q"/>
+                                    <constraint firstAttribute="width" constant="280" id="yB8-Wg-1XP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0DV-ik-Ua3" firstAttribute="top" secondItem="M3L-S4-fhW" secondAttribute="bottom" constant="50" id="16S-1j-mdj"/>
+                            <constraint firstItem="0DV-ik-Ua3" firstAttribute="centerX" secondItem="xrZ-cm-IWf" secondAttribute="centerX" id="3JT-Q2-R5b"/>
+                            <constraint firstItem="4QA-ND-nzV" firstAttribute="top" secondItem="xrZ-cm-IWf" secondAttribute="bottom" constant="8" symbolic="YES" id="7uE-od-XEs"/>
+                            <constraint firstItem="4QA-ND-nzV" firstAttribute="centerX" secondItem="xrZ-cm-IWf" secondAttribute="centerX" id="DmS-kM-6ca"/>
+                            <constraint firstItem="xrZ-cm-IWf" firstAttribute="top" secondItem="0DV-ik-Ua3" secondAttribute="bottom" constant="50" id="eGD-yh-q2G"/>
+                            <constraint firstItem="0DV-ik-Ua3" firstAttribute="centerX" secondItem="FyT-Zz-zSS" secondAttribute="centerX" id="toS-ag-9YO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="U91-nP-NXs"/>
+                    <connections>
+                        <outlet property="imageView" destination="0DV-ik-Ua3" id="4az-Re-QYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TID-6N-ah6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -429,6 +472,6 @@
         <image name="people" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="La4-Jk-A19"/>
+        <segue reference="rrH-Q9-7wi"/>
     </inferredMetricsTieBreakers>
 </document>

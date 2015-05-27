@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
+		2FDF8E951B159907002237A7 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF8E941B159907002237A7 /* OverlayView.xib */; };
 		2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB1AB51B15052400B80F60 /* CameraController.swift */; };
 		2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */; };
 		2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBE1B14526E00BFAEFA /* Backend.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FDF8E941B159907002237A7 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		2FEB1AB51B15052400B80F60 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2FF17FBE1B14526E00BFAEFA /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				785504FB1B017762003C58AF /* FirstViewController.swift */,
 				785504FD1B017762003C58AF /* SecondViewController.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
+				2FDF8E941B159907002237A7 /* OverlayView.xib */,
 				2FEB1AB51B15052400B80F60 /* CameraController.swift */,
 				2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */,
 				2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				785505011B017762003C58AF /* Main.storyboard in Resources */,
+				2FDF8E951B159907002237A7 /* OverlayView.xib in Resources */,
 				785505061B017762003C58AF /* LaunchScreen.xib in Resources */,
 				785505031B017762003C58AF /* Images.xcassets in Resources */,
 			);
