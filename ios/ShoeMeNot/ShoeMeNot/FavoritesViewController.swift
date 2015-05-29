@@ -37,4 +37,13 @@ extension FavoritesViewController : UICollectionViewDataSource {
         headerView.label.text = "Favorites"
         return headerView
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShoeView" {
+            if let dest = segue.destinationViewController as? ShoeViewController {
+                dest.url = NSURL(string: "http://a2.zassets.com/images/z/3/1/3/3/9/0/3133908-3-4x.jpg")
+            }
+        }
+    }
 }

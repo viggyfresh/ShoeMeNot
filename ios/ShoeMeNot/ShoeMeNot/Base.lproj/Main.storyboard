@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -76,7 +77,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="dqp-Ac-ME0" id="OPS-Xb-DDe"/>
-                                    <segue destination="Fgu-7P-hSE" kind="show" id="rrH-Q9-7wi"/>
+                                    <segue destination="Fgu-7P-hSE" kind="show" identifier="ShoeView" id="rrH-Q9-7wi"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -219,7 +220,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="vnL-q0-AiT" id="3he-wS-ZMg"/>
-                                    <segue destination="Fgu-7P-hSE" kind="show" id="VOV-p9-tZn"/>
+                                    <segue destination="Fgu-7P-hSE" kind="show" identifier="ShoeView" id="VOV-p9-tZn"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -344,7 +345,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="0PH-vW-0GX" id="W0i-bM-AhT"/>
-                                    <segue destination="Fgu-7P-hSE" kind="show" id="La4-Jk-A19"/>
+                                    <segue destination="Fgu-7P-hSE" kind="show" identifier="ShoeView" id="baw-zT-Vpu"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -389,26 +390,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEi-uv-Hbs">
-                                <rect key="frame" x="200" y="86" width="200" height="150"/>
+                                <rect key="frame" x="50" y="94" width="500" height="375"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="270" id="3ed-fi-C17"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="4Bq-du-j5e"/>
-                                    <constraint firstAttribute="height" constant="150" id="619-CH-hoQ"/>
-                                    <constraint firstAttribute="width" constant="360" id="8op-kL-37g"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="ImB-Oq-lph"/>
-                                    <constraint firstAttribute="width" constant="200" id="qJw-9q-mLc"/>
+                                    <constraint firstAttribute="width" secondItem="uEi-uv-Hbs" secondAttribute="height" multiplier="4:3" id="TYY-Aq-PTr"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3ed-fi-C17"/>
-                                        <exclude reference="4Bq-du-j5e"/>
-                                        <exclude reference="8op-kL-37g"/>
-                                        <exclude reference="ImB-Oq-lph"/>
-                                    </mask>
-                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METADATA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvB-Ga-ykx">
-                                <rect key="frame" x="150.5" y="244" width="300" height="294"/>
+                                <rect key="frame" x="150" y="477" width="300" height="294"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="MmH-cH-9Nd"/>
                                     <constraint firstAttribute="height" constant="294" id="p4h-6p-9Tc"/>
@@ -427,14 +415,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uEi-uv-Hbs" firstAttribute="centerX" secondItem="SvB-Ga-ykx" secondAttribute="centerX" id="NEX-Ar-xa1"/>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leading" constant="50" id="QwS-cD-7JT"/>
                             <constraint firstAttribute="centerX" secondItem="uEi-uv-Hbs" secondAttribute="centerX" id="ZFa-7B-Ezw"/>
-                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="22" id="dx8-fm-W74"/>
-                            <constraint firstItem="eWz-Aa-tZf" firstAttribute="top" secondItem="SvB-Ga-ykx" secondAttribute="bottom" constant="13" id="v0r-Ca-3Na"/>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="30" id="dx8-fm-W74"/>
+                            <constraint firstAttribute="trailing" secondItem="uEi-uv-Hbs" secondAttribute="trailing" constant="50" id="fja-Df-3O5"/>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" id="gkU-ax-7IN"/>
                             <constraint firstItem="SvB-Ga-ykx" firstAttribute="top" secondItem="uEi-uv-Hbs" secondAttribute="bottom" constant="8" symbolic="YES" id="vUP-Qb-Exc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uEi-uv-Hbs" secondAttribute="trailing" id="yWI-oW-bM0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="v0r-Ca-3Na"/>
+                                <exclude reference="gkU-ax-7IN"/>
+                                <exclude reference="yWI-oW-bM0"/>
                             </mask>
                         </variation>
                     </view>
@@ -456,6 +448,6 @@
         <image name="people" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rrH-Q9-7wi"/>
+        <segue reference="VOV-p9-tZn"/>
     </inferredMetricsTieBreakers>
 </document>
