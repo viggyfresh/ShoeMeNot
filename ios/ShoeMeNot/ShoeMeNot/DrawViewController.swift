@@ -9,40 +9,45 @@
 import UIKit
 
 class DrawViewController: UIViewController {
-    @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var tempImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var originalImage: UIImage!
     
     var lastPoint = CGPoint.zeroPoint
     var red: CGFloat = 255.0
     var green: CGFloat = 255.0
     var blue: CGFloat = 255.0
-    var brushWidth: CGFloat = 10.0
+    var brushWidth: CGFloat = 30.0
     var opacity: CGFloat = 1.0
     var swiped = false
     
+    var height: CGFloat!
+    var width: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        width = UIScreen.mainScreen().bounds.width
+        height = width * 1.333
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = originalImage
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         swiped = false
         if let touch = touches.first as? UITouch {
-            lastPoint = touch.locationInView(self.view)
+            lastPoint = touch.locationInView(imageView)
         }
     }
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         
         // 1
-        UIGraphicsBeginImageContext(view.frame.size)
+        UIGraphicsBeginImageContext(imageView.frame.size)
         let context = UIGraphicsGetCurrentContext()
-        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageView.frame.size.width, height: imageView.frame.size.height))
         
         // 2
         CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
@@ -52,14 +57,12 @@ class DrawViewController: UIViewController {
         CGContextSetLineCap(context, kCGLineCapRound)
         CGContextSetLineWidth(context, brushWidth)
         CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
-        CGContextSetBlendMode(context, kCGBlendModeNormal)
         
         // 4
         CGContextStrokePath(context)
         
         // 5
-        tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        tempImageView.alpha = opacity
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
     }
@@ -68,7 +71,7 @@ class DrawViewController: UIViewController {
         // 6
         swiped = true
         if let touch = touches.first as? UITouch {
-            let currentPoint = touch.locationInView(view)
+            let currentPoint = touch.locationInView(imageView)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
             // 7
@@ -82,24 +85,16 @@ class DrawViewController: UIViewController {
             // draw a single point
             drawLineFrom(lastPoint, toPoint: lastPoint)
         }
-        
-        // Merge tempImageView into mainImageView
-        UIGraphicsBeginImageContext(mainImageView.frame.size)
-        mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 1.0)
-        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), blendMode: kCGBlendModeNormal, alpha: opacity)
-        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        tempImageView.image = nil
     }
-    
     
     // MARK: - Actions
     
     @IBAction func reset(sender: AnyObject) {
+        imageView.image = originalImage
     }
     
     @IBAction func share(sender: AnyObject) {
     }
-
+    
 }
+

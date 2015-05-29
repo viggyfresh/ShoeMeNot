@@ -137,34 +137,13 @@
                     <view key="view" contentMode="scaleToFill" id="FyT-Zz-zSS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0DV-ik-Ua3" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="-100" width="600" height="800"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0DV-ik-Ua3" secondAttribute="height" multiplier="3:4" id="qpy-Ff-Vqm"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0DV-ik-Ua3" firstAttribute="leading" secondItem="FyT-Zz-zSS" secondAttribute="leading" id="I8v-P3-gfs"/>
-                            <constraint firstAttribute="trailing" secondItem="0DV-ik-Ua3" secondAttribute="trailing" id="LLa-fk-sWG"/>
-                            <constraint firstAttribute="centerY" secondItem="0DV-ik-Ua3" secondAttribute="centerY" id="N9x-Ia-rU1"/>
-                            <constraint firstItem="vqn-gq-6Tn" firstAttribute="top" secondItem="0DV-ik-Ua3" secondAttribute="bottom" id="kN1-Iw-cjE"/>
-                            <constraint firstItem="0DV-ik-Ua3" firstAttribute="top" secondItem="M3L-S4-fhW" secondAttribute="bottom" id="xmc-ut-NKE"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="xmc-ut-NKE"/>
-                                <exclude reference="kN1-Iw-cjE"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="U91-nP-NXs"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="0DV-ik-Ua3" id="4az-Re-QYe"/>
+                        <segue destination="2rc-bm-rdI" kind="custom" identifier="DrawSegue" customClass="PushNoAnimationSegue" customModule="ShoeMeNot" customModuleProvider="target" id="esp-vF-gOY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TID-6N-ah6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,6 +418,46 @@
             </objects>
             <point key="canvasLocation" x="808" y="212"/>
         </scene>
+        <!--Draw View Controller-->
+        <scene sceneID="52N-4G-c8f">
+            <objects>
+                <viewController id="2rc-bm-rdI" customClass="DrawViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZIe-ta-78s"/>
+                        <viewControllerLayoutGuide type="bottom" id="IbD-H5-at1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2yW-N2-94c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nPv-3t-R0H" userLabel="imageView">
+                                <rect key="frame" x="0.0" y="-100" width="600" height="800"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nPv-3t-R0H" secondAttribute="height" multiplier="3:4" id="gke-Ie-Bv4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nPv-3t-R0H" firstAttribute="leading" secondItem="2yW-N2-94c" secondAttribute="leading" id="0Fm-6k-d6w"/>
+                            <constraint firstAttribute="centerY" secondItem="nPv-3t-R0H" secondAttribute="centerY" id="9N6-EK-raA"/>
+                            <constraint firstAttribute="trailing" secondItem="nPv-3t-R0H" secondAttribute="trailing" id="DvA-F6-Dkc"/>
+                            <constraint firstItem="nPv-3t-R0H" firstAttribute="width" secondItem="nPv-3t-R0H" secondAttribute="height" multiplier="3:4" id="tFV-40-4cL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tFV-40-4cL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="nPv-3t-R0H" id="qor-r3-ELX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0u-ai-BeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808" y="906"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera" width="25" height="25"/>
@@ -448,6 +467,6 @@
         <image name="people" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VOV-p9-tZn"/>
+        <segue reference="baw-zT-Vpu"/>
     </inferredMetricsTieBreakers>
 </document>

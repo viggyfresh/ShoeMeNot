@@ -11,21 +11,11 @@ import MobileCoreServices
 
 class CameraController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var newMedia: Bool?
-    @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet var cameraOverlay: UIView!
     var imagePicker: UIImagePickerController!
-    var originalImage: UIImage!
-    
-    var lastPoint = CGPoint.zeroPoint
-    var red: CGFloat = 255.0
-    var green: CGFloat = 255.0
-    var blue: CGFloat = 255.0
-    var brushWidth: CGFloat = 30.0
-    var opacity: CGFloat = 1.0
-    var swiped = false
-    
-    var height: CGFloat!
-    var width: CGFloat!
+    var pictureTaken: UIImage!
+    var photoAlreadyTaken: Bool!
     
     
     override func didReceiveMemoryWarning() {
@@ -33,73 +23,17 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        swiped = false
-        if let touch = touches.first as? UITouch {
-            lastPoint = touch.locationInView(imageView)
-        }
-    }
-    
-    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
-        
-        // 1
-        UIGraphicsBeginImageContext(imageView.frame.size)
-        let context = UIGraphicsGetCurrentContext()
-        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageView.frame.size.width, height: imageView.frame.size.height))
-        
-        // 2
-        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
-        CGContextAddLineToPoint(context, toPoint.x, toPoint.y)
-        
-        // 3
-        CGContextSetLineCap(context, kCGLineCapRound)
-        CGContextSetLineWidth(context, brushWidth)
-        CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
-        //CGContextSetBlendMode(context, kCGBlendModeNormal)
-        
-        // 4
-        CGContextStrokePath(context)
-        
-        // 5
-        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-    }
-    
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        // 6
-        swiped = true
-        if let touch = touches.first as? UITouch {
-            let currentPoint = touch.locationInView(imageView)
-            drawLineFrom(lastPoint, toPoint: currentPoint)
-            
-            // 7
-            lastPoint = currentPoint
-        }
-    }
-    
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        
-        if !swiped {
-            // draw a single point
-            drawLineFrom(lastPoint, toPoint: lastPoint)
-        }
-    }
-    
-    
-    
-    // MARK: - Actions
-    
-    @IBAction func reset(sender: AnyObject) {
-    }
-    
-    @IBAction func share(sender: AnyObject) {
-    }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        photoAlreadyTaken = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if photoAlreadyTaken! {
+            photoAlreadyTaken = false
+            self.dismissViewControllerAnimated(false, completion: nil)
+            return
+        }
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
             imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -115,15 +49,20 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
             var translate = CGAffineTransformMakeTranslation(0.0, y_adj)
             imagePicker.cameraViewTransform = translate
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            photoAlreadyTaken = false
+            self.presentViewController(imagePicker, animated: false, completion: nil)
         }
     }
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-    
+        if segue.identifier == "DrawSegue"{
+            let drawVc = segue.destinationViewController as! DrawViewController
+            drawVc.originalImage = pictureTaken
+            photoAlreadyTaken = false
+        }
     }
-
+    
     @IBAction func useCameraRoll(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
             imagePicker = UIImagePickerController()
@@ -131,12 +70,12 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
             imagePicker.mediaTypes = [kUTTypeImage as NSString]
             imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.presentViewController(imagePicker, animated: false, completion: nil)
         }
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     @IBAction func takePicture(sender: AnyObject) {
@@ -147,7 +86,7 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
         
         if mediaType == (kUTTypeImage as! String) {
             var image = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -157,19 +96,14 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
                 image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
             }
             
-            width = UIScreen.mainScreen().bounds.width
-            height = width * 1.333
-            //imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            
-            originalImage = image
-            imageView.contentMode = .ScaleAspectFit
-            imageView.image = image
-            
+            photoAlreadyTaken = true
+            pictureTaken = image
+            performSegueWithIdentifier("DrawSegue", sender: nil)
         }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
-
+    
 }

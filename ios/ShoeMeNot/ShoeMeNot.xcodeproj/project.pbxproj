@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */; };
 		2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
 		2FDF8E951B159907002237A7 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF8E941B159907002237A7 /* OverlayView.xib */; };
 		2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB1AB51B15052400B80F60 /* CameraController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		2FDF8E941B159907002237A7 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		2FEB1AB51B15052400B80F60 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				785504FF1B017762003C58AF /* Main.storyboard */,
 				2FDF8E941B159907002237A7 /* OverlayView.xib */,
 				2FEB1AB51B15052400B80F60 /* CameraController.swift */,
+				2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */,
 				2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */,
 				2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */,
 				2FF17FBE1B14526E00BFAEFA /* Backend.swift */,
@@ -270,6 +273,7 @@
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
 				785504FC1B017762003C58AF /* FirstViewController.swift in Sources */,
 				2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */,
+				2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */,
 				BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */,
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,
