@@ -25,6 +25,7 @@
 		BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */; };
 		BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */; };
 		BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */; };
+		BE6D32BE1B178C2D001FBF21 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeViewController.swift; sourceTree = "<group>"; };
 		BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */,
 				BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */,
 				BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */,
+				BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */,
 				785505021B017762003C58AF /* Images.xcassets */,
 				785505041B017762003C58AF /* LaunchScreen.xib */,
 				785504F71B017762003C58AF /* Supporting Files */,
@@ -198,7 +201,7 @@
 				TargetAttributes = {
 					785504F31B017762003C58AF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = LJSH48WSFV;
+						DevelopmentTeam = Y62HH4T2L9;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -207,6 +210,7 @@
 					};
 					7855050A1B017762003C58AF = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = Y62HH4T2L9;
 						TestTargetID = 785504F31B017762003C58AF;
 					};
 				};
@@ -257,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6D32BE1B178C2D001FBF21 /* DrawViewController.swift in Sources */,
 				2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */,
 				785504FE1B017762003C58AF /* SecondViewController.swift in Sources */,
 				BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */,
@@ -420,7 +425,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -432,6 +438,7 @@
 				INFOPLIST_FILE = ShoeMeNotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoeMeNot.app/ShoeMeNot";
 			};
 			name = Debug;
@@ -440,7 +447,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -448,6 +456,7 @@
 				INFOPLIST_FILE = ShoeMeNotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoeMeNot.app/ShoeMeNot";
 			};
 			name = Release;
