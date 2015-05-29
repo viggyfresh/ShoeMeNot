@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -137,9 +138,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0DV-ik-Ua3" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="24" width="600" height="552"/>
+                                <rect key="frame" x="0.0" y="-100" width="600" height="800"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="551.86000000000001" id="FWI-0n-xBZ"/>
+                                    <constraint firstAttribute="width" secondItem="0DV-ik-Ua3" secondAttribute="height" multiplier="3:4" id="qpy-Ff-Vqm"/>
                                 </constraints>
                             </imageView>
                         </subviews>

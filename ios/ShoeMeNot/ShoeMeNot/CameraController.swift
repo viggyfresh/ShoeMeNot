@@ -20,9 +20,12 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     var red: CGFloat = 255.0
     var green: CGFloat = 255.0
     var blue: CGFloat = 255.0
-    var brushWidth: CGFloat = 50.0
+    var brushWidth: CGFloat = 30.0
     var opacity: CGFloat = 1.0
     var swiped = false
+    
+    var height: CGFloat!
+    var width: CGFloat!
     
     
     override func didReceiveMemoryWarning() {
@@ -40,11 +43,9 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         
         // 1
-        var width = UIScreen.mainScreen().bounds.width
-        var height = width * 1.333
         UIGraphicsBeginImageContext(imageView.frame.size)
         let context = UIGraphicsGetCurrentContext()
-        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: width, height: height))
+        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageView.frame.size.width, height: imageView.frame.size.height))
         
         // 2
         CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
@@ -54,14 +55,13 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
         CGContextSetLineCap(context, kCGLineCapRound)
         CGContextSetLineWidth(context, brushWidth)
         CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
-        CGContextSetBlendMode(context, kCGBlendModeNormal)
+        //CGContextSetBlendMode(context, kCGBlendModeNormal)
         
         // 4
         CGContextStrokePath(context)
         
         // 5
         imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        imageView.alpha = opacity
         UIGraphicsEndImageContext()
         
     }
@@ -157,6 +157,9 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
                 image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
             }
             
+            width = UIScreen.mainScreen().bounds.width
+            height = width * 1.333
+            //imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
             
             originalImage = image
             imageView.contentMode = .ScaleAspectFit

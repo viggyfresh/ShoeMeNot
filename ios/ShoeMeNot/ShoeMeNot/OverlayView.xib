@@ -35,10 +35,10 @@
                     <items/>
                 </toolbar>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="trace" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-nV-IvK">
-                    <rect key="frame" x="176" y="107" width="249" height="385"/>
+                    <rect key="frame" x="150" y="75" width="300" height="450"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="249" id="Mga-lQ-QZi"/>
-                        <constraint firstAttribute="height" constant="385" id="RJ1-PS-tfI"/>
+                        <constraint firstAttribute="width" constant="300" id="Mga-lQ-QZi"/>
+                        <constraint firstAttribute="height" constant="450" id="RJ1-PS-tfI"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -48,11 +48,21 @@
                 <constraint firstItem="p6M-lz-S8p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F19-Le-Qfl"/>
                 <constraint firstItem="VYr-Od-QeU" firstAttribute="leading" secondItem="p6M-lz-S8p" secondAttribute="leading" id="FP2-Mm-awT"/>
                 <constraint firstItem="LT6-nV-IvK" firstAttribute="top" secondItem="VYr-Od-QeU" secondAttribute="bottom" constant="63" id="QYu-b1-eRh"/>
+                <constraint firstAttribute="centerX" secondItem="LT6-nV-IvK" secondAttribute="centerX" id="aM7-Dp-6iG"/>
                 <constraint firstAttribute="bottom" secondItem="p6M-lz-S8p" secondAttribute="bottom" id="asy-dK-FBQ"/>
                 <constraint firstItem="VYr-Od-QeU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eY6-Zg-tEm"/>
+                <constraint firstAttribute="centerY" secondItem="LT6-nV-IvK" secondAttribute="centerY" id="iTR-6j-sOQ"/>
                 <constraint firstItem="LT6-nV-IvK" firstAttribute="centerX" secondItem="VYr-Od-QeU" secondAttribute="centerX" id="ofS-Co-l1o"/>
+                <constraint firstItem="p6M-lz-S8p" firstAttribute="centerX" secondItem="LT6-nV-IvK" secondAttribute="centerX" id="vY1-Fx-uyk"/>
                 <constraint firstItem="LT6-nV-IvK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xwI-Fv-ynF"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QYu-b1-eRh"/>
+                    <exclude reference="ofS-Co-l1o"/>
+                    <exclude reference="xwI-Fv-ynF"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

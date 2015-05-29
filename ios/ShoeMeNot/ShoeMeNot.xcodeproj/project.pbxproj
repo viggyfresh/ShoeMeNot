@@ -201,7 +201,7 @@
 				TargetAttributes = {
 					785504F31B017762003C58AF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = Y62HH4T2L9;
+						DevelopmentTeam = LJSH48WSFV;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -425,8 +425,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -447,8 +447,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

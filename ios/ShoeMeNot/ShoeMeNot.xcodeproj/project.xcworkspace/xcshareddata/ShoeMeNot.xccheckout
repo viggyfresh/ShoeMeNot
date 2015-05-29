@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C0011AA7-7349-4C7B-A406-B2D1EF540A3F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ShoeMeNot</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>EAE0F3F497884A81A8723EA4A053D97563D7793F</key>
 		<string>https://github.com/viggyfresh/ShoeMeNot.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ios/ShoeMeNot/ShoeMeNot.xcodeproj</string>
+	<string>ios/ShoeMeNot/ShoeMeNot.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>EAE0F3F497884A81A8723EA4A053D97563D7793F</key>
