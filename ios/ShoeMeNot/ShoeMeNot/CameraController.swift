@@ -16,6 +16,7 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     var imagePicker: UIImagePickerController!
     var pictureTaken: UIImage!
     var photoAlreadyTaken: Bool!
+    var usedCameraRoll: Bool!
     
     
     override func didReceiveMemoryWarning() {
@@ -26,6 +27,7 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidLoad() {
         super.viewDidLoad()
         photoAlreadyTaken = false
+        usedCameraRoll = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -56,8 +58,9 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "DrawSegue"{
+        if segue.identifier == "DrawSegue" {
             let drawVc = segue.destinationViewController as! DrawViewController
+            drawVc.hidesBottomBarWhenPushed = true
             drawVc.originalImage = pictureTaken
             photoAlreadyTaken = false
         }
@@ -65,6 +68,9 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     @IBAction func useCameraRoll(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            self.dismissViewControllerAnimated(false, completion: nil)
+            photoAlreadyTaken = true
+            usedCameraRoll = true
             imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
@@ -75,6 +81,7 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        tabBarController?.selectedIndex = 0
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
@@ -91,9 +98,17 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
         if mediaType == (kUTTypeImage as! String) {
             var image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
-            if (image.imageOrientation == UIImageOrientation.Up || image.imageOrientation == UIImageOrientation.Down) {
-                var temp : CGImageRef = image.CGImage
-                image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
+            if usedCameraRoll! {
+                if image.size.width > image.size.height {
+                    var temp : CGImageRef = image.CGImage
+                    image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
+                }
+            }
+            else {
+                if (image.imageOrientation == UIImageOrientation.Up || image.imageOrientation == UIImageOrientation.Down) {
+                    var temp : CGImageRef = image.CGImage
+                    image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
+                }
             }
             
             photoAlreadyTaken = true
@@ -104,6 +119,7 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(false, completion: nil)
+        photoAlreadyTaken = false
     }
     
 }

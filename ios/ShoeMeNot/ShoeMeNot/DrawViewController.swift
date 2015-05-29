@@ -17,18 +17,23 @@ class DrawViewController: UIViewController {
     var red: CGFloat = 255.0
     var green: CGFloat = 255.0
     var blue: CGFloat = 255.0
-    var brushWidth: CGFloat = 30.0
+    var brushWidth: CGFloat = 25.0
     var opacity: CGFloat = 1.0
     var swiped = false
     
     var height: CGFloat!
     var width: CGFloat!
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated: false)
         width = UIScreen.mainScreen().bounds.width
         height = width * 1.333
         imageView.contentMode = .ScaleAspectFit
@@ -93,8 +98,12 @@ class DrawViewController: UIViewController {
         imageView.image = originalImage
     }
     
-    @IBAction func share(sender: AnyObject) {
+    @IBAction func retakePhoto(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(false)
     }
     
+    @IBAction func uploadImage(sender: AnyObject) {
+        
+    }
 }
 

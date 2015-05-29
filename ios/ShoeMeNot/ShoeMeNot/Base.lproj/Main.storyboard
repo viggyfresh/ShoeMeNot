@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -33,7 +33,7 @@
             <objects>
                 <navigationController id="Ydr-ET-HXa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" id="x4k-Vq-4tQ">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GJL-3h-hlE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -112,7 +112,7 @@
             <objects>
                 <navigationController id="Gw6-Zo-ecZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="camera" id="p6Y-cz-9ec">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k8x-Aq-2eg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -155,7 +155,7 @@
             <objects>
                 <navigationController id="SWp-FC-XNi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="fire" id="fm6-xt-QWU">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IgK-Wo-azd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -172,7 +172,7 @@
         <!--Discover View Controller-->
         <scene sceneID="5UN-cw-LHq">
             <objects>
-                <collectionViewController id="svS-A9-pbp" customClass="DiscoverViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="DiscoverViewController" id="svS-A9-pbp" customClass="DiscoverViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3Cj-tu-Min">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,7 +234,7 @@
             <objects>
                 <navigationController id="uFw-6P-k7e" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Social" image="people" id="TOV-BC-Dv4">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="doT-cq-k9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -280,7 +280,7 @@
             <objects>
                 <navigationController id="rQj-GT-cnT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="page" id="R5a-WT-X1c">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxN-7S-7Jd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -436,12 +436,37 @@
                                     <constraint firstAttribute="width" secondItem="nPv-3t-R0H" secondAttribute="height" multiplier="3:4" id="gke-Ie-Bv4"/>
                                 </constraints>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwl-dC-Pya">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem image="retake-rot" id="jPf-Vs-WjI">
+                                        <connections>
+                                            <action selector="retakePhoto:" destination="2rc-bm-rdI" id="TM9-fR-r0U"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Vzc-Bo-Lln"/>
+                                    <barButtonItem image="eraser-rot" id="Zpr-6m-vxK">
+                                        <connections>
+                                            <action selector="reset:" destination="2rc-bm-rdI" id="S0F-0F-CbI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DxH-cp-I8B"/>
+                                    <barButtonItem image="upload-rot" id="Y2j-UL-KsE">
+                                        <connections>
+                                            <action selector="uploadImage:" destination="2rc-bm-rdI" id="hyi-QB-p2Y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nPv-3t-R0H" firstAttribute="leading" secondItem="2yW-N2-94c" secondAttribute="leading" id="0Fm-6k-d6w"/>
                             <constraint firstAttribute="centerY" secondItem="nPv-3t-R0H" secondAttribute="centerY" id="9N6-EK-raA"/>
+                            <constraint firstItem="kwl-dC-Pya" firstAttribute="leading" secondItem="nPv-3t-R0H" secondAttribute="leading" id="9p8-kE-Jfu"/>
+                            <constraint firstItem="kwl-dC-Pya" firstAttribute="bottom" secondItem="IbD-H5-at1" secondAttribute="top" id="CdT-bz-9y1"/>
                             <constraint firstAttribute="trailing" secondItem="nPv-3t-R0H" secondAttribute="trailing" id="DvA-F6-Dkc"/>
+                            <constraint firstItem="kwl-dC-Pya" firstAttribute="trailing" secondItem="nPv-3t-R0H" secondAttribute="trailing" id="FNQ-hu-UAn"/>
                             <constraint firstItem="nPv-3t-R0H" firstAttribute="width" secondItem="nPv-3t-R0H" secondAttribute="height" multiplier="3:4" id="tFV-40-4cL"/>
                         </constraints>
                         <variation key="default">
@@ -461,12 +486,15 @@
     </scenes>
     <resources>
         <image name="camera" width="25" height="25"/>
+        <image name="eraser-rot" width="25" height="25"/>
         <image name="fire" width="25" height="25"/>
         <image name="heart" width="25" height="25"/>
         <image name="page" width="25" height="25"/>
         <image name="people" width="25" height="25"/>
+        <image name="retake-rot" width="25" height="25"/>
+        <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="baw-zT-Vpu"/>
+        <segue reference="VOV-p9-tZn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Camera.png"
+      "filename" : "Camera Filled-25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Camera@2x.png"
+      "filename" : "Camera Filled-50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Camera@3x.png"
+      "filename" : "Camera Filled-100.png"
     }
   ],
   "info" : {

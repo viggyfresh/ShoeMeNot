@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Hearts.png"
+      "filename" : "Hearts Filled-25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Hearts@2x.png"
+      "filename" : "Hearts Filled-50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Hearts@3x.png"
+      "filename" : "Hearts Filled-100.png"
     }
   ],
   "info" : {

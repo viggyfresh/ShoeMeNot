@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "fire.png"
+      "filename" : "Gas Filled-25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "fire@2x.png"
+      "filename" : "Gas Filled-50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "fire@3x.png"
+      "filename" : "Gas Filled-100.png"
     }
   ],
   "info" : {

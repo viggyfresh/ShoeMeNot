@@ -17,15 +17,21 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-lz-S8p">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <items>
-                        <barButtonItem title="X" id="aWs-sk-blz">
-                            <connections>
-                                <action selector="cancel:" destination="-1" id="yXS-3D-e3t"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zg1-g8-GIr"/>
                         <barButtonItem image="camera-rot" id="XwN-uU-t6q">
                             <connections>
                                 <action selector="takePicture:" destination="-1" id="KtZ-oA-6ge"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zg1-g8-GIr"/>
+                        <barButtonItem image="thumbs" style="plain" id="6Nn-J9-htV">
+                            <connections>
+                                <action selector="useCameraRoll:" destination="-1" id="zyZ-1t-d6z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hJo-rF-O9d"/>
+                        <barButtonItem image="close" id="aWs-sk-blz">
+                            <connections>
+                                <action selector="cancel:" destination="-1" id="yXS-3D-e3t"/>
                             </connections>
                         </barButtonItem>
                     </items>
@@ -67,6 +73,8 @@
     </objects>
     <resources>
         <image name="camera-rot" width="25" height="25"/>
+        <image name="close" width="25" height="25"/>
+        <image name="thumbs" width="25" height="25"/>
         <image name="trace" width="309" height="484"/>
     </resources>
 </document>
