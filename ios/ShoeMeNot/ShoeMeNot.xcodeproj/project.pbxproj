@@ -10,6 +10,7 @@
 		2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */; };
 		2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
 		2FDF8E951B159907002237A7 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF8E941B159907002237A7 /* OverlayView.xib */; };
+		2FEA58291B195280006C4E5A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA58281B195280006C4E5A /* SwiftyJSON.swift */; };
 		2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB1AB51B15052400B80F60 /* CameraController.swift */; };
 		2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */; };
 		2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FBE1B14526E00BFAEFA /* Backend.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		2FDF8E941B159907002237A7 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		2FEA58281B195280006C4E5A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2FEB1AB51B15052400B80F60 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2FF17FBE1B14526E00BFAEFA /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		785504F61B017762003C58AF /* ShoeMeNot */ = {
 			isa = PBXGroup;
 			children = (
+				2FEA58281B195280006C4E5A /* SwiftyJSON.swift */,
 				7804BCBA1B12473F0048D95A /* ShoeMeNot.entitlements */,
 				785504F91B017762003C58AF /* AppDelegate.swift */,
 				785504FB1B017762003C58AF /* FirstViewController.swift */,
@@ -269,6 +272,7 @@
 				785504FE1B017762003C58AF /* SecondViewController.swift in Sources */,
 				BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */,
 				BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */,
+				2FEA58291B195280006C4E5A /* SwiftyJSON.swift in Sources */,
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
 				785504FC1B017762003C58AF /* FirstViewController.swift in Sources */,

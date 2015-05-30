@@ -14,6 +14,9 @@ transformer = None
 features = None
 cat_map = None
 rev_map = None
+valid_images = None
+ip = "128.12.10.36"
+port = "5000"
 
 categories = {0: 'Sneakers & Athletic Shoes', 1: 'Boots', 2: 'Oxfords', 3: 'Loafers', 4: 'Sandals', 5: 'Boat Shoes', 6: 'Slippers', 7: 'Clogs & Mules', 8: 'Insoles & Accessories', 9: 'Climbing', 10: 'Heels', 11: 'Flats'}
 
@@ -21,6 +24,13 @@ categories = {0: 'Sneakers & Athletic Shoes', 1: 'Boots', 2: 'Oxfords', 3: 'Loaf
 @app.route("/")
 def hello():
     resp = jsonify({"msg": "Hello!", "data": [1, 2, 3]})
+    resp.status_code = 200
+    return resp
+
+@app.route("/discover")
+def discover():
+    choices = np.random.choice(valid_images, size=50,replace=False)
+    resp = jsonify({"msg": "Got 50 random shoes", "data": choices.tolist()})
     resp.status_code = 200
     return resp
 
@@ -77,6 +87,7 @@ if __name__ == "__main__":
     transformer.set_raw_scale('data', 255)
     extractor.blobs['data'].reshape(1, 3, 224, 224)
     features = np.load('features.npy')
+    valid_images = np.load('valid_images.npy')
     with open('cat_map.pickle') as file1:
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
