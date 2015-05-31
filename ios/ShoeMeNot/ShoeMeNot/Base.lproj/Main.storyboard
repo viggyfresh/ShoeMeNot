@@ -434,7 +434,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ec6-Ge-Qpb">
-                        <barButtonItem key="rightBarButtonItem" image="pin" id="wAd-gF-KnT"/>
+                        <barButtonItem key="rightBarButtonItem" image="pin" id="wAd-gF-KnT">
+                            <connections>
+                                <action selector="favoriteItem:" destination="Fgu-7P-hSE" id="Phb-ER-MMY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

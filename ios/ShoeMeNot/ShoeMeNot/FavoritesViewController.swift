@@ -7,11 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private var result = "0.jpg"
+    private var shoes : [Shoe] = [Shoe]()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        shoes = [Shoe]()
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetch = NSFetchRequest(entityName: "Shoe")
+        var error: NSError?
+        
+        let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
+        
+        for result in results {
+            println("HI")
+            var curr = Shoe(id: result.valueForKey("id") as! Int)
+            shoes.append(curr)
+        }
+        self.collectionView?.reloadData()
+    }
     
 }
 
@@ -22,13 +44,24 @@ extension FavoritesViewController : UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return shoes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShoeCell
         cell.backgroundColor = UIColor.whiteColor()
-        cell.imageView.image = UIImage(named: result)
+        let shoe = self.shoes[indexPath.row]
+        if shoe.thumb_image == nil {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                shoe.getThumbnail()
+                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                    cell.shoe = shoe
+                    cell.imageView.image = shoe.thumb_image
+                })
+            })
+        }
+        cell.shoe = shoe
+        cell.imageView.image = shoe.thumb_image
         return cell
     }
     
@@ -42,7 +75,8 @@ extension FavoritesViewController : UICollectionViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShoeView" {
             if let dest = segue.destinationViewController as? ShoeViewController {
-                //dest.url = NSURL(string: "http://a2.zassets.com/images/z/3/1/3/3/9/0/3133908-3-4x.jpg")
+                let cell = sender as! ShoeCell
+                dest.shoe = cell.shoe
             }
         }
     }

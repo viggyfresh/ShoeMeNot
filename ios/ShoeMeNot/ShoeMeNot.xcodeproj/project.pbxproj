@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */; };
+		2F753E301B1AE30000B0BD42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F753E2F1B1AE30000B0BD42 /* CoreData.framework */; };
 		2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */; };
 		2F8402A51B1518FA00318EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
 		2FDF8E951B159907002237A7 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF8E941B159907002237A7 /* OverlayView.xib */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoeModel.xcdatamodel; sourceTree = "<group>"; };
+		2F753E2F1B1AE30000B0BD42 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		2FDF8E941B159907002237A7 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		2FEA58281B195280006C4E5A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F753E301B1AE30000B0BD42 /* CoreData.framework in Frameworks */,
 				7804BCBC1B1247550048D95A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 		785504EB1B017762003C58AF = {
 			isa = PBXGroup;
 			children = (
+				2F753E2F1B1AE30000B0BD42 /* CoreData.framework */,
 				7804BCBB1B1247550048D95A /* CloudKit.framework */,
 				785504F61B017762003C58AF /* ShoeMeNot */,
 				7855050E1B017762003C58AF /* ShoeMeNotTests */,
@@ -117,6 +123,7 @@
 				785504FB1B017762003C58AF /* FirstViewController.swift */,
 				785504FD1B017762003C58AF /* SecondViewController.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
+				2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */,
 				2FDF8E941B159907002237A7 /* OverlayView.xib */,
 				2FEB1AB51B15052400B80F60 /* CameraController.swift */,
 				2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */,
@@ -284,6 +291,7 @@
 				2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */,
 				BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */,
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
+				2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +512,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */,
+			);
+			currentVersion = 2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */;
+			path = ShoeModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 785504EC1B017762003C58AF /* Project object */;
 }

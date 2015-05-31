@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ShoeViewController: UIViewController {
     @IBOutlet weak var shoeTitle: UILabel!
@@ -53,6 +54,23 @@ class ShoeViewController: UIViewController {
         metadata.sizeToFit()
     }
     
+    @IBAction func favoriteItem(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("Shoe", inManagedObjectContext: managedContext)
+        
+        let shoe_obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        shoe_obj.setValue(self.shoe.id, forKey: "id")
+        
+        var error: NSError?
+        
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        
+    }
 
     /*
     // MARK: - Navigation
