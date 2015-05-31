@@ -7,31 +7,49 @@
 //  Copyright (c) 2015 Vani Khosla. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class ShoeViewController: UIViewController {
-    @IBOutlet var mainShoeMeta : UILabel!
-    @IBOutlet var mainShoeImage : UIImageView!
-    var url : NSURL!
-    var image : UIImage?
+    @IBOutlet weak var shoeTitle: UILabel!
+    @IBOutlet var metadata : UITextView!
+    @IBOutlet var image : UIImageView!
+    var shoe : Shoe!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        mainShoeMeta.text = "Converse Chuck Taylor® All Star® Core Ox Optical White\n\nConverse\n\nOptical White\n\nShoes > Sneakers & Athletic Shoes > Converse\n\n$50.00\n\nSKU 108000"
-        mainShoeMeta.sizeToFit()
-        if let img = image {
-            mainShoeImage.image = img
+        if shoe.metadata == nil {
+            shoe.getMetadata()
         }
-        else {
-            let url_data = NSData(contentsOfURL: url!)
-            mainShoeImage.image = UIImage(data: url_data!)
+        
+        if shoe.image == nil {
+            shoe.getImage()
         }
+        
+        image.image = shoe.image
+        displayMetadata()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func displayMetadata() {
+        var title = shoe.metadata!["name"].stringValue + "\n"
+        shoeTitle.text = title
+        
+        var metaString = shoe.metadata!["price"].stringValue + "\n"
+        if shoe.metadata!["stars"].stringValue != "-1" {
+            metaString += shoe.metadata!["stars"].stringValue + " stars\n"
+        }
+        metaString += shoe.metadata!["category"].stringValue + "\n"
+        metaString += shoe.metadata!["brand"].stringValue + "\n"
+        metaString += shoe.metadata!["color"].stringValue + "\n"
+        metaString += shoe.metadata!["sku"].stringValue
+        metadata.text = metaString
+        metadata.sizeToFit()
     }
     
 

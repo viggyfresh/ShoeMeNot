@@ -20,12 +20,29 @@ port = "5000"
 
 categories = {0: 'Sneakers & Athletic Shoes', 1: 'Boots', 2: 'Oxfords', 3: 'Loafers', 4: 'Sandals', 5: 'Boat Shoes', 6: 'Slippers', 7: 'Clogs & Mules', 8: 'Insoles & Accessories', 9: 'Climbing', 10: 'Heels', 11: 'Flats'}
 
-
 @app.route("/")
 def hello():
     resp = jsonify({"msg": "Hello!", "data": [1, 2, 3]})
     resp.status_code = 200
     return resp
+
+@app.route("/shoe/<id>")
+def shoe(id):
+    with open("./static/shoe_dataset/" + id + ".txt") as file:
+        lines = [line.rstrip('\n') for line in file]
+        metadata = {}
+        metadata["id"] = lines[0]
+        metadata["name"] = lines[1]
+        metadata["brand"] = lines[2]
+        metadata["color"] = lines[3]
+        metadata["category"] = lines[4]
+        metadata["price"] = lines[6]
+        metadata["stars"] = lines[7]
+        metadata["sku"] = lines[8]
+        metadata["msg"] = "Shoe data as promised!"
+        resp = jsonify(metadata)
+        resp.status_code = 200
+        return resp
 
 @app.route("/discover")
 def discover():

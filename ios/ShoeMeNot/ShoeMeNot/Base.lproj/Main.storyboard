@@ -85,13 +85,17 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-XF-1G8">
-                                    <rect key="frame" x="26" y="21" width="108" height="21"/>
-                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-XF-1G8">
+                                    <rect key="frame" x="23" y="13" width="105" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="BTI-XF-1G8" firstAttribute="leading" secondItem="ao2-eM-i0V" secondAttribute="leadingMargin" constant="15" id="0Dh-fQ-psF"/>
+                                <constraint firstItem="BTI-XF-1G8" firstAttribute="top" secondItem="ao2-eM-i0V" secondAttribute="topMargin" constant="5" id="oXP-o5-RKF"/>
+                            </constraints>
                             <connections>
                                 <outlet property="label" destination="BTI-XF-1G8" id="iik-Fm-cMJ"/>
                             </connections>
@@ -207,13 +211,17 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g8-aM-IzF">
-                                    <rect key="frame" x="25" y="21" width="99" height="21"/>
-                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1g8-aM-IzF">
+                                    <rect key="frame" x="23" y="13" width="101" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="1g8-aM-IzF" firstAttribute="leading" secondItem="22i-vi-acw" secondAttribute="leadingMargin" constant="15" id="Wqp-2g-Uuo"/>
+                                <constraint firstItem="1g8-aM-IzF" firstAttribute="top" secondItem="22i-vi-acw" secondAttribute="topMargin" constant="5" id="xsO-CJ-qn5"/>
+                            </constraints>
                             <connections>
                                 <outlet property="label" destination="1g8-aM-IzF" id="3R5-bk-Abs"/>
                             </connections>
@@ -223,7 +231,13 @@
                             <outlet property="delegate" destination="svS-A9-pbp" id="jD5-jb-IsI"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="NGv-S5-l45"/>
+                    <navigationItem key="navigationItem" id="NGv-S5-l45">
+                        <barButtonItem key="rightBarButtonItem" image="reload" id="rJ1-0k-vzo">
+                            <connections>
+                                <action selector="discover:" destination="svS-A9-pbp" id="U48-fd-3ot"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0f-n3-roM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,13 +346,17 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-P0-Ah4">
-                                    <rect key="frame" x="24" y="19" width="103" height="23"/>
-                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-P0-Ah4">
+                                    <rect key="frame" x="23" y="13" width="82" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="QaD-P0-Ah4" firstAttribute="leading" secondItem="xXq-mi-xDX" secondAttribute="leadingMargin" constant="15" id="p0L-rZ-TyS"/>
+                                <constraint firstItem="QaD-P0-Ah4" firstAttribute="top" secondItem="xXq-mi-xDX" secondAttribute="topMargin" constant="5" id="wQt-vc-NTZ"/>
+                            </constraints>
                             <connections>
                                 <outlet property="label" destination="QaD-P0-Ah4" id="LDh-Mv-lUn"/>
                             </connections>
@@ -368,50 +386,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGZ-e6-Tbo">
+                                <rect key="frame" x="46" y="493" width="508" height="63"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="gLC-sy-yZI"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpR-TI-vEm">
+                                <rect key="frame" x="31" y="74" width="523" height="34.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEi-uv-Hbs">
-                                <rect key="frame" x="50" y="94" width="500" height="375"/>
+                                <rect key="frame" x="50" y="118" width="500" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uEi-uv-Hbs" secondAttribute="height" multiplier="4:3" id="TYY-Aq-PTr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METADATA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvB-Ga-ykx">
-                                <rect key="frame" x="150" y="477" width="300" height="294"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="MmH-cH-9Nd"/>
-                                    <constraint firstAttribute="height" constant="294" id="p4h-6p-9Tc"/>
-                                    <constraint firstAttribute="width" constant="300" id="vol-dI-oo7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MmH-cH-9Nd"/>
-                                    </mask>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="centerX" secondItem="SvB-Ga-ykx" secondAttribute="centerX" id="NEX-Ar-xa1"/>
+                            <constraint firstItem="pGZ-e6-Tbo" firstAttribute="top" secondItem="uEi-uv-Hbs" secondAttribute="bottom" id="6t9-5E-cgF"/>
+                            <constraint firstItem="pGZ-e6-Tbo" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" constant="30" id="AEH-mH-BNd"/>
+                            <constraint firstAttribute="centerX" secondItem="pGZ-e6-Tbo" secondAttribute="centerX" id="Ad5-h6-KWC"/>
+                            <constraint firstItem="eWz-Aa-tZf" firstAttribute="top" secondItem="pGZ-e6-Tbo" secondAttribute="bottom" constant="44" id="JOP-Nb-ix3"/>
                             <constraint firstItem="uEi-uv-Hbs" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leading" constant="50" id="QwS-cD-7JT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LpR-TI-vEm" secondAttribute="trailing" constant="30" id="T6c-Ti-prm"/>
                             <constraint firstAttribute="centerX" secondItem="uEi-uv-Hbs" secondAttribute="centerX" id="ZFa-7B-Ezw"/>
-                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="30" id="dx8-fm-W74"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pGZ-e6-Tbo" secondAttribute="trailing" constant="30" id="aso-bi-TkE"/>
+                            <constraint firstItem="LpR-TI-vEm" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="10" id="azc-gb-ycV"/>
+                            <constraint firstItem="LpR-TI-vEm" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" constant="15" id="cSI-D5-BUt"/>
+                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="LpR-TI-vEm" secondAttribute="bottom" constant="10" id="djj-4t-Z6o"/>
                             <constraint firstAttribute="trailing" secondItem="uEi-uv-Hbs" secondAttribute="trailing" constant="50" id="fja-Df-3O5"/>
-                            <constraint firstItem="uEi-uv-Hbs" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" id="gkU-ax-7IN"/>
-                            <constraint firstItem="SvB-Ga-ykx" firstAttribute="top" secondItem="uEi-uv-Hbs" secondAttribute="bottom" constant="8" symbolic="YES" id="vUP-Qb-Exc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uEi-uv-Hbs" secondAttribute="trailing" id="yWI-oW-bM0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="gkU-ax-7IN"/>
-                                <exclude reference="yWI-oW-bM0"/>
+                                <exclude reference="JOP-Nb-ix3"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="mainShoeImage" destination="uEi-uv-Hbs" id="ByC-3E-ybd"/>
-                        <outlet property="mainShoeMeta" destination="SvB-Ga-ykx" id="JkM-Rd-MMF"/>
+                        <outlet property="image" destination="uEi-uv-Hbs" id="n8i-u8-PCh"/>
+                        <outlet property="metadata" destination="pGZ-e6-Tbo" id="VNN-qc-b2M"/>
+                        <outlet property="shoeTitle" destination="LpR-TI-vEm" id="xkD-Sn-fvy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZO-nD-NFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,10 +515,11 @@
         <image name="heart" width="25" height="25"/>
         <image name="page" width="25" height="25"/>
         <image name="people" width="25" height="25"/>
+        <image name="reload" width="25" height="25"/>
         <image name="retake-rot" width="25" height="25"/>
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VOV-p9-tZn"/>
+        <segue reference="baw-zT-Vpu"/>
     </inferredMetricsTieBreakers>
 </document>

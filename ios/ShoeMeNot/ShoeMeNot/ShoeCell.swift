@@ -10,4 +10,5 @@ import UIKit
 
 class ShoeCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    var shoe : Shoe!
 }

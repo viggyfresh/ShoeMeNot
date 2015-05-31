@@ -12,14 +12,26 @@ class DiscoverViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private var result = "0.jpg"
-    private var pictures : [NSURL]!
+    private var shoes : [Shoe] = [Shoe]()
     let backend = Backend()
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        freshDiscovery()
+    }
+    
+    @IBAction func discover(sender: AnyObject) {
+        freshDiscovery()
+    }
+    
+    func freshDiscovery() {
         backend.discover() {
-            json in
-            println("HEREHEREHERE")
-            println(json)
+            data, msg in
+            println(msg)
+            self.shoes = data!
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.collectionView?.reloadData()
+            })
         }
     }
 }
@@ -31,13 +43,27 @@ extension DiscoverViewController : UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return shoes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShoeCell
         cell.backgroundColor = UIColor.whiteColor()
-        cell.imageView.image = UIImage(named: result)
+        let shoe = self.shoes[indexPath.row]
+        if shoe.thumb_image == nil {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                println("Updating image for " + String(indexPath.row))
+                let data = NSData(contentsOfURL: shoe.thumb_url)!
+                var img = UIImage(data: data)
+                shoe.thumb_image = img
+                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                    cell.shoe = shoe
+                    cell.imageView.image = shoe.thumb_image
+                })
+            })
+        }
+        cell.shoe = shoe
+        cell.imageView.image = shoe.thumb_image
         return cell
     }
     
@@ -50,8 +76,8 @@ extension DiscoverViewController : UICollectionViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShoeView" {
             if let dest = segue.destinationViewController as? ShoeViewController {
-                dest.url = NSURL(string: "http://a2.zassets.com/images/z/3/1/3/3/9/0/3133908-3-4x.jpg")
-                dest.image = UIImage(named: "7.jpg")
+                let cell = sender as! ShoeCell
+                dest.shoe = cell.shoe
             }
         }
     }
