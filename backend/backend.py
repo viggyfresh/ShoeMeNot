@@ -5,6 +5,7 @@ import caffe
 import numpy as np
 import json
 import pickle
+import re
 
 app = Flask(__name__)
 
@@ -35,7 +36,8 @@ def shoe(id):
         metadata["name"] = lines[1]
         metadata["brand"] = lines[2]
         metadata["color"] = lines[3]
-        metadata["category"] = lines[4]
+        category = re.search("> .* >", lines[4])
+        metadata["category"] = category.group(0)[2:-2]
         metadata["price"] = lines[6]
         metadata["stars"] = lines[7]
         metadata["sku"] = lines[8]

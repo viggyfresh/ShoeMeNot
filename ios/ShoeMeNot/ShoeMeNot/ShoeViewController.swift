@@ -18,6 +18,7 @@ class ShoeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         if shoe.metadata == nil {
             shoe.getMetadata()

@@ -32,6 +32,11 @@ class Shoe {
         self.image = img
     }
     
+    func getThumbnail() {
+        var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
+        self.thumb_image = img
+    }
+    
     func getMetadata() {
         var url = NSURL(string: Backend.Static.base_url + "shoe/" + String(id))!
         var data = NSData(contentsOfURL: url)!

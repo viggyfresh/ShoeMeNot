@@ -386,8 +386,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGZ-e6-Tbo">
-                                <rect key="frame" x="46" y="493" width="508" height="63"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGZ-e6-Tbo">
+                                <rect key="frame" x="21" y="493" width="558" height="63"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="gLC-sy-yZI"/>
@@ -397,6 +397,11 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gLC-sy-yZI"/>
+                                    </mask>
+                                </variation>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpR-TI-vEm">
                                 <rect key="frame" x="31" y="74" width="523" height="34.5"/>
@@ -414,24 +419,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pGZ-e6-Tbo" firstAttribute="top" secondItem="uEi-uv-Hbs" secondAttribute="bottom" id="6t9-5E-cgF"/>
-                            <constraint firstItem="pGZ-e6-Tbo" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" constant="30" id="AEH-mH-BNd"/>
+                            <constraint firstItem="pGZ-e6-Tbo" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" constant="5" id="AEH-mH-BNd"/>
                             <constraint firstAttribute="centerX" secondItem="pGZ-e6-Tbo" secondAttribute="centerX" id="Ad5-h6-KWC"/>
-                            <constraint firstItem="eWz-Aa-tZf" firstAttribute="top" secondItem="pGZ-e6-Tbo" secondAttribute="bottom" constant="44" id="JOP-Nb-ix3"/>
+                            <constraint firstItem="eWz-Aa-tZf" firstAttribute="top" secondItem="pGZ-e6-Tbo" secondAttribute="bottom" id="JOP-Nb-ix3"/>
                             <constraint firstItem="uEi-uv-Hbs" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leading" constant="50" id="QwS-cD-7JT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LpR-TI-vEm" secondAttribute="trailing" constant="30" id="T6c-Ti-prm"/>
                             <constraint firstAttribute="centerX" secondItem="uEi-uv-Hbs" secondAttribute="centerX" id="ZFa-7B-Ezw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pGZ-e6-Tbo" secondAttribute="trailing" constant="30" id="aso-bi-TkE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pGZ-e6-Tbo" secondAttribute="trailing" constant="5" id="aso-bi-TkE"/>
                             <constraint firstItem="LpR-TI-vEm" firstAttribute="top" secondItem="VyE-cT-vCX" secondAttribute="bottom" constant="10" id="azc-gb-ycV"/>
                             <constraint firstItem="LpR-TI-vEm" firstAttribute="leading" secondItem="2QF-XM-VXd" secondAttribute="leadingMargin" constant="15" id="cSI-D5-BUt"/>
                             <constraint firstItem="uEi-uv-Hbs" firstAttribute="top" secondItem="LpR-TI-vEm" secondAttribute="bottom" constant="10" id="djj-4t-Z6o"/>
                             <constraint firstAttribute="trailing" secondItem="uEi-uv-Hbs" secondAttribute="trailing" constant="50" id="fja-Df-3O5"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="JOP-Nb-ix3"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ec6-Ge-Qpb">
+                        <barButtonItem key="rightBarButtonItem" image="pin" id="wAd-gF-KnT"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="image" destination="uEi-uv-Hbs" id="n8i-u8-PCh"/>
                         <outlet property="metadata" destination="pGZ-e6-Tbo" id="VNN-qc-b2M"/>
@@ -515,6 +520,7 @@
         <image name="heart" width="25" height="25"/>
         <image name="page" width="25" height="25"/>
         <image name="people" width="25" height="25"/>
+        <image name="pin" width="25" height="25"/>
         <image name="reload" width="25" height="25"/>
         <image name="retake-rot" width="25" height="25"/>
         <image name="upload-rot" width="25" height="25"/>

@@ -10,8 +10,6 @@ import UIKit
 
 class DiscoverViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-    private var result = "0.jpg"
     private var shoes : [Shoe] = [Shoe]()
     let backend = Backend()
     
@@ -52,10 +50,7 @@ extension DiscoverViewController : UICollectionViewDataSource {
         let shoe = self.shoes[indexPath.row]
         if shoe.thumb_image == nil {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-                println("Updating image for " + String(indexPath.row))
-                let data = NSData(contentsOfURL: shoe.thumb_url)!
-                var img = UIImage(data: data)
-                shoe.thumb_image = img
+                shoe.getThumbnail()
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                     cell.shoe = shoe
                     cell.imageView.image = shoe.thumb_image
