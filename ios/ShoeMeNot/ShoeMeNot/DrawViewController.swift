@@ -24,6 +24,8 @@ class DrawViewController: UIViewController {
     var height: CGFloat!
     var width: CGFloat!
     
+    var backend = Backend()
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -103,7 +105,11 @@ class DrawViewController: UIViewController {
     }
     
     @IBAction func uploadImage(sender: AnyObject) {
-        
+        backend.upload(imageView.image!, completion: { (data, msg, id) -> Void in
+            println(data)
+            println(msg)
+            println(id)
+        })
     }
 }
 

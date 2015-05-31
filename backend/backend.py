@@ -1,13 +1,15 @@
-from flask import Flask
+from flask import Flask, request, redirect, url_for
 from flask import jsonify
+import os
 import cv2
 import caffe
 import numpy as np
 import json
 import pickle
 import re
-
-app = Flask(__name__)
+import PIL
+import base64
+from werkzeug import secure_filename
 
 classifier = None
 extractor = None
@@ -18,6 +20,11 @@ rev_map = None
 valid_images = None
 ip = "128.12.10.36"
 port = "5000"
+UPLOAD_FOLDER = './static/uploads/'
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'tiff'])
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 categories = {0: 'Sneakers & Athletic Shoes', 1: 'Boots', 2: 'Oxfords', 3: 'Loafers', 4: 'Sandals', 5: 'Boat Shoes', 6: 'Slippers', 7: 'Clogs & Mules', 8: 'Insoles & Accessories', 9: 'Climbing', 10: 'Heels', 11: 'Flats'}
 
@@ -51,6 +58,22 @@ def discover():
     choices = np.random.choice(valid_images, size=50,replace=False)
     resp = jsonify({"msg": "Got 50 random shoes", "data": choices.tolist()})
     resp.status_code = 200
+    return resp
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    if request.method == 'POST':
+        file = request.get_data()
+        if file and allowed_file('test.jpg'):
+            filename = secure_filename('test.jpg')
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'wb') as f:
+                f.write(file)
+    resp = jsonify({"msg": "Image uploaded!", "data": [1, 2, 3], "id": 0})
+    resp.status_code = 201
     return resp
 
 @app.route("/classify/<id>")
@@ -111,6 +134,6 @@ if __name__ == "__main__":
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    #app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
     #app.run()
-    app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0')
