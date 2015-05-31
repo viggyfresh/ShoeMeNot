@@ -25,7 +25,6 @@ class DiscoverViewController: UICollectionViewController {
     func freshDiscovery() {
         backend.discover() {
             data, msg in
-            println(msg)
             self.shoes = data!
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                 self.collectionView?.reloadData()

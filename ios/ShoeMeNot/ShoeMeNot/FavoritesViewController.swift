@@ -28,7 +28,6 @@ class FavoritesViewController: UICollectionViewController {
         let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
         
         for result in results {
-            println("HI")
             var curr = Shoe(id: result.valueForKey("id") as! Int)
             shoes.append(curr)
         }
