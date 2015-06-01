@@ -574,7 +574,16 @@
                             <outlet property="delegate" destination="BqJ-MF-Qnq" id="EPt-rs-3kr"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Qug-um-moJ">
+                        <barButtonItem key="rightBarButtonItem" image="close-empty" id="7h9-9d-Qh1">
+                            <connections>
+                                <action selector="exitOut:" destination="BqJ-MF-Qnq" id="yXj-Ld-nba"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivq-Gh-XgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -583,6 +592,7 @@
     </scenes>
     <resources>
         <image name="camera" width="25" height="25"/>
+        <image name="close-empty" width="25" height="25"/>
         <image name="eraser-rot" width="25" height="25"/>
         <image name="fire" width="25" height="25"/>
         <image name="heart" width="25" height="25"/>

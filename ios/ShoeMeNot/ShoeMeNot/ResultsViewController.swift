@@ -62,4 +62,8 @@ extension ResultsViewController : UICollectionViewDataSource {
             }
         }
     }
+    @IBAction func exitOut(sender: AnyObject) {
+        tabBarController?.selectedIndex = 4
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
 }
