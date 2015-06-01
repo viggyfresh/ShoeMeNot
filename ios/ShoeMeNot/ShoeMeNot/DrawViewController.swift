@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DrawViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
@@ -109,7 +110,21 @@ class DrawViewController: UIViewController {
     @IBAction func uploadImage(sender: AnyObject) {
         backend.upload(imageView.image!, completion: { (data, msg, id) -> Void in
             println(msg)
-            // TODO: to save id to history database
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("HistoryItem", inManagedObjectContext: managedContext)
+            
+            let history_obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            
+            history_obj.setValue(id, forKey: "id")
+            
+            var error: NSError?
+            
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+
             self.shoes = data!
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                 self.performSegueWithIdentifier("ResultsSegue", sender: nil)

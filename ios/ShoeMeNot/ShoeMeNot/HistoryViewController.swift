@@ -7,12 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryViewController: UICollectionViewController {
     
-    private let reuseIdentifier = "ShoeCell"
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-    private var result = "0.jpg"
+    private let reuseIdentifier = "HistoryCell"
+    private var history : [HistoryItem] = [HistoryItem]()
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        history = [HistoryItem]()
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetch = NSFetchRequest(entityName: "HistoryItem")
+        var error: NSError?
+        
+        let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
+        for result in results {
+            var curr = HistoryItem(id: result.valueForKey("id") as! String)
+            history.append(curr)
+        }
+        self.collectionView?.reloadData()
+    }
 
 }
 
@@ -23,13 +41,25 @@ extension HistoryViewController : UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return history.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShoeCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HistoryCell
         cell.backgroundColor = UIColor.whiteColor()
-        cell.imageView.image = UIImage(named: result)
+        let shoe = self.history[indexPath.row]
+        if shoe.image == nil {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                shoe.getImage()
+                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                    cell.shoe = shoe
+                    cell.imageView.image = shoe.image
+                })
+            })
+        }
+        cell.shoe = shoe
+        cell.imageView.image = shoe.image
+
         return cell
     }
     

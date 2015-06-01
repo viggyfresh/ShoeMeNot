@@ -17,7 +17,7 @@ class HistoryItem {
     
     init(id: String) {
         self.id = id
-        self.url = NSURL(string: Backend.Static.dataset_url + id + ".jpg")!
+        self.url = NSURL(string: Backend.Static.upload_url + id + ".jpg")!
         self.image = nil
     }
     

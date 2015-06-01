@@ -15,6 +15,7 @@ class Backend {
         static var port = "5000"
         static var base_url = ip + ":" + port + "/"
         static var dataset_url = base_url + "static/shoe_dataset/"
+        static var upload_url = base_url + "static/uploads/"
     }
     
     func discover(completion: (data: [Shoe]?, msg: String) -> Void) {
@@ -48,7 +49,7 @@ class Backend {
             rotated = UIImage(CGImage: image.CGImage!, scale: image.scale, orientation: UIImageOrientation.Up)!
         }
         
-        var imageData = UIImageJPEGRepresentation(rotated, 1.0)!
+        var imageData = UIImageJPEGRepresentation(rotated, 0.5)!
         let uploadURL = NSURL(string: Static.base_url + "upload")!
         var request = NSMutableURLRequest(URL: uploadURL)
         request.HTTPMethod = "POST"
