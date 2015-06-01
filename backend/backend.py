@@ -1,5 +1,4 @@
-from flask import Flask, request, redirect, url_for
-from flask import jsonify
+from flask import Flask, request, redirect, url_for, jsonify
 import os
 import cv2
 import caffe
@@ -7,7 +6,6 @@ import numpy as np
 import json
 import pickle
 import re
-import PIL
 import uuid
 from werkzeug import secure_filename
 
@@ -71,7 +69,8 @@ def upload():
         file = request.get_data()
         if file and allowed_file(id + '.jpg'):
             filename = secure_filename(id + '.jpg')
-            with open(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'wb') as f:
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            with open(path, 'wb') as f:
                 f.write(file)
     resp = jsonify({"msg": "Image uploaded!", "data": [1, 2, 3], "id": id})
     resp.status_code = 201
@@ -135,6 +134,5 @@ if __name__ == "__main__":
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    app.run(host='0.0.0.0', debug=True)
-    #app.run()
-    #app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

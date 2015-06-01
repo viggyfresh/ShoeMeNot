@@ -101,13 +101,13 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate, UINav
             if usedCameraRoll! {
                 if image.size.width > image.size.height {
                     var temp : CGImageRef = image.CGImage
-                    image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
+                    image = UIImage(CGImage: temp, scale: image.scale, orientation: UIImageOrientation.Right)!
                 }
             }
             else {
                 if (image.imageOrientation == UIImageOrientation.Up || image.imageOrientation == UIImageOrientation.Down) {
                     var temp : CGImageRef = image.CGImage
-                    image = UIImage(CGImage: temp, scale: 1, orientation: UIImageOrientation.Right)!
+                    image = UIImage(CGImage: temp, scale: image.scale, orientation: UIImageOrientation.Right)!
                 }
             }
             

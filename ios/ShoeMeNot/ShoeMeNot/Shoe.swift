@@ -22,6 +22,9 @@ class Shoe {
         self.id = id
         self.url = NSURL(string: Backend.Static.dataset_url + toString(id) + ".jpg")!
         self.thumb_url = NSURL(string: Backend.Static.dataset_url + toString(id) + "_sm.jpg")!
+        self.image = nil
+        self.thumb_image = nil
+        self.metadata = nil
     }
     
     init(id: Int, url: NSURL, thumb_url : NSURL) {

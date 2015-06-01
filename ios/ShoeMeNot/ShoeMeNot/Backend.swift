@@ -40,7 +40,14 @@ class Backend {
     }
     
     func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: String) -> Void) {
-        var rotated = UIImage(CGImage: image.CGImage!, scale: 1.0, orientation: UIImageOrientation.Left)
+        var rotated : UIImage
+        if image.imageOrientation.rawValue == 0 {
+            rotated = UIImage(CGImage: image.CGImage!, scale: 1.0, orientation: UIImageOrientation.Left)!
+        }
+        else {
+            rotated = UIImage(CGImage: image.CGImage!, scale: image.scale, orientation: UIImageOrientation.Up)!
+        }
+        
         var imageData = UIImageJPEGRepresentation(rotated, 1.0)!
         let uploadURL = NSURL(string: Static.base_url + "upload")!
         var request = NSMutableURLRequest(URL: uploadURL)
