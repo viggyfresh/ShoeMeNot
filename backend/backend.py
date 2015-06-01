@@ -8,7 +8,7 @@ import json
 import pickle
 import re
 import PIL
-import base64
+import uuid
 from werkzeug import secure_filename
 
 classifier = None
@@ -66,13 +66,14 @@ def allowed_file(filename):
 
 @app.route("/upload", methods=['POST'])
 def upload():
+    id = str(uuid.uuid4())
     if request.method == 'POST':
         file = request.get_data()
-        if file and allowed_file('test.jpg'):
-            filename = secure_filename('test.jpg')
+        if file and allowed_file(id + '.jpg'):
+            filename = secure_filename(id + '.jpg')
             with open(os.path.join(app.config['UPLOAD_FOLDER'], filename), 'wb') as f:
                 f.write(file)
-    resp = jsonify({"msg": "Image uploaded!", "data": [1, 2, 3], "id": 0})
+    resp = jsonify({"msg": "Image uploaded!", "data": [1, 2, 3], "id": id})
     resp.status_code = 201
     return resp
 

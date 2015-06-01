@@ -52,7 +52,7 @@ class DrawViewController: UIViewController {
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         
         // 1
-        UIGraphicsBeginImageContext(imageView.frame.size)
+        UIGraphicsBeginImageContextWithOptions(imageView.frame.size, false, UIScreen.mainScreen().scale)
         let context = UIGraphicsGetCurrentContext()
         imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: imageView.frame.size.width, height: imageView.frame.size.height))
         

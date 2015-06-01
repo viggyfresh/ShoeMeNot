@@ -39,7 +39,7 @@ class Backend {
         task.resume()
     }
     
-    func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: Int) -> Void) {
+    func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: String) -> Void) {
         var rotated = UIImage(CGImage: image.CGImage!, scale: 1.0, orientation: UIImageOrientation.Left)
         var imageData = UIImageJPEGRepresentation(rotated, 1.0)!
         let uploadURL = NSURL(string: Static.base_url + "upload")!
@@ -50,11 +50,11 @@ class Backend {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
             if error != nil {
-                completion(data: nil, msg: "ERROR", id: -1)
+                completion(data: nil, msg: "ERROR", id: "blah")
             }
             let json = JSON(data: data)
             var msg = toString(json["msg"])
-            var upload_id = (json["id"] as JSON).intValue
+            var upload_id = (json["id"] as JSON).stringValue
             var ids = json["data"]
             var shoes : [Shoe] = [Shoe]()
             for (index: String, id: JSON) in ids {
