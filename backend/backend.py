@@ -96,8 +96,8 @@ def upload():
                 if shoe_id > 11825:
                     i += 1
                     continue
-                if rev_map[shoe_id] == category:
-                    closest.append(shoe_id)
+                #if rev_map[shoe_id] == category:
+                closest.append(shoe_id)
                 i += 1
     resp = jsonify({"msg": "Image uploaded!", "data": closest, "id": id})
     resp.status_code = 201
@@ -161,5 +161,5 @@ if __name__ == "__main__":
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    app.run(host='0.0.0.0', debug=True)
-    #app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')
