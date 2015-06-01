@@ -12,23 +12,26 @@ import UIKit
 class HistoryItem {
     var id : String!
     var url : NSURL!
+    var thumb_url : NSURL!
     
     var image : UIImage?
+    var thumb_image : UIImage?
     
     init(id: String) {
         self.id = id
         self.url = NSURL(string: Backend.Static.upload_url + id + ".jpg")!
+        self.thumb_url = NSURL(string: Backend.Static.upload_url + id + "_sm.jpg")!
         self.image = nil
-    }
-    
-    init(id: String, url: NSURL, thumb_url : NSURL) {
-        self.id = id
-        self.url = url
-        self.image = nil
+        self.thumb_image = nil
     }
     
     func getImage() {
         var img = UIImage(data: NSData(contentsOfURL: self.url)!)
         self.image = img
+    }
+    
+    func getThumbnail() {
+        var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
+        self.thumb_image = img
     }
 }

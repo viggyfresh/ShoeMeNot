@@ -338,7 +338,6 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="0PH-vW-0GX" id="W0i-bM-AhT"/>
-                                    <segue destination="Fgu-7P-hSE" kind="show" identifier="ShoeView" id="baw-zT-Vpu"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

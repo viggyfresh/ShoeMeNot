@@ -16,7 +16,7 @@ class HistoryViewController: UICollectionViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        history = [HistoryItem]()
+        super.viewWillAppear(animated)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -25,11 +25,15 @@ class HistoryViewController: UICollectionViewController {
         var error: NSError?
         
         let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
-        for result in results {
-            var curr = HistoryItem(id: result.valueForKey("id") as! String)
-            history.append(curr)
+        
+        if results.count != history.count {
+            history = [HistoryItem]()
+            for result in results {
+                var curr = HistoryItem(id: result.valueForKey("id") as! String)
+                history.append(curr)
+            }
+            self.collectionView?.reloadData()
         }
-        self.collectionView?.reloadData()
     }
 
 }
@@ -50,15 +54,15 @@ extension HistoryViewController : UICollectionViewDataSource {
         let shoe = self.history[indexPath.row]
         if shoe.image == nil {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-                shoe.getImage()
+                shoe.getThumbnail()
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                     cell.shoe = shoe
-                    cell.imageView.image = shoe.image
+                    cell.imageView.image = shoe.thumb_image
                 })
             })
         }
         cell.shoe = shoe
-        cell.imageView.image = shoe.image
+        cell.imageView.image = shoe.thumb_image
 
         return cell
     }
@@ -67,13 +71,5 @@ extension HistoryViewController : UICollectionViewDataSource {
                 let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
                 headerView.label.text = "History"
                 return headerView
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShoeView" {
-            if let dest = segue.destinationViewController as? ShoeViewController {
-                //dest.url = NSURL(string: "http://a2.zassets.com/images/z/7/4/5/7459-3-4x.jpg")
-            }
-        }
     }
 }

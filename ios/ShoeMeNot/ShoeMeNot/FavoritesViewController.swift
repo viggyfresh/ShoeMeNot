@@ -15,7 +15,6 @@ class FavoritesViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        shoes = [Shoe]()
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -25,11 +24,14 @@ class FavoritesViewController: UICollectionViewController {
         
         let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
         
-        for result in results {
-            var curr = Shoe(id: result.valueForKey("id") as! Int)
-            shoes.append(curr)
+        if results.count != shoes.count {
+            shoes = [Shoe]()
+            for result in results {
+                var curr = Shoe(id: result.valueForKey("id") as! Int)
+                shoes.append(curr)
+            }
+            self.collectionView?.reloadData()
         }
-        self.collectionView?.reloadData()
     }
     
 }

@@ -8,6 +8,7 @@ import pickle
 import re
 import uuid
 from werkzeug import secure_filename
+from PIL import Image
 
 classifier = None
 extractor = None
@@ -73,6 +74,9 @@ def upload():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             with open(path, 'wb') as f:
                 f.write(file)
+            temp = Image.open(path)
+            temp.thumbnail((480, 360), Image.ANTIALIAS)
+            temp.save(UPLOAD_FOLDER + id + "_sm.jpg")
             img = caffe.io.load_image(path)
             global classifier
             category = classifier.predict([img], oversample=False).argmax()
