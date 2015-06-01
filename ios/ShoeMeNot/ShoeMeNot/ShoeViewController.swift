@@ -15,10 +15,13 @@ class ShoeViewController: UIViewController {
     @IBOutlet weak var shoeTitle: UILabel!
     @IBOutlet var metadata : UITextView!
     @IBOutlet var image : UIImageView!
+    @IBOutlet weak var pinButton: UIBarButtonItem!
     var shoe : Shoe!
+    var ns_shoe : NSManagedObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ns_shoe = nil
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         if shoe.metadata == nil {
@@ -32,6 +35,27 @@ class ShoeViewController: UIViewController {
         image.image = shoe.image
         displayMetadata()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetch = NSFetchRequest(entityName: "Shoe")
+        var error: NSError?
+        
+        let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
+        
+        for result in results {
+            var curr_id = result.valueForKey("id") as! Int
+            if shoe.id == curr_id {
+                pinButton.image = UIImage(named: "pin-empty")
+                ns_shoe = result
+            }
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,16 +82,26 @@ class ShoeViewController: UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let entity = NSEntityDescription.entityForName("Shoe", inManagedObjectContext: managedContext)
+        if ns_shoe != nil {
+            managedContext.deleteObject(ns_shoe!)
+            ns_shoe = nil
+            pinButton.image = UIImage(named: "pin")
+        }
+        else {
         
-        let shoe_obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            let entity = NSEntityDescription.entityForName("Shoe", inManagedObjectContext: managedContext)
         
-        shoe_obj.setValue(self.shoe.id, forKey: "id")
+            let shoe_obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
-        var error: NSError?
+            shoe_obj.setValue(self.shoe.id, forKey: "id")
         
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+            var error: NSError?
+        
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+            ns_shoe = shoe_obj
+            pinButton.image = UIImage(named: "pin-empty")
         }
         
     }
