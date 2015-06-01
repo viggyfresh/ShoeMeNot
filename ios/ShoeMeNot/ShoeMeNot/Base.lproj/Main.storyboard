@@ -510,11 +510,75 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="nPv-3t-R0H" id="qor-r3-ELX"/>
+                        <segue destination="BqJ-MF-Qnq" kind="show" identifier="ResultsSegue" id="KXj-hh-gvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0u-ai-BeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808" y="906"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="g6M-me-ayH">
+            <objects>
+                <collectionViewController storyboardIdentifier="ResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BqJ-MF-Qnq" customClass="ResultsViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lad-HK-f0c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tBE-7b-3EN">
+                            <size key="itemSize" width="80" height="60"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeCell" id="SNS-YA-jaN" customClass="ShoeCell" customModule="ShoeMeNot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3S-xh-Yqh">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="imageView" destination="T3S-xh-Yqh" id="fEE-mN-PrF"/>
+                                    <segue destination="Fgu-7P-hSE" kind="show" identifier="ShoeView" id="KAe-hB-YwB"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeHeaderView" id="unN-nJ-Lvl" customClass="ShoeHeaderView" customModule="ShoeMeNot" customModuleProvider="target">
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7P-8a-oHp">
+                                    <rect key="frame" x="23" y="13" width="166" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Z7P-8a-oHp" firstAttribute="top" secondItem="unN-nJ-Lvl" secondAttribute="topMargin" constant="5" id="Ah8-fX-fDD"/>
+                                <constraint firstItem="Z7P-8a-oHp" firstAttribute="leading" secondItem="unN-nJ-Lvl" secondAttribute="leadingMargin" constant="15" id="toN-nF-hkq"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="Z7P-8a-oHp" id="KnI-R7-GnN"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="BqJ-MF-Qnq" id="Hnr-hl-0J1"/>
+                            <outlet property="delegate" destination="BqJ-MF-Qnq" id="EPt-rs-3kr"/>
+                        </connections>
+                    </collectionView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ivq-Gh-XgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560" y="906"/>
         </scene>
     </scenes>
     <resources>
@@ -530,6 +594,6 @@
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="baw-zT-Vpu"/>
+        <segue reference="KAe-hB-YwB"/>
     </inferredMetricsTieBreakers>
 </document>

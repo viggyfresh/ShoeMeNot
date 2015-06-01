@@ -26,6 +26,8 @@ class DrawViewController: UIViewController {
     
     var backend = Backend()
     
+    var shoes: [Shoe] = [Shoe]()
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -106,10 +108,21 @@ class DrawViewController: UIViewController {
     
     @IBAction func uploadImage(sender: AnyObject) {
         backend.upload(imageView.image!, completion: { (data, msg, id) -> Void in
-            println(data)
             println(msg)
-            println(id)
+            // TODO: to save id to history database
+            self.shoes = data!
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("ResultsSegue", sender: nil)
+            })
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ResultsSegue" {
+            if let destVC = segue.destinationViewController as? ResultsViewController {
+                destVC.shoes = self.shoes
+            }
+        }
     }
 }
 

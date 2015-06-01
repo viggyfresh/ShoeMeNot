@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F5C233C1B1BDDC1008F25E0 /* ShoeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */; };
+		2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */; };
 		2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */; };
 		2F753E301B1AE30000B0BD42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F753E2F1B1AE30000B0BD42 /* CoreData.framework */; };
 		2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeHistory.swift; sourceTree = "<group>"; };
+		2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoeModel.xcdatamodel; sourceTree = "<group>"; };
 		2F753E2F1B1AE30000B0BD42 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				2FF17FBC1B14508E00BFAEFA /* HistoryViewController.swift */,
 				BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */,
 				BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */,
+				2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */,
 				BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */,
 				BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */,
 				785505021B017762003C58AF /* Images.xcassets */,
@@ -285,6 +288,7 @@
 				785504FE1B017762003C58AF /* SecondViewController.swift in Sources */,
 				2FEA582B1B1AB2A1006C4E5A /* Shoe.swift in Sources */,
 				BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */,
+				2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */,
 				BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */,
 				2FEA58291B195280006C4E5A /* SwiftyJSON.swift in Sources */,
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,

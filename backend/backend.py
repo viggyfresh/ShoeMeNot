@@ -65,6 +65,7 @@ def allowed_file(filename):
 @app.route("/upload", methods=['POST'])
 def upload():
     id = str(uuid.uuid4())
+    closest = []
     if request.method == 'POST':
         file = request.get_data()
         if file and allowed_file(id + '.jpg'):
@@ -72,7 +73,34 @@ def upload():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             with open(path, 'wb') as f:
                 f.write(file)
-    resp = jsonify({"msg": "Image uploaded!", "data": [1, 2, 3], "id": id})
+            img = caffe.io.load_image("./static/uploads/0.jpg")
+            global classifier
+            category = classifier.predict([img], oversample=False).argmax()
+            print category
+            print len(cat_map[category])
+            global extractor
+            global transformer
+            global features
+            extractor.blobs['data'].data[...] = transformer.preprocess('data', img)
+            out = extractor.forward()
+            curr = extractor.blobs['fc6'].data.reshape((4096,))
+            rev = extractor.backward()
+            result = features - curr
+            squared_dists  = np.square(result)
+            sum_squares = np.sum(squared_dists, axis=1)
+            dists = np.sqrt(sum_squares)
+            sorted_indices = np.argsort(dists)
+            i = 0
+            global rev_map
+            while len(closest) < 25:
+                shoe_id = sorted_indices[i]
+                if shoe_id > 11825:
+                    i += 1
+                    continue
+                if rev_map[shoe_id] == 0:
+                    closest.append(shoe_id)
+                i += 1
+    resp = jsonify({"msg": "Image uploaded!", "data": closest, "id": id})
     resp.status_code = 201
     return resp
 
@@ -134,5 +162,5 @@ if __name__ == "__main__":
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    #app.run(host='0.0.0.0', debug=True)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
+    #app.run(host='0.0.0.0')

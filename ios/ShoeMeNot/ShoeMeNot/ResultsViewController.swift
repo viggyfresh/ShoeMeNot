@@ -1,5 +1,5 @@
 //
-//  DiscoverViewController.swift
+//  ResultsViewController.swift
 //  ShoeMeNot
 //
 //  Created by Neal Khosla on 5/26/15.
@@ -8,33 +8,19 @@
 
 import UIKit
 
-class DiscoverViewController: UICollectionViewController {
+class ResultsViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
-    private var shoes : [Shoe] = [Shoe]()
+    var shoes : [Shoe]!
     let backend = Backend()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        freshDiscovery()
+        self.collectionView?.reloadData()
     }
     
-    @IBAction func discover(sender: AnyObject) {
-        freshDiscovery()
-    }
-    
-    func freshDiscovery() {
-        backend.discover() {
-            data, msg in
-            println(msg)
-            self.shoes = data!
-            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                self.collectionView?.reloadData()
-            })
-        }
-    }
 }
 
-extension DiscoverViewController : UICollectionViewDataSource {
+extension ResultsViewController : UICollectionViewDataSource {
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -64,7 +50,7 @@ extension DiscoverViewController : UICollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
-        headerView.label.text = "Discover"
+        headerView.label.text = "Search Results"
         return headerView
     }
     
