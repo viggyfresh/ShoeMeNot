@@ -73,11 +73,10 @@ def upload():
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             with open(path, 'wb') as f:
                 f.write(file)
-            img = caffe.io.load_image("./static/uploads/0.jpg")
+            img = caffe.io.load_image(path)
             global classifier
             category = classifier.predict([img], oversample=False).argmax()
-            print category
-            print len(cat_map[category])
+            print categories[category]
             global extractor
             global transformer
             global features
@@ -92,12 +91,12 @@ def upload():
             sorted_indices = np.argsort(dists)
             i = 0
             global rev_map
-            while len(closest) < 25:
+            while len(closest) < 50:
                 shoe_id = sorted_indices[i]
                 if shoe_id > 11825:
                     i += 1
                     continue
-                if rev_map[shoe_id] == 0:
+                if rev_map[shoe_id] == category:
                     closest.append(shoe_id)
                 i += 1
     resp = jsonify({"msg": "Image uploaded!", "data": closest, "id": id})
