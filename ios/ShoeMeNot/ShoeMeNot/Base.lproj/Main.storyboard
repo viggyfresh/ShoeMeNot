@@ -444,6 +444,7 @@
                     <connections>
                         <outlet property="image" destination="uEi-uv-Hbs" id="n8i-u8-PCh"/>
                         <outlet property="metadata" destination="pGZ-e6-Tbo" id="VNN-qc-b2M"/>
+                        <outlet property="pinButton" destination="wAd-gF-KnT" id="ATm-MM-05H"/>
                         <outlet property="shoeTitle" destination="LpR-TI-vEm" id="xkD-Sn-fvy"/>
                     </connections>
                 </viewController>
