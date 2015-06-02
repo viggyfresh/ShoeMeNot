@@ -49,7 +49,7 @@ class ShoeViewController: UIViewController {
         for result in results {
             var curr_id = result.valueForKey("id") as! Int
             if shoe.id == curr_id {
-                pinButton.image = UIImage(named: "pin-empty")
+                pinButton.image = UIImage(named: "pin")
                 ns_shoe = result
             }
         }
@@ -83,7 +83,7 @@ class ShoeViewController: UIViewController {
         if ns_shoe != nil {
             managedContext.deleteObject(ns_shoe!)
             ns_shoe = nil
-            pinButton.image = UIImage(named: "pin")
+            pinButton.image = UIImage(named: "pin-empty")
         }
         else {
         
@@ -99,7 +99,7 @@ class ShoeViewController: UIViewController {
                 println("Could not save \(error), \(error?.userInfo)")
             }
             ns_shoe = shoe_obj
-            pinButton.image = UIImage(named: "pin-empty")
+            pinButton.image = UIImage(named: "pin")
         }
         
     }

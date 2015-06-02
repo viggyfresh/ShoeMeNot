@@ -433,7 +433,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ec6-Ge-Qpb">
-                        <barButtonItem key="rightBarButtonItem" image="pin" id="wAd-gF-KnT">
+                        <barButtonItem key="rightBarButtonItem" image="pin-empty" id="wAd-gF-KnT">
                             <connections>
                                 <action selector="favoriteItem:" destination="Fgu-7P-hSE" id="Phb-ER-MMY"/>
                             </connections>
@@ -599,7 +599,7 @@
         <image name="heart" width="25" height="25"/>
         <image name="page" width="25" height="25"/>
         <image name="people" width="25" height="25"/>
-        <image name="pin" width="25" height="25"/>
+        <image name="pin-empty" width="25" height="25"/>
         <image name="reload" width="25" height="25"/>
         <image name="retake-rot" width="25" height="25"/>
         <image name="upload-rot" width="25" height="25"/>
