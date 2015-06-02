@@ -10,6 +10,13 @@ import uuid
 from werkzeug import secure_filename
 from PIL import Image
 
+model = 'vgg'
+width = 224
+height = 224
+dim = 4096
+layer = 'fc7'
+norm = True
+
 classifier = None
 extractor = None
 transformer = None
@@ -86,7 +93,9 @@ def upload():
             global features
             extractor.blobs['data'].data[...] = transformer.preprocess('data', img)
             out = extractor.forward()
-            curr = extractor.blobs['fc6'].data.reshape((4096,))
+            curr = extractor.blobs[layer].data.reshape((dim,))
+            if norm == True:
+                curr = curr / np.linalg.norm(curr)
             rev = extractor.backward()
             result = features - curr
             squared_dists  = np.square(result)
@@ -97,9 +106,6 @@ def upload():
             global rev_map
             while len(closest) < 50:
                 shoe_id = sorted_indices[i]
-                if shoe_id > 11825:
-                    i += 1
-                    continue
                 #if rev_map[shoe_id] == category:
                 closest.append(shoe_id)
                 i += 1
@@ -126,21 +132,23 @@ def compare(id):
     global features
     extractor.blobs['data'].data[...] = transformer.preprocess('data', img)
     out = extractor.forward()
-    curr = extractor.blobs['fc6'].data.reshape((4096,))
+    curr = extractor.blobs[layer].data.reshape((dim,))
+    if norm == True:
+        curr = curr / np.linalg.norm(curr)
     rev = extractor.backward()
     result = features - curr
     squared_dists  = np.square(result)
     sum_squares = np.sum(squared_dists, axis=1)
     dists = np.sqrt(sum_squares)
     sorted_indices = np.argsort(dists)
-    sorted_indices = sorted_indices[1:]
+    #sorted_indices = sorted_indices[1:]
     closest = []
     i = 0
     global rev_map
     while len(closest) < 50:
         shoe_id = sorted_indices[i]
-        if rev_map[shoe_id] == category:
-            closest.append(shoe_id)
+        #if rev_map[shoe_id] == category:
+        closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
     resp.status_code = 200
@@ -158,8 +166,11 @@ if __name__ == "__main__":
     transformer = caffe.io.Transformer({'data': extractor.blobs['data'].data.shape})
     transformer.set_transpose('data', (2,0,1))
     transformer.set_raw_scale('data', 255)
-    extractor.blobs['data'].reshape(1, 3, 224, 224)
-    features = np.load('features.npy')
+    extractor.blobs['data'].reshape(1, 3, width, height)
+    if norm == True:
+        features = np.load('features_' + model + '_' + layer + '_norm.npy')
+    else:
+        features = np.load('features_' + model + '_' + layer + '.npy')
     valid_images = np.load('valid_images.npy')
     with open('cat_map.pickle') as file1:
         cat_map = pickle.load(file1)
