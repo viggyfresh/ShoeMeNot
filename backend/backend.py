@@ -75,19 +75,17 @@ def upload():
     id = str(uuid.uuid4())
     closest = []
     if request.method == 'POST':
-        file = request.get_data()
+        file = request.files['file']
         if file and allowed_file(id + '.jpg'):
             filename = secure_filename(id + '.jpg')
             path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            with open(path, 'wb') as f:
-                f.write(file)
+            file.save(path)
             temp = Image.open(path)
             temp.thumbnail((480, 360), Image.ANTIALIAS)
             temp.save(UPLOAD_FOLDER + id + "_sm.jpg")
             img = caffe.io.load_image(path)
             global classifier
             category = classifier.predict([img], oversample=False).argmax()
-            print categories[category]
             global extractor
             global transformer
             global features
