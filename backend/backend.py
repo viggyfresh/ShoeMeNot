@@ -10,11 +10,11 @@ import uuid
 from werkzeug import secure_filename
 from PIL import Image
 
-model = 'vgg'
+model = 'googlenet'
 width = 224
 height = 224
-dim = 4096
-layer = 'fc7'
+dim = 1024
+layer = 'cls1_fc1'
 norm = True
 
 classifier = None
@@ -160,7 +160,7 @@ if __name__ == "__main__":
                                   raw_scale=255,
                                   image_dims=(180, 240))
 
-    extractor = caffe.Net('vgg.prototxt', 'vgg.caffemodel', caffe.TEST)
+    extractor = caffe.Net(model + '.prototxt', model + '.caffemodel', caffe.TEST)
     transformer = caffe.io.Transformer({'data': extractor.blobs['data'].data.shape})
     transformer.set_transpose('data', (2,0,1))
     transformer.set_raw_scale('data', 255)
@@ -174,5 +174,5 @@ if __name__ == "__main__":
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    #app.run(host='0.0.0.0', debug=True)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
+    #app.run(host='0.0.0.0')
