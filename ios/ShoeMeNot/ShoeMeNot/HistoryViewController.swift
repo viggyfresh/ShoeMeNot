@@ -53,7 +53,7 @@ extension HistoryViewController : UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HistoryCell
         cell.backgroundColor = UIColor.whiteColor()
         let shoe = self.history[indexPath.row]
-        if shoe.image == nil {
+        if shoe.thumb_image == nil {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
                 shoe.getThumbnail()
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
