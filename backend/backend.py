@@ -107,7 +107,7 @@ def extract_style_features(img):
 def extract_features(img):
     c_feats = extract_color_features(img)
     s_feats = extract_style_features(img)
-    return np.hstack((c_feats, s_feats))
+    return np.hstack((c_feats, s_feats, s_feats))
 
 def classify(img):
     global classifier
@@ -169,6 +169,25 @@ def compare_by_id(id):
     resp.status_code = 200
     return resp
 
+@app.route("/recompare/<id>")
+def recompare_by_id(id):
+    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    category = classify(img)
+    curr = extract_features(img)
+    dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
+    sorted_indices = np.argsort(dists)
+    closest = []
+    i = 0
+    global rev_map
+    while len(closest) < 50:
+        shoe_id = sorted_indices[i]
+        if rev_map[shoe_id] == category:
+            closest.append(shoe_id)
+        i += 1
+    resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
+    resp.status_code = 200
+    return resp
+
 if __name__ == "__main__":
     caffe.set_mode_cpu()
     classifier = caffe.Classifier('viggynet_class_deploy.prototxt',
@@ -196,7 +215,7 @@ if __name__ == "__main__":
         style_features = np.load('features_' + style_model + '_' + style_layer + '_norm.npy')
     else:
         style_features = np.load('features_' + style_model + '_' + style_layer + '.npy')
-    features = np.hstack((color_features, style_features))
+    features = np.hstack((color_features, style_features, style_features))
     valid_images = np.load('valid_images.npy')
     with open('cat_map.pickle') as file1:
         cat_map = pickle.load(file1)
