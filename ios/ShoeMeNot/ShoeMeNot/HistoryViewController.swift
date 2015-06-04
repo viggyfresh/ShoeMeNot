@@ -13,6 +13,7 @@ class HistoryViewController: UICollectionViewController {
     
     private let reuseIdentifier = "HistoryCell"
     private var history : [HistoryItem] = [HistoryItem]()
+    var backend = Backend()
     
     
     override func viewWillAppear(animated: Bool) {
@@ -72,5 +73,16 @@ extension HistoryViewController : UICollectionViewDataSource {
                 let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
                 headerView.label.text = "History"
                 return headerView
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ResultsSegue" {
+            if let destVC = segue.destinationViewController as? ResultsViewController {
+                let cell = sender as! HistoryCell
+                backend.recompare(cell.shoe.id!, completion: { (data, msg) -> Void in
+                    destVC.shoes = data!
+                })
+            }
+        }
     }
 }

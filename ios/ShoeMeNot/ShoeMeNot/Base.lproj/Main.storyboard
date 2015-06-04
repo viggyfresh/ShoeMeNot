@@ -338,6 +338,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="0PH-vW-0GX" id="W0i-bM-AhT"/>
+                                    <segue destination="BqJ-MF-Qnq" kind="show" identifier="ResultsSegue" id="i4P-md-TtU"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -605,6 +606,7 @@
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KAe-hB-YwB"/>
+        <segue reference="i4P-md-TtU"/>
+        <segue reference="VOV-p9-tZn"/>
     </inferredMetricsTieBreakers>
 </document>

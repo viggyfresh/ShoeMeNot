@@ -18,6 +18,10 @@ class ResultsViewController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.collectionView?.reloadData()
+    }
+    
 }
 
 extension ResultsViewController : UICollectionViewDataSource {
@@ -63,7 +67,12 @@ extension ResultsViewController : UICollectionViewDataSource {
         }
     }
     @IBAction func exitOut(sender: AnyObject) {
-        tabBarController?.selectedIndex = 4
+        if tabBarController?.selectedIndex != 4 {
+            tabBarController?.selectedIndex = 4
+        }
+        else {
+            tabBarController?.selectedIndex = 0
+        }
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 }

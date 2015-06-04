@@ -23,8 +23,6 @@
 		2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */; };
 		2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */; };
 		785504FA1B017762003C58AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785504F91B017762003C58AF /* AppDelegate.swift */; };
-		785504FC1B017762003C58AF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785504FB1B017762003C58AF /* FirstViewController.swift */; };
-		785504FE1B017762003C58AF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785504FD1B017762003C58AF /* SecondViewController.swift */; };
 		785505011B017762003C58AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785504FF1B017762003C58AF /* Main.storyboard */; };
 		785505031B017762003C58AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785505021B017762003C58AF /* Images.xcassets */; };
 		785505061B017762003C58AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785505041B017762003C58AF /* LaunchScreen.xib */; };
@@ -65,8 +63,6 @@
 		785504F41B017762003C58AF /* ShoeMeNot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoeMeNot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785504F81B017762003C58AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		785504F91B017762003C58AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		785504FB1B017762003C58AF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		785504FD1B017762003C58AF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		785505001B017762003C58AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		785505021B017762003C58AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		785505051B017762003C58AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -124,8 +120,6 @@
 				2FEA58281B195280006C4E5A /* SwiftyJSON.swift */,
 				7804BCBA1B12473F0048D95A /* ShoeMeNot.entitlements */,
 				785504F91B017762003C58AF /* AppDelegate.swift */,
-				785504FB1B017762003C58AF /* FirstViewController.swift */,
-				785504FD1B017762003C58AF /* SecondViewController.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
 				2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */,
 				2FDF8E941B159907002237A7 /* OverlayView.xib */,
@@ -287,7 +281,6 @@
 			files = (
 				BE6D32BE1B178C2D001FBF21 /* DrawViewController.swift in Sources */,
 				2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */,
-				785504FE1B017762003C58AF /* SecondViewController.swift in Sources */,
 				2FEA582B1B1AB2A1006C4E5A /* Shoe.swift in Sources */,
 				BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */,
 				2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */,
@@ -295,7 +288,6 @@
 				2FEA58291B195280006C4E5A /* SwiftyJSON.swift in Sources */,
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
-				785504FC1B017762003C58AF /* FirstViewController.swift in Sources */,
 				BE290E751B1C2ED70062EDA0 /* HistoryCell.swift in Sources */,
 				2F5C233C1B1BDDC1008F25E0 /* ShoeHistory.swift in Sources */,
 				2FF17FC51B146D8600BFAEFA /* ShoeCell.swift in Sources */,

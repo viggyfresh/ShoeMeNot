@@ -21,7 +21,6 @@ class ShoeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ns_shoe = nil
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         if shoe.metadata == nil {
@@ -45,7 +44,7 @@ class ShoeViewController: UIViewController {
         var error: NSError?
         
         let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
-        
+        ns_shoe = nil
         for result in results {
             var curr_id = result.valueForKey("id") as! Int
             if shoe.id == curr_id {
