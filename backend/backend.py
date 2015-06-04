@@ -10,16 +10,26 @@ import uuid
 from werkzeug import secure_filename
 from PIL import Image
 
-model = 'googlenet'
-width = 224
-height = 224
-dim = 1024
-layer = 'cls1_fc1'
-norm = True
+color_model = 'flower'
+color_width = 227
+color_height = 227
+color_dim = 4096
+color_layer = 'fc6'
+color_norm = True
+style_model = 'googlenet'
+style_width = 224
+style_height = 224
+style_dim = 1024
+style_layer = 'cls2_fc1'
+style_norm = True
 
 classifier = None
-extractor = None
-transformer = None
+color_extractor = None
+color_transformer = None
+color_features = None
+style_extractor = None
+style_transformer = None
+style_features = None
 features = None
 cat_map = None
 rev_map = None
@@ -61,7 +71,7 @@ def shoe(id):
 
 @app.route("/discover")
 def discover():
-    choices = np.random.choice(valid_images, size=50,replace=False)
+    choices = np.random.choice(valid_images, size=50, replace=False)
     resp = jsonify({"msg": "Got 50 random shoes", "data": choices.tolist()})
     resp.status_code = 200
     return resp
@@ -70,8 +80,42 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+def extract_color_features(img):
+    global color_extractor
+    global color_transformer
+    global color_features
+    color_extractor.blobs['data'].data[...] = color_transformer.preprocess('data', img)
+    out = color_extractor.forward()
+    curr = color_extractor.blobs[color_layer].data.reshape((color_dim,))
+    if color_norm == True:
+        curr = curr / np.linalg.norm(curr)
+    rev = color_extractor.backward()
+    return curr
+
+def extract_style_features(img):
+    global style_extractor
+    global style_transformer
+    global style_features
+    style_extractor.blobs['data'].data[...] = style_transformer.preprocess('data', img)
+    out = style_extractor.forward()
+    curr = style_extractor.blobs[style_layer].data.reshape((style_dim,))
+    if style_norm == True:
+        curr = curr / np.linalg.norm(curr)
+    rev = style_extractor.backward()
+    return curr
+
+def extract_features(img):
+    c_feats = extract_color_features(img)
+    s_feats = extract_style_features(img)
+    return np.hstack((c_feats, s_feats))
+
+def classify(img):
+    global classifier
+    category = classifier.predict([img], oversample=False).argmax()
+    return category
+
 @app.route("/upload", methods=['POST'])
-def upload():
+def upload_ios():
     id = str(uuid.uuid4())
     closest = []
     if request.method == 'POST':
@@ -84,27 +128,13 @@ def upload():
             temp.thumbnail((480, 360), Image.ANTIALIAS)
             temp.save(UPLOAD_FOLDER + id + "_sm.jpg")
             img = caffe.io.load_image(path)
-            global classifier
-            category = classifier.predict([img], oversample=False).argmax()
-            global extractor
-            global transformer
-            global features
-            extractor.blobs['data'].data[...] = transformer.preprocess('data', img)
-            out = extractor.forward()
-            curr = extractor.blobs[layer].data.reshape((dim,))
-            if norm == True:
-                curr = curr / np.linalg.norm(curr)
-            rev = extractor.backward()
-            result = features - curr
-            squared_dists  = np.square(result)
-            sum_squares = np.sum(squared_dists, axis=1)
-            dists = np.sqrt(sum_squares)
+            category = classify(img)
+            curr = extract_features(img)
+            dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
             sorted_indices = np.argsort(dists)
             i = 0
-            global rev_map
             while len(closest) < 50:
                 shoe_id = sorted_indices[i]
-                #if rev_map[shoe_id] == category:
                 closest.append(shoe_id)
                 i += 1
     resp = jsonify({"msg": "Image uploaded!", "data": closest, "id": id})
@@ -112,41 +142,28 @@ def upload():
     return resp
 
 @app.route("/classify/<id>")
-def classify(id):
-    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
-    global classifier
-    prediction = classifier.predict([img], oversample=False).argmax()
-    resp = jsonify({"msg": categories[prediction], "data": prediction})
+def classify_by_id(id):
+    img = caffe.io.load_image("./static/shoe_dataset/" + str(id) + ".jpg")
+    category = classify(img)
+    resp = jsonify({"msg": categories[category], "data": category})
     resp.status_code = 200
     return resp
 
 @app.route("/compare/<id>")
-def compare(id):
+def compare_by_id(id):
     img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
-    global classifier
-    category = classifier.predict([img], oversample=False).argmax()
-    global extractor
-    global transformer
-    global features
-    extractor.blobs['data'].data[...] = transformer.preprocess('data', img)
-    out = extractor.forward()
-    curr = extractor.blobs[layer].data.reshape((dim,))
-    if norm == True:
-        curr = curr / np.linalg.norm(curr)
-    rev = extractor.backward()
-    result = features - curr
-    squared_dists  = np.square(result)
-    sum_squares = np.sum(squared_dists, axis=1)
-    dists = np.sqrt(sum_squares)
+    category = classify(img)
+    curr = extract_features(img)
+    dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
     sorted_indices = np.argsort(dists)
-    #sorted_indices = sorted_indices[1:]
+    sorted_indices = sorted_indices[1:]
     closest = []
     i = 0
     global rev_map
     while len(closest) < 50:
         shoe_id = sorted_indices[i]
-        #if rev_map[shoe_id] == category:
-        closest.append(shoe_id)
+        if rev_map[shoe_id] == category:
+            closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
     resp.status_code = 200
@@ -160,19 +177,30 @@ if __name__ == "__main__":
                                   raw_scale=255,
                                   image_dims=(180, 240))
 
-    extractor = caffe.Net(model + '.prototxt', model + '.caffemodel', caffe.TEST)
-    transformer = caffe.io.Transformer({'data': extractor.blobs['data'].data.shape})
-    transformer.set_transpose('data', (2,0,1))
-    transformer.set_raw_scale('data', 255)
-    extractor.blobs['data'].reshape(1, 3, width, height)
-    if norm == True:
-        features = np.load('features_' + model + '_' + layer + '_norm.npy')
+    color_extractor = caffe.Net(color_model + '.prototxt', color_model + '.caffemodel', caffe.TEST)
+    color_transformer = caffe.io.Transformer({'data': color_extractor.blobs['data'].data.shape})
+    color_transformer.set_transpose('data', (2,0,1))
+    color_transformer.set_raw_scale('data', 255)
+    color_extractor.blobs['data'].reshape(1, 3, color_width, color_height)
+    if color_norm == True:
+        color_features = np.load('features_' + color_model + '_' + color_layer + '_norm.npy')
     else:
-        features = np.load('features_' + model + '_' + layer + '.npy')
+        color_features = np.load('features_' + color_model + '_' + color_layer + '.npy')
+
+    style_extractor = caffe.Net(style_model + '.prototxt', style_model + '.caffemodel', caffe.TEST)
+    style_transformer = caffe.io.Transformer({'data': style_extractor.blobs['data'].data.shape})
+    style_transformer.set_transpose('data', (2,0,1))
+    style_transformer.set_raw_scale('data', 255)
+    style_extractor.blobs['data'].reshape(1, 3, style_width, style_height)
+    if style_norm == True:
+        style_features = np.load('features_' + style_model + '_' + style_layer + '_norm.npy')
+    else:
+        style_features = np.load('features_' + style_model + '_' + style_layer + '.npy')
+    features = np.hstack((color_features, style_features))
     valid_images = np.load('valid_images.npy')
     with open('cat_map.pickle') as file1:
         cat_map = pickle.load(file1)
     with open('rev_map.pickle') as file2:
         rev_map = pickle.load(file2)
-    app.run(host='0.0.0.0', debug=True)
-    #app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

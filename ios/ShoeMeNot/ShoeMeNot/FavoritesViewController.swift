@@ -30,6 +30,7 @@ class FavoritesViewController: UICollectionViewController {
                 var curr = Shoe(id: result.valueForKey("id") as! Int)
                 shoes.append(curr)
             }
+            shoes = shoes.reverse()
             self.collectionView?.reloadData()
         }
     }

@@ -32,6 +32,7 @@ class HistoryViewController: UICollectionViewController {
                 var curr = HistoryItem(id: result.valueForKey("id") as! String)
                 history.append(curr)
             }
+            history = history.reverse()
             self.collectionView?.reloadData()
         }
     }
