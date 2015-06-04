@@ -107,7 +107,7 @@ def extract_style_features(img):
 def extract_features(img):
     c_feats = extract_color_features(img)
     s_feats = extract_style_features(img)
-    return np.hstack((c_feats, s_feats, s_feats))
+    return np.hstack((c_feats, s_feats, s_feats, s_feats))
 
 def classify(img):
     global classifier
@@ -215,7 +215,7 @@ if __name__ == "__main__":
         style_features = np.load('features_' + style_model + '_' + style_layer + '_norm.npy')
     else:
         style_features = np.load('features_' + style_model + '_' + style_layer + '.npy')
-    features = np.hstack((color_features, style_features, style_features))
+    features = np.hstack((color_features, style_features, style_features, style_features))
     valid_images = np.load('valid_images.npy')
     with open('cat_map.pickle') as file1:
         cat_map = pickle.load(file1)
