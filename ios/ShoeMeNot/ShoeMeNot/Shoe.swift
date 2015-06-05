@@ -37,7 +37,7 @@ class Shoe {
     }
     
     func getImage() {
-        var img = UIImage(data: NSData(contentsOfURL: self.url)!)
+        var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
         self.image = img
     }
     

@@ -19,6 +19,7 @@ class ShoeViewController: UIViewController {
     var shoe : Shoe!
     var ns_shoe : NSManagedObject?
     var backend = Backend()
+    var data: [Shoe] = [Shoe]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +32,24 @@ class ShoeViewController: UIViewController {
         if shoe.image == nil {
             shoe.getImage()
         }
-        
         image.image = shoe.image
         displayMetadata()
     }
     
     func search(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("ResultsSegue", sender: sender)
+        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.view.addSubview(activity)
+        activity.frame = self.view.bounds
+        activity.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        backend.compare_by_id(self.shoe.id!, completion: { (data, msg) -> Void in
+            activity.removeFromSuperview()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            self.data = data!
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("ResultsSegue", sender: nil)
+            })
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -113,9 +125,7 @@ class ShoeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ResultsSegue" {
             if let destVC = segue.destinationViewController as? ResultsViewController {
-                backend.compare_by_id(self.shoe.id!, completion: { (data, msg) -> Void in
-                    destVC.shoes = data!
-                })
+                    destVC.shoes = self.data
             }
         }
     }

@@ -338,7 +338,6 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="0PH-vW-0GX" id="W0i-bM-AhT"/>
-                                    <segue destination="BqJ-MF-Qnq" kind="show" identifier="ResultsSegue" id="i4P-md-TtU"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -369,6 +368,9 @@
                     <navigationItem key="navigationItem" id="BZk-jh-ryJ">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BqJ-MF-Qnq" kind="show" identifier="ResultsSegue" id="cwJ-Aq-HDP"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAv-h4-GWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -608,6 +610,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VOV-p9-tZn"/>
-        <segue reference="kRa-nj-VEp"/>
+        <segue reference="cwJ-Aq-HDP"/>
     </inferredMetricsTieBreakers>
 </document>

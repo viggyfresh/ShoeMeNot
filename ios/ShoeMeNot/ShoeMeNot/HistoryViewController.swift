@@ -14,6 +14,7 @@ class HistoryViewController: UICollectionViewController {
     private let reuseIdentifier = "HistoryCell"
     private var history : [HistoryItem] = [HistoryItem]()
     var backend = Backend()
+    var data: [Shoe] = [Shoe]()
     
     
     override func viewWillAppear(animated: Bool) {
@@ -69,6 +70,24 @@ extension HistoryViewController : UICollectionViewDataSource {
         return cell
     }
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let shoe = self.history[indexPath.row]
+        println(shoe)
+        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.view.addSubview(activity)
+        activity.frame = self.view.bounds
+        activity.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        backend.recompare(shoe.id!, completion: { (data, msg) -> Void in
+            self.data = data!
+            activity.removeFromSuperview()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.performSegueWithIdentifier("ResultsSegue", sender: shoe)
+            })
+        })
+    }
+    
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
                 let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
                 headerView.label.text = "History"
@@ -78,10 +97,7 @@ extension HistoryViewController : UICollectionViewDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ResultsSegue" {
             if let destVC = segue.destinationViewController as? ResultsViewController {
-                let cell = sender as! HistoryCell
-                backend.recompare(cell.shoe.id!, completion: { (data, msg) -> Void in
-                    destVC.shoes = data!
-                })
+                destVC.shoes = data
             }
         }
     }

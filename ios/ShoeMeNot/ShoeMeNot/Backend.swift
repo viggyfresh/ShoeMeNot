@@ -11,7 +11,8 @@ import UIKit
 
 class Backend {
     struct Static {
-        static var ip = "http://128.12.10.36"
+        //static var ip = "http://128.12.10.36"
+        static var ip = "http://10.34.130.84"
         static var port = "5000"
         static var base_url = ip + ":" + port + "/"
         static var dataset_url = base_url + "static/shoe_dataset/"
@@ -41,43 +42,47 @@ class Backend {
     }
     
     func recompare(id: String, completion: (data: [Shoe]?, msg: String) -> Void) {
-        let recompareURL = NSURL(string: Static.base_url + "recompare/" + id)!
-        var response: NSURLResponse?
-        var request = NSURLRequest(URL: recompareURL)
-        var error: NSErrorPointer = nil
-        
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
-        
-        let json = JSON(data: data!)
-        var msg = toString(json["msg"])
-        var ids = json["data"]
-        var shoes : [Shoe] = [Shoe]()
-        for (index: String, id: JSON) in ids {
-            var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
-            var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
-            shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
-        }
-        completion(data: shoes, msg: msg)
+        let url = NSURL(string: Static.base_url + "recompare/" + id)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
     }
     
     func compare_by_id(id: Int, completion: (data: [Shoe]?, msg: String) -> Void) {
         let compareURL = NSURL(string: Static.base_url + "compare/" + toString(id))!
-        var response: NSURLResponse?
-        var request = NSURLRequest(URL: compareURL)
-        var error: NSErrorPointer = nil
         
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
+        let session = NSURLSession.sharedSession()
         
-        let json = JSON(data: data!)
-        var msg = toString(json["msg"])
-        var ids = json["data"]
-        var shoes : [Shoe] = [Shoe]()
-        for (index: String, id: JSON) in ids {
-            var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
-            var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
-            shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
-        }
-        completion(data: shoes, msg: msg)
+        let task = session.dataTaskWithURL(compareURL, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
     }
     
     func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: String) -> Void) {
@@ -91,7 +96,7 @@ class Backend {
             //rotated = image.imageRotatedByDegrees(180.0, flip: false)
         }
         //var rotated = image
-        var imageData = UIImageJPEGRepresentation(rotated, 0.5)!
+        var imageData = UIImageJPEGRepresentation(rotated, 0.1)!
         let uploadURL = NSURL(string: Static.base_url + "upload")!
         var request = NSMutableURLRequest(URL: uploadURL)
         request.HTTPMethod = "POST"
@@ -111,8 +116,6 @@ class Backend {
         dataString += "Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\r\n"
         dataString += "Content-Type: \(mimeType)\r\n\r\n"
         
-        println(dataString)
-        
         var body = NSMutableData.alloc()
         
         var requestBodyData = (dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -120,7 +123,6 @@ class Backend {
         body.appendData(imageData)
         body.appendData(NSString(string: "\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(NSString(string: "--\(boundaryConstant)--\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        
         
         request.HTTPBody = body
 

@@ -23,10 +23,15 @@ class DiscoverViewController: UICollectionViewController {
     }
     
     func freshDiscovery() {
+        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.view.addSubview(activity)
+        activity.frame = self.view.bounds
+        activity.startAnimating()
         backend.discover() {
             data, msg in
             println(msg)
             self.shoes = data!
+            activity.removeFromSuperview()
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                 self.collectionView?.reloadData()
             })
