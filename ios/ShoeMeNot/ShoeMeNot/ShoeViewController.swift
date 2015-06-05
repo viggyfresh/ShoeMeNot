@@ -18,6 +18,7 @@ class ShoeViewController: UIViewController {
     @IBOutlet weak var pinButton: UIBarButtonItem!
     var shoe : Shoe!
     var ns_shoe : NSManagedObject?
+    var backend = Backend()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class ShoeViewController: UIViewController {
         
         image.image = shoe.image
         displayMetadata()
+    }
+    
+    func search(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("ResultsSegue", sender: sender)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,6 +57,8 @@ class ShoeViewController: UIViewController {
                 ns_shoe = result
             }
         }
+        var searchButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: "search:")
+        self.navigationItem.rightBarButtonItems = [searchButton, pinButton]
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,5 +108,15 @@ class ShoeViewController: UIViewController {
             pinButton.image = UIImage(named: "pin")
         }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ResultsSegue" {
+            if let destVC = segue.destinationViewController as? ResultsViewController {
+                backend.compare_by_id(self.shoe.id!, completion: { (data, msg) -> Void in
+                    destVC.shoes = data!
+                })
+            }
+        }
     }
 }

@@ -446,6 +446,7 @@
                         <outlet property="metadata" destination="pGZ-e6-Tbo" id="VNN-qc-b2M"/>
                         <outlet property="pinButton" destination="wAd-gF-KnT" id="ATm-MM-05H"/>
                         <outlet property="shoeTitle" destination="LpR-TI-vEm" id="xkD-Sn-fvy"/>
+                        <segue destination="BqJ-MF-Qnq" kind="show" identifier="ResultsSegue" id="kRa-nj-VEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZO-nD-NFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,7 +607,7 @@
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i4P-md-TtU"/>
         <segue reference="VOV-p9-tZn"/>
+        <segue reference="kRa-nj-VEp"/>
     </inferredMetricsTieBreakers>
 </document>

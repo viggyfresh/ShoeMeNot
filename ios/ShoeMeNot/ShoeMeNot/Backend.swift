@@ -60,6 +60,26 @@ class Backend {
         completion(data: shoes, msg: msg)
     }
     
+    func compare_by_id(id: Int, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let compareURL = NSURL(string: Static.base_url + "compare/" + toString(id))!
+        var response: NSURLResponse?
+        var request = NSURLRequest(URL: compareURL)
+        var error: NSErrorPointer = nil
+        
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
+        
+        let json = JSON(data: data!)
+        var msg = toString(json["msg"])
+        var ids = json["data"]
+        var shoes : [Shoe] = [Shoe]()
+        for (index: String, id: JSON) in ids {
+            var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+            var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+            shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+        }
+        completion(data: shoes, msg: msg)
+    }
+    
     func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: String) -> Void) {
         println(image.imageOrientation.rawValue)
         var rotated : UIImage
