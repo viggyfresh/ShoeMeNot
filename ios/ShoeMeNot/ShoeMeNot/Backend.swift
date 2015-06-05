@@ -96,7 +96,7 @@ class Backend {
             //rotated = image.imageRotatedByDegrees(180.0, flip: false)
         }
         //var rotated = image
-        var imageData = UIImageJPEGRepresentation(rotated, 0.1)!
+        var imageData = UIImageJPEGRepresentation(rotated, 0.5)!
         let uploadURL = NSURL(string: Static.base_url + "upload")!
         var request = NSMutableURLRequest(URL: uploadURL)
         request.HTTPMethod = "POST"
