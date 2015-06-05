@@ -73,16 +73,13 @@ extension HistoryViewController : UICollectionViewDataSource {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let shoe = self.history[indexPath.row]
         println(shoe)
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        self.view.addSubview(activity)
-        activity.frame = self.view.bounds
-        activity.startAnimating()
+        SwiftLoader.show(animated: true)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         backend.recompare(shoe.id!, completion: { (data, msg) -> Void in
             self.data = data!
-            activity.removeFromSuperview()
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                SwiftLoader.hide()
                 self.performSegueWithIdentifier("ResultsSegue", sender: shoe)
             })
         })

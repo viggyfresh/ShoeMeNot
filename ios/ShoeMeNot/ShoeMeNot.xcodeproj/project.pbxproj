@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F3F25BC1B1E6BDC00F635E7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3F25BB1B1E6BDC00F635E7 /* Extensions.swift */; };
+		2F3FAAC91B221970005C8CF5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FAAC81B221970005C8CF5 /* SwiftLoader.swift */; };
 		2F5C233C1B1BDDC1008F25E0 /* ShoeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */; };
 		2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */; };
 		2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		2F3F25BB1B1E6BDC00F635E7 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2F3FAAC81B221970005C8CF5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeHistory.swift; sourceTree = "<group>"; };
 		2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoeModel.xcdatamodel; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2FEA58281B195280006C4E5A /* SwiftyJSON.swift */,
+				2F3FAAC81B221970005C8CF5 /* SwiftLoader.swift */,
 				7804BCBA1B12473F0048D95A /* ShoeMeNot.entitlements */,
 				785504F91B017762003C58AF /* AppDelegate.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
@@ -297,6 +300,7 @@
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
 				2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,
+				2F3FAAC91B221970005C8CF5 /* SwiftLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

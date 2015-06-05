@@ -20,6 +20,8 @@ class ShoeViewController: UIViewController {
     var ns_shoe : NSManagedObject?
     var backend = Backend()
     var data: [Shoe] = [Shoe]()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +39,13 @@ class ShoeViewController: UIViewController {
     }
     
     func search(sender: UIBarButtonItem) {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        self.view.addSubview(activity)
-        activity.frame = self.view.bounds
-        activity.startAnimating()
+        SwiftLoader.show(animated: true)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         backend.compare_by_id(self.shoe.id!, completion: { (data, msg) -> Void in
-            activity.removeFromSuperview()
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             self.data = data!
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                SwiftLoader.hide()
                 self.performSegueWithIdentifier("ResultsSegue", sender: nil)
             })
         })
