@@ -108,12 +108,11 @@ class DrawViewController: UIViewController {
     }
     
     @IBAction func uploadImage(sender: AnyObject) {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        self.view.addSubview(activity)
-        activity.frame = self.view.bounds
-        activity.startAnimating()
+        SwiftLoader.show(animated: true)
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         backend.upload(imageView.image!, completion: { (data, msg, id) -> Void in
             println(msg)
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
@@ -130,8 +129,8 @@ class DrawViewController: UIViewController {
             }
 
             self.shoes = data!
-            activity.removeFromSuperview()
             dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                SwiftLoader.hide()
                 self.performSegueWithIdentifier("ResultsSegue", sender: nil)
             })
         })

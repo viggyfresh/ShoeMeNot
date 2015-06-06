@@ -71,6 +71,7 @@ extension DiscoverViewController : UICollectionViewDataSource {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        SwiftLoader.show(animated: true)
         if segue.identifier == "ShoeView" {
             if let dest = segue.destinationViewController as? ShoeViewController {
                 let cell = sender as! ShoeCell

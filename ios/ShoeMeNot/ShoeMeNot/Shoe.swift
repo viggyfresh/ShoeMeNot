@@ -20,35 +20,30 @@ class Shoe {
     
     init(id: Int) {
         self.id = id
-        self.url = NSURL(string: Backend.Static.dataset_url + toString(id) + ".jpg")!
         self.thumb_url = NSURL(string: Backend.Static.dataset_url + toString(id) + "_sm.jpg")!
-        self.image = nil
         self.thumb_image = nil
         self.metadata = nil
     }
     
-    init(id: Int, url: NSURL, thumb_url : NSURL) {
+    init(id: Int, thumb_url : NSURL) {
         self.id = id
-        self.url = url
         self.thumb_url = thumb_url
-        self.image = nil
         self.thumb_image = nil
         self.metadata = nil
-    }
-    
-    func getImage() {
-        var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
-        self.image = img
     }
     
     func getThumbnail() {
-        var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
-        self.thumb_image = img
+        if self.thumb_image == nil {
+            var img = UIImage(data: NSData(contentsOfURL: self.thumb_url)!)
+            self.thumb_image = img
+        }
     }
     
     func getMetadata() {
-        var url = NSURL(string: Backend.Static.base_url + "shoe/" + String(id))!
-        var data = NSData(contentsOfURL: url)!
-        self.metadata = JSON(data: data)
+        if self.metadata == nil {
+            var url = NSURL(string: Backend.Static.base_url + "shoe/" + String(id))!
+            var data = NSData(contentsOfURL: url)!
+            self.metadata = JSON(data: data)
+        }
     }
 }

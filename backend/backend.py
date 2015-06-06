@@ -64,6 +64,7 @@ def shoe(id):
         metadata["price"] = lines[6]
         metadata["stars"] = lines[7]
         metadata["sku"] = lines[8]
+        metadata["url"] = lines[9]
         metadata["msg"] = "Shoe data as promised!"
         resp = jsonify(metadata)
         resp.status_code = 200

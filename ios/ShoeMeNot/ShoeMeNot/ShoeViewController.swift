@@ -16,26 +16,22 @@ class ShoeViewController: UIViewController {
     @IBOutlet var metadata : UITextView!
     @IBOutlet var image : UIImageView!
     @IBOutlet weak var pinButton: UIBarButtonItem!
+    var searchButton: UIBarButtonItem!
+    var viewButton: UIBarButtonItem!
     var shoe : Shoe!
     var ns_shoe : NSManagedObject?
     var backend = Backend()
     var data: [Shoe] = [Shoe]()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
-        if shoe.metadata == nil {
-            shoe.getMetadata()
-        }
-        
-        if shoe.image == nil {
-            shoe.getImage()
-        }
-        image.image = shoe.image
+        shoe.getMetadata()
+        shoe.getThumbnail()
+        image.image = shoe.thumb_image
         displayMetadata()
+        SwiftLoader.hide()
     }
     
     func search(sender: UIBarButtonItem) {
@@ -68,13 +64,15 @@ class ShoeViewController: UIViewController {
                 ns_shoe = result
             }
         }
-        var searchButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: "search:")
-        self.navigationItem.rightBarButtonItems = [searchButton, pinButton]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func viewOnline() {
+        UIApplication.sharedApplication().openURL(NSURL(string: self.shoe.metadata!["url"].stringValue)!)
     }
     
     func displayMetadata() {
@@ -91,6 +89,10 @@ class ShoeViewController: UIViewController {
         metaString += shoe.metadata!["sku"].stringValue
         metadata.text = metaString
         metadata.sizeToFit()
+        
+        searchButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: "search:")
+        viewButton = UIBarButtonItem(image: UIImage(named: "view"), style: .Plain, target: self, action: "viewOnline")
+        self.navigationItem.rightBarButtonItems = [searchButton, pinButton, viewButton]
     }
     
     @IBAction func favoriteItem(sender: AnyObject) {

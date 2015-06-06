@@ -11,8 +11,8 @@ import UIKit
 
 class Backend {
     struct Static {
-        //static var ip = "http://128.12.10.36"
-        static var ip = "http://10.34.130.84"
+        static var ip = "http://128.12.10.36"
+        //static var ip = "http://10.34.130.84"
         static var port = "5000"
         static var base_url = ip + ":" + port + "/"
         static var dataset_url = base_url + "static/shoe_dataset/"
@@ -34,7 +34,7 @@ class Backend {
                 var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
                 var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
 
-                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
             }
             completion(data: shoes, msg: msg)
         })
@@ -55,7 +55,7 @@ class Backend {
             for (index: String, id: JSON) in ids {
                 var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
                 var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
-                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
             }
             completion(data: shoes, msg: msg)
         })
@@ -78,7 +78,7 @@ class Backend {
             for (index: String, id: JSON) in ids {
                 var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
                 var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
-                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
             }
             completion(data: shoes, msg: msg)
         })
@@ -140,7 +140,7 @@ class Backend {
                 var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
                 var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
                 
-                shoes.append(Shoe(id: id.int!, url: currURL, thumb_url: thumbURL))
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
             }
             completion(data: shoes, msg: msg, id: upload_id)
         })

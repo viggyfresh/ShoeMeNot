@@ -59,6 +59,7 @@ extension ResultsViewController : UICollectionViewDataSource {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        SwiftLoader.show(animated: true)
         if segue.identifier == "ShoeView" {
             if let dest = segue.destinationViewController as? ShoeViewController {
                 let cell = sender as! ShoeCell
@@ -66,13 +67,17 @@ extension ResultsViewController : UICollectionViewDataSource {
             }
         }
     }
-    @IBAction func exitOut(sender: AnyObject) {
-        if tabBarController?.selectedIndex != 4 {
-            tabBarController?.selectedIndex = 4
-        }
-        else {
-            tabBarController?.selectedIndex = 0
-        }
-        self.dismissViewControllerAnimated(false, completion: nil)
-    }
+    
+//    @IBAction func exitOut(sender: AnyObject) {
+//        if tabBarController?.selectedIndex == 2 {
+//            tabBarController?.selectedIndex = 4
+//        }
+//        else if tabBarController?.selectedIndex == 0 {
+//            tabBarController?.selectedIndex = 3
+//        }
+//        else {
+//            tabBarController?.selectedIndex = 0
+//        }
+//        self.dismissViewControllerAnimated(false, completion: nil)
+//    }
 }
