@@ -128,7 +128,6 @@ def upload_ios():
             temp.thumbnail((480, 360), Image.ANTIALIAS)
             temp.save(UPLOAD_FOLDER + id + "_sm.jpg")
             img = caffe.io.load_image(path)
-            category = classify(img)
             curr = extract_features(img)
             dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
             sorted_indices = np.argsort(dists)
