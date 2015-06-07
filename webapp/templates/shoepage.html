@@ -1,0 +1,19 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+  
+  
+<p>
+<img border="0" src="logo_w3s.gif" width="100" height="100">
+</a>
+</p>
+<h2>{{ shoe.name }}</h2>{{ entry.text|safe }}
+<h4>{{ shoe.price }}</h4>{{ entry.text|safe }}
+<h4>{{ shoe.stars }}</h4>{{ entry.text|safe }}
+<h4>{{ shoe.category }}</h4>{{ entry.text|safe }}
+<h4>{{ shoe.brand }}</h4>{{ entry.text|safe }}
+<h4>{{ shoe.color }}</h4>{{ entry.text|safe }}
+<h4>{{ shoe.sku }}</h4>{{ entry.text|safe }}
+<h4><a href={{ shoe.url }}>Buy Online</h4>{{ entry.text|safe }}
+  
+{% endblock %}
