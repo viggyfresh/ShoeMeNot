@@ -6,18 +6,13 @@
 	<div class="container-fluid">
 		<div class="navbar-header" style="margin-left: 100px">
 			
-			<a class="navbar-brand"><strong>ShoeMeNot</strong></a>
+			<a class="navbar-brand"><strong>ShoeMeNot</strong></span></a>
 			
 		</div>	
 		
 		<ul class="nav navbar-nav navbar-right" style="margin-right: 100px">
-			{% for item in nav.top %}
-    			<li class="{{ 'active' if item.is_active else '' }}">
-        		<a href="{{ item.url }}">{{ item.label }}</a>
-    			</li>
-    			{% endfor %}
 			
-			<li><a href="/discover" title="Discover">Discover</a></li>
+			<a href="/discover" title="Discover">Discover</a></li>
 			
 			
 		</ul>

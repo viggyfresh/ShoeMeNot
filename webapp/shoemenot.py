@@ -6,10 +6,10 @@ from flask.ext.navigation import Navigation
 app = Flask(__name__)
 nav = Navigation(app)
 
-nav.Bar('top', [
-    nav.Item('Home', 'hello_world'),
-    #nav.Item('Discover', 'news', {'page': 1}),
-])
+# nav.Bar('top', [
+#     nav.Item('Home', 'hello_world'),
+#     #nav.Item('Discover', 'news', {'page': 1}),
+# ])
 
 @app.route('/')
 def hello_world(name=None):
