@@ -1,10 +1,10 @@
 import os
 from flask import Flask, request, session, g, redirect, url_for, abort, \
 	render_template, flash
-from flask.ext.navigation import Navigation
+#from flask.ext.navigation import Navigation
 
 app = Flask(__name__)
-nav = Navigation(app)
+#nav = Navigation(app)
 
 # nav.Bar('top', [
 #     nav.Item('Home', 'hello_world'),
