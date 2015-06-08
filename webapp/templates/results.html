@@ -1,6 +1,25 @@
 {% extends "all.html" %}
-
 {% block body %}
-  
-<a class="thumbnail" href="#"> <img class="img-responsive" src="{{ file }}" alt=""></a>
+
+<title>Results</title>
+
+<div class="container">
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="">
+                    <img class="img-responsive" src="{{ shoeURL }}" alt="">
+                </a>
+            </div>
+
+        <div class="row">
+
+        {% for result in results %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="/shoepage/{{result}}">
+                    <img class="img-responsive" src="{{ip}}static/shoe_dataset/{{result}}_sm.jpg" alt="">
+                </a>
+            </div>
+
+        {% endfor %}
+        </div>
+
 {% endblock %}

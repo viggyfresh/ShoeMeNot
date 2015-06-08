@@ -5,22 +5,22 @@
 
 <title>Search</title>
     <h1>Upload a Shoe Image</h1>
-    <form action="" method=post enctype=multipart/form-data>
+    <form action="{{ip}}upload" method=post enctype=multipart/form-data>
       <p><input type=file name=file></p>
       <button type="submit" class="btn btn-lg btn-danger">Upload</button>
     </form>
     <br>
     <br>
-	{% if filename %}
+	<!-- {% if filename %}
 	
   		<p><img src="{{ filename }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-  		<form action="" method="post">
+  		<form type="file" action="{{ip}}upload" method="post">
   		<p>
           <button type="submit" class="btn btn-lg btn-success">Find Similar Shoes</button>
         </p>
   		</form>
   	
-	{% endif %}
+	{% endif %} -->
 
 </div>
 {% endblock %}
