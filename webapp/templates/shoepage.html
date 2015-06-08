@@ -3,7 +3,7 @@
   
   
 <p>
-<img border="0" src="{{ip}}static/shoe_dataset/{{ shoeid }}_sm.jpg" width="100" height="100">
+<img border="0" src="{{ip}}static/shoe_dataset/{{ shoeid }}.jpg" width="400" height="300">
 </a>
 </p>
 <h2>{{ shoeinfo["name"] }}</h2>
@@ -16,7 +16,7 @@
 <h4><a href={{ shoeinfo["url"] }}>Buy Online</h4>
 
 <form action="" method="post">
-<p><input type=submit value="Find Similar Shoes"></p>
+    <p><button class="btn btn-lg btn-primary" type="submit">Find Similar Shoes</button></p>
 </form>
   
 {% endblock %}

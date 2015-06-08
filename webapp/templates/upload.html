@@ -3,18 +3,21 @@
 
 <div class="container">
 
-<title>Upload new File</title>
-    <h1>Upload new File</h1>
+<title>Search</title>
+    <h1>Upload a Shoe Image</h1>
     <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload></p>
+      <p><input type=file name=file></p>
+      <button type="submit" class="btn btn-lg btn-danger">Upload</button>
     </form>
-
+    <br>
+    <br>
 	{% if filename %}
 	
   		<p><img src="{{ filename }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
   		<form action="" method="post">
-  		<p><input type=submit value="Find Similar Shoes"></p>
+  		<p>
+          <button type="submit" class="btn btn-lg btn-success">Find Similar Shoes</button>
+        </p>
   		</form>
   	
 	{% endif %}

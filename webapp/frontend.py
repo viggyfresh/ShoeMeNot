@@ -14,8 +14,7 @@ ip = 'http://128.12.10.36:5000/'
 
 @app.route('/')
 def hello_world(name=None):
-    name = 'Bob'
-    return render_template('hello.html', name=name)
+    return redirect("/discover")
 
 @app.route('/discover')
 def discover(entries=None):
