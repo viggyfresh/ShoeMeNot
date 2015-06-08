@@ -1,4 +1,4 @@
-{% extends "navbar.html" %}
+{% extends "all.html" %}
 {% block body %}
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -9,10 +9,3 @@
 
 {% endblock %}
 
-
-{% for item in nav.top %}
-    			<li class="{{ 'active' if item.is_active else '' }}">
-        		<a href="{{ item.url }}">{{ item.label }}</a>
-    			</li>
-    			{% endfor %}
-			

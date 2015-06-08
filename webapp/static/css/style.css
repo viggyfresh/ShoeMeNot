@@ -71,3 +71,8 @@
     background-color: #004bff;
   }
 }
+
+.floated_img
+{
+    float: left;
+}

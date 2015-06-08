@@ -17,16 +17,15 @@ def hello_world(name=None):
     return render_template('hello.html', name=name)
 
 @app.route('/discover')
-def discover():
-    test = "testing"
-    return render_template('discover.html', test=test)
+def discover(entries=None):
+    return render_template('discover.html', entries=entries)
 
-# @app.route('/search', methods=['GET', 'POST'])
-# def search():
+@app.route('/search', methods=['GET', 'POST'])
+def search():
 #     if request.method == 'POST':
 #     	#find results and send to results page
 #     	return redirect(url_for('results'))
-#     return render_template('search.html')
+    return render_template('search.html')
 
 # @app.route('/results', methods=['GET', 'POST'])
 # def results():
