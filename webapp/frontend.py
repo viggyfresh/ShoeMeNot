@@ -57,12 +57,13 @@ def results(searchImg,results):
     # 	return redirect(url_for('shoepage'))
     return render_template('results.html', searchImg=search,results=results)
 
-@app.route('/shoepage/<filename>', methods=['GET', 'POST'])
-def shoepage(shoe=None):
-	if request.method == 'POST':
+@app.route('/shoepage/<shoeid>', methods=['GET', 'POST'])
+def shoepage(shoeid):
+    shoeinfo = json.loads(requests.get(ip + 'shoe/' + shoeid).content)
+    if request.method == 'POST':
 		#find results
-		return redirect(url_for('results'), searchImg=shoe.image, results=results)
-	return render_template('shoepage.html', shoe)
+	   return redirect(url_for('results'), searchImg=shoe.image, results=results)
+    return render_template('shoepage.html',shoeinfo=shoeinfo,shoeid=shoeid,ip=ip)
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
