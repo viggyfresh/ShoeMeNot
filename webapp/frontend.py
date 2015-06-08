@@ -18,7 +18,7 @@ def hello_world(name=None):
 
 @app.route('/discover')
 def discover(entries=None):
-	j = json.loads(requests.get(ip + 'discover').content)
+	j = requests.get(ip + 'discover').json()
         entries = j["data"]
 	return render_template('discover.html', ip=ip, entries=entries)
 
@@ -26,34 +26,26 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/search', methods=['GET', 'POST'])
-def upload_file(filename=None):
+@app.route('/upload', methods=['POST'])
+def upload_to_server():
     if request.method == 'POST':
-        return redirect(url_for('results'))
-        # file = request.files['file']
-        # if file and allowed_file(file.filename):
-        #     filename = secure_filename(file.filename)
-        #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        #     return redirect(url_for('uploaded_file',
-        #                             filename=filename))
-    return render_template('upload.html',filename=filename,ip=ip)
+        file = request.files['file'].read()
+        data = {"file": file}
+        j = requests.request('POST', ip + 'upload', files=data).json()
+        upload_url = ip + 'static/uploads/' + j['id'] + '.jpg'
+        results = j['data']
+        return render_template('results.html', ip=ip, shoeURL=upload_url, results=results)
 
-@app.route('/show/<filename>')
-def uploaded_file(filename):
-    filename = 'http://127.0.0.1:5001/uploads/' + filename
-    if request.method == 'POST':
-    	return redirect(url_for('results'))
-    return render_template('upload.html', filename=filename, ip=ip)
+@app.route('/search')
+def upload_file():
+    return render_template('upload.html', ip=ip)
 
-@app.route('/uploads/<filename>')
-def send_file(filename):
-    return send_from_directory(UPLOAD_FOLDER, filename)
-
-@app.route('/results', methods=['GET', 'POST'])
-def results(searchImg,results):
-    j = json.loads(requests.get(ip + 'upload').content)
-    results = j["data"]
-    return render_template('results.html', searchImg=searchImg,results=results)
+@app.route('/compare/<id>')
+def compare(id):
+    j = requests.get(ip + 'compare/' + id).json()
+    url = ip + 'static/shoe_dataset/' + id + '.jpg'
+    results = j['data']
+    return render_template('results.html', ip=ip, shoeURL=url, results=results)
 
 @app.route('/shoepage/<shoeid>', methods=['GET', 'POST'])
 def shoepage(shoeid):

@@ -5,8 +5,8 @@
 
 <title>Search</title>
     <h1>Upload a Shoe Image</h1>
-    <form action="{{ip}}upload" method=post enctype=multipart/form-data>
-      <p><input type=file name=file></p>
+    <form action="/upload" method=post enctype=multipart/form-data>
+      <p><input type="file" name="file" accept="image/jpeg"></p>
       <button type="submit" class="btn btn-lg btn-danger">Upload</button>
     </form>
     <br>
