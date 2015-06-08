@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<title>Shoezam</title>
+<head>
+<link href='static/css/bootstrap.css' rel='stylesheet' type='text/css'>
+<link href='static/css/style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"><span><strong>ShoeMeNot</strong></span></a>
+		</div>	
+		
+        <ul class="nav navbar-nav navbar-left">
+			
+            <li><a href="/discover" title="Discover">Discover</a></li>
+            <li><a href="/search" title="Search">Search</a></li>
+            <li><a href="/favorites" title="Favorites">Favorites</a></li>
+            <li><a href="/history" title="History">History</a></li>
+			
+			
+		</ul>
+	</div>
+</nav>
+
+<div class="container">
+{% block body %}{% endblock %}
+</div>
+
+</body>
+</html>

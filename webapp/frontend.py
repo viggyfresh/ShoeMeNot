@@ -13,9 +13,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world(name=None):
+    name = 'Bob'
     return render_template('hello.html', name=name)
 
-@app.route('/discover/')
+@app.route('/discover')
 def discover():
     test = "testing"
     return render_template('discover.html', test=test)
@@ -43,4 +44,4 @@ def discover():
 #     return render_template('shoepage.html', shoe)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5001, debug=True)
