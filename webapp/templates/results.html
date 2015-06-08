@@ -1,18 +1,6 @@
-{% extends "navbar.html" %}
+{% extends "all.html" %}
 
 {% block body %}
   
-  <ul class="entries">
-  {% for entry in entries %}
-    <li>
-    	<p>
-		An image as a link: <a href="/shoepage?id=">
-		<img border="0" src="logo_w3s.gif" width="100" height="100">
-		</a>
-		</p>
-    	<h2>{{ entry.title }}</h2>{{ entry.text|safe }}
-  	
-    
-  {% endfor %}
-  </ul>
+<a class="thumbnail" href="#"> <img class="img-responsive" src="{{ file }}" alt=""></a>
 {% endblock %}

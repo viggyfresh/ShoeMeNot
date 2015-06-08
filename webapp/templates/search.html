@@ -1,11 +1,20 @@
 {% extends "all.html" %}
 {% block body %}
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+<div class="container">
 
+{% if filename %}
+	<div class="row text-center">
+  	<img src="{{ filename }}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+  	<form action="" method="post">
+  	<button type="button" class="btn btn-default">Find Similar Shoes</button>
+  	</form>
+  	</div>
+
+{% else %}
+  	<h1>upload failed</h1>
+{% endif %}
+
+</div>
 {% endblock %}
 
