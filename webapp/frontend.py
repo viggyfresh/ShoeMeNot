@@ -4,11 +4,13 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 	render_template, flash
 from flask import send_from_directory
 from werkzeug import secure_filename
+import json
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ip = 'http://128.12.10.36:5000/'
 
 @app.route('/')
 def hello_world(name=None):
@@ -17,8 +19,9 @@ def hello_world(name=None):
 
 @app.route('/discover')
 def discover(entries=None):
-	entries = requests.get('http://128.12.10.36:5000/discover').content
-	return render_template('discover.html', entries=entries)
+	j = json.loads(requests.get(ip + 'discover').content)
+        entries = j["data"]
+	return render_template('discover.html', ip=ip, entries=entries)
 
 def allowed_file(filename):
     return '.' in filename and \
