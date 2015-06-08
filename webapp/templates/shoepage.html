@@ -1,10 +1,9 @@
 {% extends "navbar.html" %}
-
 {% block body %}
   
   
 <p>
-<img border="0" src="logo_w3s.gif" width="100" height="100">
+<img border="0" src="http://128.12.10.36:5000/static/shoe_dataset/{{shoe.id}}_sm.jpg" width="100" height="100">
 </a>
 </p>
 <h2>{{ shoe.name }}</h2>{{ entry.text|safe }}
@@ -15,5 +14,9 @@
 <h4>{{ shoe.color }}</h4>{{ entry.text|safe }}
 <h4>{{ shoe.sku }}</h4>{{ entry.text|safe }}
 <h4><a href={{ shoe.url }}>Buy Online</h4>{{ entry.text|safe }}
+
+<form action="" method="post">
+<p><input type=submit value="Find Similar Shoes"></p>
+</form>
   
 {% endblock %}
