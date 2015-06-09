@@ -95,6 +95,8 @@ extension HistoryViewController : UICollectionViewDataSource {
         if segue.identifier == "ResultsSegue" {
             if let destVC = segue.destinationViewController as? ResultsViewController {
                 destVC.shoes = data
+                let shoe = sender as? HistoryItem
+                destVC.shoeId = shoe?.id
             }
         }
     }

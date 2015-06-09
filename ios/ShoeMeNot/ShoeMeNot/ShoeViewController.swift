@@ -127,6 +127,7 @@ class ShoeViewController: UIViewController {
         if segue.identifier == "ResultsSegue" {
             if let destVC = segue.destinationViewController as? ResultsViewController {
                     destVC.shoes = self.data
+                    destVC.shoeIdInt = shoe.id
             }
         }
     }

@@ -28,6 +28,7 @@ class DrawViewController: UIViewController {
     var backend = Backend()
     
     var shoes: [Shoe] = [Shoe]()
+    var shoeId: String?
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -112,6 +113,7 @@ class DrawViewController: UIViewController {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         backend.upload(imageView.image!, completion: { (data, msg, id) -> Void in
             println(msg)
+            self.shoeId = id
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
@@ -140,6 +142,7 @@ class DrawViewController: UIViewController {
         if segue.identifier == "ResultsSegue" {
             if let destVC = segue.destinationViewController as? ResultsViewController {
                 destVC.shoes = self.shoes
+                destVC.shoeId = self.shoeId
             }
         }
     }

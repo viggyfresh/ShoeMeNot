@@ -33,6 +33,7 @@
 		BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */; };
 		BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */; };
 		BE6D32BE1B178C2D001FBF21 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */; };
+		BE7F312F1B26CEC800848A12 /* SearchOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7F312E1B26CEC800848A12 /* SearchOptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		BE6D32B71B1502AD001FBF21 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		BE7F312E1B26CEC800848A12 /* SearchOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				BE6D32B91B151587001FBF21 /* DiscoverViewController.swift */,
 				2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */,
 				BE6D32B51B14F128001FBF21 /* ShoeViewController.swift */,
+				BE7F312E1B26CEC800848A12 /* SearchOptionsViewController.swift */,
 				BE6D32BD1B178C2D001FBF21 /* DrawViewController.swift */,
 				785505021B017762003C58AF /* Images.xcassets */,
 				785505041B017762003C58AF /* LaunchScreen.xib */,
@@ -222,7 +225,7 @@
 				TargetAttributes = {
 					785504F31B017762003C58AF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = LJSH48WSFV;
+						DevelopmentTeam = Y62HH4T2L9;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -285,6 +288,7 @@
 				BE6D32BE1B178C2D001FBF21 /* DrawViewController.swift in Sources */,
 				2FEB1AB61B15052400B80F60 /* CameraController.swift in Sources */,
 				2FEA582B1B1AB2A1006C4E5A /* Shoe.swift in Sources */,
+				BE7F312F1B26CEC800848A12 /* SearchOptionsViewController.swift in Sources */,
 				BE6D32B81B1502AD001FBF21 /* FavoritesViewController.swift in Sources */,
 				2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */,
 				BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */,
@@ -453,8 +457,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -475,8 +479,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vignesh Venkataraman (76R3J9E3R9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
