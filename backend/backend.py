@@ -11,6 +11,9 @@ from werkzeug import secure_filename
 from PIL import Image
 import glob
 
+full = False
+suffix = ''
+
 color_model = 'flower'
 color_width = 227
 color_height = 227
@@ -37,9 +40,13 @@ rev_map = None
 valid_images = None
 ip = "128.12.10.36"
 port = "5000"
+DATA_FOLDER = './static/shoe_dataset/'
 UPLOAD_FOLDER = './static/uploads/'
 SHARE_FOLDER = './static/favorites/'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'tiff'])
+
+if full == True:
+    suffix = '_full'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -54,7 +61,7 @@ def hello():
 
 @app.route("/shoe/<id>")
 def shoe(id):
-    with open("./static/shoe_dataset/" + id + ".txt") as file:
+    with open(DATA_FOLDER + id + ".txt") as file:
         lines = [line.rstrip('\n') for line in file]
         metadata = {}
         metadata["id"] = lines[0]
@@ -63,6 +70,10 @@ def shoe(id):
         metadata["color"] = lines[3]
         category = re.search("> .* >", lines[4])
         metadata["category"] = category.group(0)[2:-2]
+        if int(id) < 13824:
+            metadata["gender"] = "Men's Shoe"
+        else:
+            metadata["gender"] = "Women's Shoe"
         metadata["price"] = lines[6]
         metadata["stars"] = lines[7]
         metadata["sku"] = lines[8]
@@ -186,7 +197,7 @@ def upload_ios():
 
 @app.route("/classify/<id>")
 def classify_by_id(id):
-    img = caffe.io.load_image("./static/shoe_dataset/" + str(id) + ".jpg")
+    img = caffe.io.load_image(DATA_FOLDER + str(id) + ".jpg")
     category = classify(img)
     resp = jsonify({"msg": categories[category], "data": category})
     resp.status_code = 200
@@ -194,7 +205,7 @@ def classify_by_id(id):
 
 @app.route("/compare/<id>")
 def compare_by_id(id):
-    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
+    img = caffe.io.load_image(DATA_FOLDER + id + ".jpg")
     category = classify(img)
     curr = extract_features(img)
     dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
@@ -205,8 +216,8 @@ def compare_by_id(id):
     global rev_map
     while len(closest) < 50:
         shoe_id = sorted_indices[i]
-        if rev_map[shoe_id] == category:
-            closest.append(shoe_id)
+        #if rev_map[shoe_id] == category:
+        closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
     resp.status_code = 200
@@ -214,7 +225,7 @@ def compare_by_id(id):
 
 @app.route("/compare_color/<id>")
 def compare_by_color(id):
-    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
+    img = caffe.io.load_image(DATA_FOLDER + id + ".jpg")
     category = classify(img)
     curr = extract_color_features(img)
     dists = np.sqrt(np.sum(np.square(color_features - curr), axis=1))
@@ -225,8 +236,8 @@ def compare_by_color(id):
     global rev_map
     while len(closest) < 50:
         shoe_id = sorted_indices[i]
-        if rev_map[shoe_id] == category:
-            closest.append(shoe_id)
+        #if rev_map[shoe_id] == category:
+        closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
     resp.status_code = 200
@@ -234,7 +245,7 @@ def compare_by_color(id):
 
 @app.route("/compare_style/<id>")
 def compare_by_style(id):
-    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
+    img = caffe.io.load_image(DATA_FOLDER + id + ".jpg")
     category = classify(img)
     curr = extract_style_features(img)
     dists = np.sqrt(np.sum(np.square(style_features - curr), axis=1))
@@ -245,8 +256,8 @@ def compare_by_style(id):
     global rev_map
     while len(closest) < 50:
         shoe_id = sorted_indices[i]
-        if rev_map[shoe_id] == category:
-            closest.append(shoe_id)
+        #if rev_map[shoe_id] == category:
+        closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
     resp.status_code = 200
@@ -254,7 +265,7 @@ def compare_by_style(id):
 
 @app.route("/recompare/<id>")
 def recompare_by_id(id):
-    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    img = caffe.io.load_image(UPLOAD_FOLDER + id + ".jpg")
     curr = extract_features(img)
     dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
     sorted_indices = np.argsort(dists)
@@ -271,7 +282,7 @@ def recompare_by_id(id):
 
 @app.route("/recompare_color/<id>")
 def recompare_by_color(id):
-    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    img = caffe.io.load_image(UPLOAD_FOLDER + id + ".jpg")
     curr = extract_color_features(img)
     dists = np.sqrt(np.sum(np.square(color_features - curr), axis=1))
     sorted_indices = np.argsort(dists)
@@ -288,7 +299,7 @@ def recompare_by_color(id):
 
 @app.route("/recompare_style/<id>")
 def recompare_by_style(id):
-    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    img = caffe.io.load_image(UPLOAD_FOLDER + id + ".jpg")
     curr = extract_style_features(img)
     dists = np.sqrt(np.sum(np.square(style_features - curr), axis=1))
     sorted_indices = np.argsort(dists)
@@ -317,9 +328,9 @@ if __name__ == "__main__":
     color_transformer.set_raw_scale('data', 255)
     color_extractor.blobs['data'].reshape(1, 3, color_width, color_height)
     if color_norm == True:
-        color_features = np.load('features_' + color_model + '_' + color_layer + '_norm.npy')
+        color_features = np.load('features_' + color_model + '_' + color_layer + '_norm' + suffix + '.npy')
     else:
-        color_features = np.load('features_' + color_model + '_' + color_layer + '.npy')
+        color_features = np.load('features_' + color_model + '_' + color_layer + suffix + '.npy')
 
     style_extractor = caffe.Net(style_model + '.prototxt', style_model + '.caffemodel', caffe.TEST)
     style_transformer = caffe.io.Transformer({'data': style_extractor.blobs['data'].data.shape})
@@ -327,14 +338,14 @@ if __name__ == "__main__":
     style_transformer.set_raw_scale('data', 255)
     style_extractor.blobs['data'].reshape(1, 3, style_width, style_height)
     if style_norm == True:
-        style_features = np.load('features_' + style_model + '_' + style_layer + '_norm.npy')
+        style_features = np.load('features_' + style_model + '_' + style_layer + '_norm' + suffix + '.npy')
     else:
-        style_features = np.load('features_' + style_model + '_' + style_layer + '.npy')
+        style_features = np.load('features_' + style_model + '_' + style_layer + suffix + '.npy')
     features = np.hstack((color_features, style_features, style_features, style_features))
-    valid_images = np.load('valid_images.npy')
-    with open('cat_map.pickle') as file1:
+    valid_images = np.load('valid_images' + suffix + '.npy')
+    with open('cat_map' + suffix + '.pickle') as file1:
         cat_map = pickle.load(file1)
-    with open('rev_map.pickle') as file2:
+    with open('rev_map' + suffix + '.pickle') as file2:
         rev_map = pickle.load(file2)
     #app.run(host='0.0.0.0', debug=True)
     app.run(host='0.0.0.0')

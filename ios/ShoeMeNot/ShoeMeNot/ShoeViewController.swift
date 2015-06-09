@@ -80,6 +80,7 @@ class ShoeViewController: UIViewController {
         shoeTitle.text = title
         
         var metaString = shoe.metadata!["price"].stringValue + "\n"
+        metaString += shoe.metadata!["gender"].stringValue + "\n"
         if shoe.metadata!["stars"].stringValue != "-1" {
             let stars = shoe.metadata!["stars"].stringValue.toInt()!
             
