@@ -35,8 +35,12 @@ def upload_to_server():
         j = requests.request('POST', ip + 'upload', files=data).json()
         upload_url = ip + 'static/uploads/' + j['id'] + '.jpg'
         results = j['data']
-        save_search(j['id'])
-        return render_template('results.html', ip=ip, shoeURL=upload_url, results=results)
+        resp = make_response(render_template('results.html', ip=ip, shoeURL=upload_url, results=results))
+        data = get_saved_history()
+        data.append(j['id'])
+        j = json.dumps({"history": data})
+        resp.set_cookie('history', j)
+        return resp
 
 @app.route('/search')
 def upload_file():
@@ -99,14 +103,6 @@ def get_saved_data():
 def history():
     data = get_saved_history()
     return render_template('history.html', history=data, ip=ip)
-
-def save_search(shoeid):
-    response = make_response(url_for('history'))
-    data = get_saved_history()
-    data.append(shoeid)
-    j = json.dumps({"history": data})
-    response.set_cookie('history', j)
-    return response
 
 def get_saved_history():
     try:
