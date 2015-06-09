@@ -715,9 +715,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RFL-lW-JSH" id="FJE-c2-rEf">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4T-qy-M7z">
-                                                    <rect key="frame" x="109" y="7" width="93" height="30"/>
-                                                    <state key="normal" title="Save Options">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4T-qy-M7z">
+                                                    <rect key="frame" x="88" y="9" width="25" height="25"/>
+                                                    <state key="normal" image="search">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -726,8 +726,8 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="M4T-qy-M7z" firstAttribute="trailing" secondItem="FJE-c2-rEf" secondAttribute="trailingMargin" constant="10" id="2YR-SE-UzO"/>
                                                 <constraint firstAttribute="centerY" secondItem="M4T-qy-M7z" secondAttribute="centerY" id="5TI-CN-ql3"/>
+                                                <constraint firstAttribute="centerX" secondItem="M4T-qy-M7z" secondAttribute="centerX" constant="-0.5" id="DYK-Hx-Eqe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -768,6 +768,7 @@
         <image name="pin-empty" width="25" height="25"/>
         <image name="reload" width="25" height="25"/>
         <image name="retake-rot" width="25" height="25"/>
+        <image name="search" width="25" height="25"/>
         <image name="share" width="26" height="26"/>
         <image name="upload-rot" width="25" height="25"/>
     </resources>
