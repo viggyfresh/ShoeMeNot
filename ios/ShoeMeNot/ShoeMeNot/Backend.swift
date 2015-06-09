@@ -120,8 +120,96 @@ class Backend {
         task.resume()
     }
     
+    func recompare_color(id: String, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let url = NSURL(string: Static.base_url + "recompare_color/" + id)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
+    }
+    
+    func recompare_style(id: String, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let url = NSURL(string: Static.base_url + "recompare_style/" + id)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
+    }
+    
     func compare_by_id(id: Int, completion: (data: [Shoe]?, msg: String) -> Void) {
         let compareURL = NSURL(string: Static.base_url + "compare/" + toString(id))!
+        
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithURL(compareURL, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
+    }
+    
+    func compare_by_color(id: Int, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let compareURL = NSURL(string: Static.base_url + "compare_color/" + toString(id))!
+        
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithURL(compareURL, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completion(data: nil, msg: "ERROR")
+            }
+            let json = JSON(data: data!)
+            var msg = toString(json["msg"])
+            var ids = json["data"]
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                var currURL = NSURL(string: Static.dataset_url + toString(id) + ".jpg")!
+                var thumbURL = NSURL(string: Static.dataset_url + toString(id) + "_sm.jpg")!
+                shoes.append(Shoe(id: id.int!, thumb_url: thumbURL))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
+    }
+    
+    func compare_by_style(id: Int, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let compareURL = NSURL(string: Static.base_url + "compare_style/" + toString(id))!
         
         let session = NSURLSession.sharedSession()
         
