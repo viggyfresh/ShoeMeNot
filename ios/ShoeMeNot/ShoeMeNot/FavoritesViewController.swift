@@ -35,6 +35,20 @@ class FavoritesViewController: UICollectionViewController {
         }
     }
     
+    @IBAction func shareFavorites(sender: AnyObject) {
+        var alert = UIAlertController(title: "Share your favorites!", message: "Enter a name for your favorites list.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler { (textfield: UITextField!) -> Void in
+            textfield.placeholder = "Name"
+            textfield.secureTextEntry = false
+        }
+        alert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+            let fields = alert.textFields as! [UITextField]
+            let name = fields[0]
+            println(name.text!)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension FavoritesViewController : UICollectionViewDataSource {

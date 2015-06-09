@@ -105,7 +105,13 @@
                             <outlet property="delegate" destination="WlZ-3h-dfy" id="quX-1h-dND"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="lja-Ch-EVt"/>
+                    <navigationItem key="navigationItem" id="lja-Ch-EVt">
+                        <barButtonItem key="rightBarButtonItem" image="share" id="sgR-b0-zkQ">
+                            <connections>
+                                <action selector="shareFavorites:" destination="WlZ-3h-dfy" id="Nun-aZ-1iO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4A-Cc-GyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -599,10 +605,11 @@
         <image name="pin-empty" width="25" height="25"/>
         <image name="reload" width="25" height="25"/>
         <image name="retake-rot" width="25" height="25"/>
+        <image name="share" width="26" height="26"/>
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rrH-Q9-7wi"/>
         <segue reference="kRa-nj-VEp"/>
-        <segue reference="KAe-hB-YwB"/>
     </inferredMetricsTieBreakers>
 </document>
