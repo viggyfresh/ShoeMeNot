@@ -64,9 +64,13 @@ def recompare(id):
 def shoepage(shoeid):
     shoeinfo = json.loads(requests.get(ip + 'shoe/' + shoeid).content)
     data = get_saved_data()
+    numStars = int(float(shoeinfo["stars"]))
+    emptyStars = 5
+    if(numStars > 0):
+        emptyStars = emptyStars - numStars
     if request.method == 'POST':
 	   return redirect(url_for('results'), searchImg=shoeid)
-    return render_template('shoepage.html',shoeinfo=shoeinfo,shoeid=shoeid,ip=ip,favorites=data)
+    return render_template('shoepage.html',shoeinfo=shoeinfo,shoeid=shoeid,ip=ip,favorites=data,numStars=numStars,emptyStars=emptyStars)
 
 @app.route('/favorites')
 def favorites():
