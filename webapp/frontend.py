@@ -35,6 +35,7 @@ def upload_to_server():
         j = requests.request('POST', ip + 'upload', files=data).json()
         upload_url = ip + 'static/uploads/' + j['id'] + '.jpg'
         results = j['data']
+        save_search(j['id'])
         return render_template('results.html', ip=ip, shoeURL=upload_url, results=results)
 
 @app.route('/search')
@@ -45,6 +46,13 @@ def upload_file():
 def compare(id):
     j = requests.get(ip + 'compare/' + id).json()
     url = ip + 'static/shoe_dataset/' + id + '.jpg'
+    results = j['data']
+    return render_template('results.html', ip=ip, shoeURL=url, results=results)
+
+@app.route('/recompare/<id>')
+def recompare(id):
+    j = requests.get(ip + 'recompare/' + id).json()
+    url = ip + 'static/uploads/' + id + '.jpg'
     results = j['data']
     return render_template('results.html', ip=ip, shoeURL=url, results=results)
 
@@ -83,6 +91,27 @@ def get_saved_data():
     try:
         j = json.loads(request.cookies.get('favorites'))
         data = j["favorites"]
+    except TypeError:
+        data = []
+    return data
+
+@app.route('/history')
+def history():
+    data = get_saved_history()
+    return render_template('history.html', history=data, ip=ip)
+
+def save_search(shoeid):
+    response = make_response(url_for('history'))
+    data = get_saved_history()
+    data.append(shoeid)
+    j = json.dumps({"history": data})
+    response.set_cookie('history', j)
+    return response
+
+def get_saved_history():
+    try:
+        j = json.loads(request.cookies.get('history'))
+        data = j["history"]
     except TypeError:
         data = []
     return data
