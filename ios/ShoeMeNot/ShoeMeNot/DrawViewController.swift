@@ -18,7 +18,7 @@ class DrawViewController: UIViewController {
     var red: CGFloat = 255.0
     var green: CGFloat = 255.0
     var blue: CGFloat = 255.0
-    var brushWidth: CGFloat = 25.0
+    var brushWidth: CGFloat = 30.0
     var opacity: CGFloat = 1.0
     var swiped = false
     

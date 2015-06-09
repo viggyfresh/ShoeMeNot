@@ -41,10 +41,10 @@
                     <items/>
                 </toolbar>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="trace" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-nV-IvK">
-                    <rect key="frame" x="150" y="75" width="300" height="450"/>
+                    <rect key="frame" x="213" y="112.5" width="175" height="375"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="Mga-lQ-QZi"/>
-                        <constraint firstAttribute="height" constant="450" id="RJ1-PS-tfI"/>
+                        <constraint firstAttribute="width" constant="175" id="Mga-lQ-QZi"/>
+                        <constraint firstAttribute="height" constant="375" id="RJ1-PS-tfI"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -75,6 +75,6 @@
         <image name="camera-rot" width="25" height="25"/>
         <image name="close" width="25" height="25"/>
         <image name="thumbs" width="25" height="25"/>
-        <image name="trace" width="309" height="484"/>
+        <image name="trace" width="1461" height="2991"/>
     </resources>
 </document>

@@ -81,7 +81,12 @@ class ShoeViewController: UIViewController {
         
         var metaString = shoe.metadata!["price"].stringValue + "\n"
         if shoe.metadata!["stars"].stringValue != "-1" {
-            metaString += shoe.metadata!["stars"].stringValue + " stars\n"
+            let stars = shoe.metadata!["stars"].stringValue.toInt()!
+            
+            for i in 1...stars {
+                metaString += "\u{2605}"
+            }
+            metaString += "\n"
         }
         metaString += shoe.metadata!["category"].stringValue + "\n"
         metaString += shoe.metadata!["brand"].stringValue + "\n"
