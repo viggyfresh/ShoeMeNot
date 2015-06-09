@@ -132,17 +132,7 @@ fieldset[disabled] .btn-primary.active {
   border-radius: 6px;
 }
 
-ul.nav li a, ul.nav li a:visited {
-    color: #007aff !important;
-}
 
-ul.nav li a:hover, ul.nav li a:active {
-    color: #007aff !important;
-}
-
-ul.nav li.active a {
-    color: #007aff !important;
-}
 
 .gi-2x{font-size: 2em;}
 .gi-3x{font-size: 3em;}
