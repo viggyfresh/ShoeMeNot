@@ -64,7 +64,6 @@ class Backend {
             let json = JSON(data: data)
             let msg = (json["msg"] as JSON).stringValue
             var ids = json["data"]
-            println(ids)
             var shoes : [Shoe] = [Shoe]()
             for (index: String, id: JSON) in ids {
                 shoes.append(Shoe(id: id.int!))
@@ -232,7 +231,6 @@ class Backend {
     }
     
     func upload(image: UIImage, completion: (data: [Shoe]?, msg: String, id: String) -> Void) {
-        println(image.imageOrientation.rawValue)
         var rotated : UIImage
         if image.imageOrientation.rawValue == 0 {
             rotated = image.imageRotatedByDegrees(-90.0, flip: false)

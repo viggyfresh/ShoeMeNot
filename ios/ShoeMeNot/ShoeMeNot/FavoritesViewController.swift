@@ -21,24 +21,27 @@ class FavoritesViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         if social == nil {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetch = NSFetchRequest(entityName: "Shoe")
-        var error: NSError?
-        
-        let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
-        
-        if results.count != shoes.count {
-            shoes = [Shoe]()
-            for result in results {
-                var curr = Shoe(id: result.valueForKey("id") as! Int)
-                shoes.append(curr)
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let fetch = NSFetchRequest(entityName: "Shoe")
+            var error: NSError?
+            
+            let results = managedContext.executeFetchRequest(fetch, error: &error) as! [NSManagedObject]
+            
+            if results.count != shoes.count {
+                shoes = [Shoe]()
+                for result in results {
+                    var curr = Shoe(id: result.valueForKey("id") as! Int)
+                    shoes.append(curr)
+                }
+                shoes = shoes.reverse()
+                self.collectionView?.reloadData()
             }
-            shoes = shoes.reverse()
-            self.collectionView?.reloadData()
         }
+        if social != nil {
+            self.navigationItem.rightBarButtonItem = nil
         }
     }
     

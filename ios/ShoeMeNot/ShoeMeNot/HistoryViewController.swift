@@ -72,7 +72,6 @@ extension HistoryViewController : UICollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let shoe = self.history[indexPath.row]
-        println(shoe)
         SwiftLoader.show(animated: true)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         backend.recompare(shoe.id!, completion: { (data, msg) -> Void in
