@@ -11,8 +11,8 @@ import UIKit
 
 class Backend {
     struct Static {
-        static var ip = "http://128.12.10.36"
-        //static var ip = "http://10.34.130.84"
+        //static var ip = "http://128.12.10.36"
+        static var ip = "http://10.34.54.119"
         static var port = "5000"
         static var base_url = ip + ":" + port + "/"
         static var dataset_url = base_url + "static/shoe_dataset/"
