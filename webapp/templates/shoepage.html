@@ -26,27 +26,30 @@
 <p>Color: {{ shoeinfo["color"] }}</p>
 <p>{{ shoeinfo["sku"] }}</p>
 
-<div>
-	<form style="display:inline-block">
-	{% if shoeid in favorites %}
-		<a href="/remove_favorite/{{ shoeid }}"><span class="glyphicon glyphicon-heart gi-lg blue"></span></a>
-	{% else %}
-		<a href="/save_favorite/{{ shoeid }}"><span class="glyphicon glyphicon-heart-empty gi-lg blue"></span></a>
-	{% endif %}
-	</form>
+<table style="width:25%; margin:auto">
+<tr>
+<td>
 
-	<form style="display:inline-block">
-	<a href="{{ shoeinfo["url"] }}" class="btn btn-sm btn-primary" role="button">Buy Online</a>
-	</form>
-
-	<form style="display:inline-block">
-	<form type="file" action="/compare/{{ shoeid }}" method="get"><button class="btn btn-sm btn-primary" type="submit">Find Similar Shoes</button>
-	</form>
-	</form>
 	
-</div>
+	{% if shoeid in favorites %}
+		<a href="/remove_favorite/{{ shoeid }}"><span style="font-size:1.5em;" class="glyphicon glyphicon-heart blue"></span></a>
+	{% else %}
+		<a href="/save_favorite/{{ shoeid }}"><span style="font-size:1.5em;" class="glyphicon glyphicon-heart-empty blue"></span></a>
+	{% endif %}
+	</td>
+	<td>
 
-</div>
+	<a href="{{ shoeinfo["url"] }}" class="btn btn-sm btn-primary" role="button">Buy Online</a>
+	</td>
+	<td>
+
+	<form type="file" action="/compare/{{ shoeid }}" method="get">
+	<button class="btn btn-sm btn-primary" type="submit">Find Similar Shoes</button>
+	</form>
+	</td>
+	
+</tr>
+</table>
 </div>
 </div>
 

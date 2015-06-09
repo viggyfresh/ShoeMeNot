@@ -37,7 +37,7 @@ def upload_to_server():
         results = j['data']
         resp = make_response(render_template('results.html', ip=ip, shoeURL=upload_url, results=results))
         data = get_saved_history()
-        data.append(j['id'])
+        data.prepend(j['id'])
         j = json.dumps({"history": data})
         resp.set_cookie('history', j)
         return resp
@@ -81,7 +81,7 @@ def favorites():
 def save_favorite(shoeid):
     response = make_response(redirect('/shoepage/' + shoeid))
     data = get_saved_data()
-    data.append(shoeid)
+    data.prepend(shoeid)
     j = json.dumps({"favorites": data})
     response.set_cookie('favorites', j)
     return response
