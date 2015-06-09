@@ -1,0 +1,19 @@
+{% extends "all.html" %}
+{% block body %}
+
+<title>Favorites</title>
+
+<div class="container">
+
+        <div class="row">
+
+        {% for shoe in favorites %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="/shoepage/{{shoe}}">
+                    <img class="img-responsive" src="{{ip}}static/shoe_dataset/{{shoe}}_sm.jpg" alt="">
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+
+{% endblock %}

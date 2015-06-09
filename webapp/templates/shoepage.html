@@ -13,10 +13,16 @@
 <h4>{{ shoeinfo["brand"] }}</h4>
 <h4>{{ shoeinfo["color"] }}</h4>
 <h4>{{ shoeinfo["sku"] }}</h4>
-<h4><a href={{ shoeinfo["url"] }}>Buy Online</h4>
+<h4><a href={{ shoeinfo["url"] }}>Buy Online</a></h4>
 
 <form type="file" action="/compare/{{ shoeid }}" method="get">
     <p><button class="btn btn-lg btn-primary" type="submit">Find Similar Shoes</button></p>
 </form>
-  
+
+{% if shoeid in favorites %}
+	<p><a href="/remove_favorite/{{ shoeid }}"><span class="glyphicon glyphicon-heart"></span></a></p>
+{% else %}
+	<p><a href="/save_favorite/{{ shoeid }}"><span class="glyphicon glyphicon-heart-empty"></span></a></p>
+{% endif %}
+
 {% endblock %}
