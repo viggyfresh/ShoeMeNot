@@ -11,6 +11,8 @@
 		2F3FAAC91B221970005C8CF5 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FAAC81B221970005C8CF5 /* SwiftLoader.swift */; };
 		2F5C233C1B1BDDC1008F25E0 /* ShoeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */; };
 		2F5C23401B1BF579008F25E0 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */; };
+		2F67A2EB1B26D90600E62E28 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67A2EA1B26D90600E62E28 /* SocialViewController.swift */; };
+		2F67A2ED1B26DE0800E62E28 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67A2EC1B26DE0800E62E28 /* FavoritesCell.swift */; };
 		2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */; };
 		2F753E301B1AE30000B0BD42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F753E2F1B1AE30000B0BD42 /* CoreData.framework */; };
 		2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */; };
@@ -50,6 +52,8 @@
 		2F3FAAC81B221970005C8CF5 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		2F5C233B1B1BDDC1008F25E0 /* ShoeHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoeHistory.swift; sourceTree = "<group>"; };
 		2F5C233F1B1BF579008F25E0 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		2F67A2EA1B26D90600E62E28 /* SocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		2F67A2EC1B26DE0800E62E28 /* FavoritesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		2F753E2D1B1AE07C00B0BD42 /* ShoeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoeModel.xcdatamodel; sourceTree = "<group>"; };
 		2F753E2F1B1AE30000B0BD42 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
@@ -124,11 +128,13 @@
 				7804BCBA1B12473F0048D95A /* ShoeMeNot.entitlements */,
 				785504F91B017762003C58AF /* AppDelegate.swift */,
 				785504FF1B017762003C58AF /* Main.storyboard */,
+				2F67A2EA1B26D90600E62E28 /* SocialViewController.swift */,
 				2F753E2C1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld */,
 				2FDF8E941B159907002237A7 /* OverlayView.xib */,
 				2FEB1AB51B15052400B80F60 /* CameraController.swift */,
 				2F75542A1B18F90C0047E878 /* PushNoAnimationSegue.swift */,
 				2FF17FC41B146D8600BFAEFA /* ShoeCell.swift */,
+				2F67A2EC1B26DE0800E62E28 /* FavoritesCell.swift */,
 				BE290E741B1C2ED70062EDA0 /* HistoryCell.swift */,
 				2FF17FC01B14609F00BFAEFA /* ShoeHeaderView.swift */,
 				2FF17FBE1B14526E00BFAEFA /* Backend.swift */,
@@ -290,6 +296,7 @@
 				BE6D32B61B14F128001FBF21 /* ShoeViewController.swift in Sources */,
 				2FEA58291B195280006C4E5A /* SwiftyJSON.swift in Sources */,
 				785504FA1B017762003C58AF /* AppDelegate.swift in Sources */,
+				2F67A2ED1B26DE0800E62E28 /* FavoritesCell.swift in Sources */,
 				2FF17FC11B14609F00BFAEFA /* ShoeHeaderView.swift in Sources */,
 				BE290E751B1C2ED70062EDA0 /* HistoryCell.swift in Sources */,
 				2F5C233C1B1BDDC1008F25E0 /* ShoeHistory.swift in Sources */,
@@ -297,6 +304,7 @@
 				2F75542B1B18F90C0047E878 /* PushNoAnimationSegue.swift in Sources */,
 				2F3F25BC1B1E6BDC00F635E7 /* Extensions.swift in Sources */,
 				BE6D32BA1B151587001FBF21 /* DiscoverViewController.swift in Sources */,
+				2F67A2EB1B26D90600E62E28 /* SocialViewController.swift in Sources */,
 				2FF17FBD1B14508E00BFAEFA /* HistoryViewController.swift in Sources */,
 				2F753E2E1B1AE07C00B0BD42 /* ShoeModel.xcdatamodeld in Sources */,
 				2FF17FBF1B14526E00BFAEFA /* Backend.swift in Sources */,

@@ -41,6 +41,64 @@ class Backend {
         task.resume()
     }
     
+    func social(completion: (data: [String]?, msg: String) -> Void) {
+        let url = NSURL(string: Static.base_url + "social")!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            let json = JSON(data: data)
+            let msg = (json["msg"] as JSON).stringValue
+            var lists = json["data"]
+            var names = [String]()
+            for (index: String, name: JSON) in lists {
+                names.append(name.stringValue)
+            }
+            completion(data: names, msg: msg)
+        })
+        task.resume()
+    }
+    
+    func social_list(name: String, completion: (data: [Shoe]?, msg: String) -> Void) {
+        let url = NSURL(string: Static.base_url + "social/" + name)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            let json = JSON(data: data)
+            let msg = (json["msg"] as JSON).stringValue
+            var ids = json["data"]
+            println(ids)
+            var shoes : [Shoe] = [Shoe]()
+            for (index: String, id: JSON) in ids {
+                shoes.append(Shoe(id: id.int!))
+            }
+            completion(data: shoes, msg: msg)
+        })
+        task.resume()
+        
+    }
+    
+    func share_favorites(name: String, shoes: [Shoe], completion: (msg: String) -> Void) {
+        let url = NSURL(string: Static.base_url + "share/" + name)
+        let session = NSURLSession.sharedSession()
+        
+        var ids: [Int] = [Int]()
+        
+        for shoe in shoes {
+            ids.append(shoe.id!)
+        }
+        
+        var request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        var error: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(ids, options: nil, error: &error)
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            let json = JSON(data: data!)
+            completion(msg: toString(json["msg"]))
+        })
+        task.resume()
+    }
+    
     func recompare(id: String, completion: (data: [Shoe]?, msg: String) -> Void) {
         let url = NSURL(string: Static.base_url + "recompare/" + id)!
         let session = NSURLSession.sharedSession()

@@ -261,39 +261,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="mZO-yi-cZR" kind="relationship" relationship="rootViewController" id="vGh-JZ-Mrl"/>
+                        <segue destination="TDz-PS-XpX" kind="relationship" relationship="rootViewController" id="uIY-CC-T0i"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7i-f3-KYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-595" y="1571"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="io6-VU-fej">
-            <objects>
-                <viewController id="mZO-yi-cZR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R4Q-eu-vb7"/>
-                        <viewControllerLayoutGuide type="bottom" id="A1z-jW-ka2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Pqa-4d-SDB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Social" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVT-fR-8C0">
-                                <rect key="frame" x="279" y="290" width="47" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="UwF-tt-P5q"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Cu-lg-Rus" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="88" y="1571"/>
         </scene>
         <!--History-->
         <scene sceneID="Yic-74-B6S">
@@ -594,6 +567,86 @@
             </objects>
             <point key="canvasLocation" x="1560" y="906"/>
         </scene>
+        <!--Social View Controller-->
+        <scene sceneID="64d-dm-pT0">
+            <objects>
+                <collectionViewController storyboardIdentifier="SocialViewController" id="TDz-PS-XpX" customClass="SocialViewController" customModule="ShoeMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="q4K-g6-zVv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="10" id="vwk-px-Nod">
+                            <size key="itemSize" width="300" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoritesCell" id="Hdh-Yt-xWH" customClass="FavoritesCell" customModule="ShoeMeNot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv3-TF-ij5">
+                                            <rect key="frame" x="122" y="11.5" width="56" height="27.5"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.0" green="0.56947505470000004" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="bv3-TF-ij5" secondAttribute="centerY" id="29H-qj-tfP"/>
+                                    <constraint firstAttribute="centerX" secondItem="bv3-TF-ij5" secondAttribute="centerX" id="VxA-1c-zZ5"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="label" destination="bv3-TF-ij5" id="of2-Q6-nbf"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeHeaderView" id="Yud-yn-d6t" customClass="ShoeHeaderView" customModule="ShoeMeNot" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYr-gr-h1k">
+                                    <rect key="frame" x="23" y="13" width="69" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="XYr-gr-h1k" firstAttribute="top" secondItem="Yud-yn-d6t" secondAttribute="topMargin" constant="5" id="nQ8-J4-nHh"/>
+                                <constraint firstItem="XYr-gr-h1k" firstAttribute="leading" secondItem="Yud-yn-d6t" secondAttribute="leadingMargin" constant="15" id="tLS-oU-9AE"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="XYr-gr-h1k" id="Is4-69-yXt"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="TDz-PS-XpX" id="KFd-6h-1cY"/>
+                            <outlet property="delegate" destination="TDz-PS-XpX" id="lg8-TR-oq1"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="ssh-pq-x3n">
+                        <barButtonItem key="rightBarButtonItem" image="reload" id="AQJ-TT-du8">
+                            <connections>
+                                <action selector="refresh:" destination="TDz-PS-XpX" id="m5h-FJ-hAz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="WlZ-3h-dfy" kind="show" identifier="FavoritesSegue" id="HTA-vJ-vFo"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8De-go-BCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88" y="1571"/>
+        </scene>
     </scenes>
     <resources>
         <image name="camera" width="25" height="25"/>
@@ -609,7 +662,8 @@
         <image name="upload-rot" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rrH-Q9-7wi"/>
-        <segue reference="kRa-nj-VEp"/>
+        <segue reference="cwJ-Aq-HDP"/>
+        <segue reference="KAe-hB-YwB"/>
+        <segue reference="HTA-vJ-vFo"/>
     </inferredMetricsTieBreakers>
 </document>

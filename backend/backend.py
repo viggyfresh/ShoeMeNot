@@ -9,6 +9,7 @@ import re
 import uuid
 from werkzeug import secure_filename
 from PIL import Image
+import glob
 
 color_model = 'flower'
 color_width = 227
@@ -37,6 +38,7 @@ valid_images = None
 ip = "128.12.10.36"
 port = "5000"
 UPLOAD_FOLDER = './static/uploads/'
+SHARE_FOLDER = './static/favorites/'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'tiff'])
 
 app = Flask(__name__)
@@ -76,6 +78,47 @@ def discover():
     resp = jsonify({"msg": "Got 50 random shoes", "data": choices.tolist()})
     resp.status_code = 200
     return resp
+
+@app.route("/social")
+def social():
+    names = []
+    for file in glob.glob(SHARE_FOLDER + "*.txt"):
+        names.append(file[len(SHARE_FOLDER):-4])
+    resp = jsonify({"msg": "Got all favorite lists!", "data": names})
+    resp.status_code = 200
+    return resp
+
+@app.route("/social/<name>")
+def get_social(name):
+    try:
+        f = open(SHARE_FOLDER + name + ".txt")
+        lines = f.readlines()
+        data = []
+        for line in lines:
+            data.append(int(line))
+        resp = jsonify({"msg": "Got favorites file!", "data": data})
+        resp.status_code = 200
+        return resp
+    except:
+        resp = jsonify({"msg": "Couldn't open favorites file!"})
+        resp.status_code = 403
+        return resp
+
+@app.route("/share/<name>", methods=["POST"])
+def share(name):
+    try:
+        f = open(SHARE_FOLDER + name + ".txt")
+        resp = jsonify({"msg": "That name is already taken!"})
+        resp.status_code = 403
+        return resp
+    except:
+        ids = request.get_json()
+        with open(SHARE_FOLDER + name + ".txt", "wb") as file:
+            for id in ids:
+                file.write("%s\n" % id)
+            resp = jsonify({"msg": "Favorites saved!"})
+            resp.status_code = 201
+            return resp
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -169,13 +212,14 @@ def compare_by_id(id):
     resp.status_code = 200
     return resp
 
-@app.route("/recompare/<id>")
-def recompare_by_id(id):
-    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+@app.route("/compare_color/<id>")
+def compare_by_color(id):
+    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
     category = classify(img)
-    curr = extract_features(img)
-    dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
+    curr = extract_color_features(img)
+    dists = np.sqrt(np.sum(np.square(color_features - curr), axis=1))
     sorted_indices = np.argsort(dists)
+    sorted_indices = sorted_indices[1:]
     closest = []
     i = 0
     global rev_map
@@ -185,6 +229,77 @@ def recompare_by_id(id):
             closest.append(shoe_id)
         i += 1
     resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
+    resp.status_code = 200
+    return resp
+
+@app.route("/compare_style/<id>")
+def compare_by_style(id):
+    img = caffe.io.load_image("./static/shoe_dataset/" + id + ".jpg")
+    category = classify(img)
+    curr = extract_style_features(img)
+    dists = np.sqrt(np.sum(np.square(style_features - curr), axis=1))
+    sorted_indices = np.argsort(dists)
+    sorted_indices = sorted_indices[1:]
+    closest = []
+    i = 0
+    global rev_map
+    while len(closest) < 50:
+        shoe_id = sorted_indices[i]
+        if rev_map[shoe_id] == category:
+            closest.append(shoe_id)
+        i += 1
+    resp = jsonify({"msg": "Closest matches for " + id, "data": closest, "category": category})
+    resp.status_code = 200
+    return resp
+
+@app.route("/recompare/<id>")
+def recompare_by_id(id):
+    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    curr = extract_features(img)
+    dists = np.sqrt(np.sum(np.square(features - curr), axis=1))
+    sorted_indices = np.argsort(dists)
+    closest = []
+    i = 0
+    global rev_map
+    while len(closest) < 50:
+        shoe_id = sorted_indices[i]
+        closest.append(shoe_id)
+        i += 1
+    resp = jsonify({"msg": "Closest matches for " + id, "data": closest})
+    resp.status_code = 200
+    return resp
+
+@app.route("/recompare_color/<id>")
+def recompare_by_color(id):
+    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    curr = extract_color_features(img)
+    dists = np.sqrt(np.sum(np.square(color_features - curr), axis=1))
+    sorted_indices = np.argsort(dists)
+    closest = []
+    i = 0
+    global rev_map
+    while len(closest) < 50:
+        shoe_id = sorted_indices[i]
+        closest.append(shoe_id)
+        i += 1
+    resp = jsonify({"msg": "Closest matches for " + id, "data": closest})
+    resp.status_code = 200
+    return resp
+
+@app.route("/recompare_style/<id>")
+def recompare_by_style(id):
+    img = caffe.io.load_image("./static/uploads/" + id + ".jpg")
+    curr = extract_style_features(img)
+    dists = np.sqrt(np.sum(np.square(style_features - curr), axis=1))
+    sorted_indices = np.argsort(dists)
+    closest = []
+    i = 0
+    global rev_map
+    while len(closest) < 50:
+        shoe_id = sorted_indices[i]
+        closest.append(shoe_id)
+        i += 1
+    resp = jsonify({"msg": "Closest matches for " + id, "data": closest})
     resp.status_code = 200
     return resp
 

@@ -11,10 +11,16 @@ import CoreData
 
 class FavoritesViewController: UICollectionViewController {
     private let reuseIdentifier = "ShoeCell"
-    private var shoes : [Shoe] = [Shoe]()
+    private var backend = Backend()
+    var shoes : [Shoe] = [Shoe]()
+    
+    var name: String?
+    var social: Bool?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if social == nil {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -33,6 +39,7 @@ class FavoritesViewController: UICollectionViewController {
             shoes = shoes.reverse()
             self.collectionView?.reloadData()
         }
+        }
     }
     
     @IBAction func shareFavorites(sender: AnyObject) {
@@ -41,10 +48,19 @@ class FavoritesViewController: UICollectionViewController {
             textfield.placeholder = "Name"
             textfield.secureTextEntry = false
         }
-        alert.addAction(UIAlertAction(title: "Share", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+        alert.addAction(UIAlertAction(title: "Share", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
             let fields = alert.textFields as! [UITextField]
             let name = fields[0]
-            println(name.text!)
+            self.backend.share_favorites(name.text!, shoes: self.shoes, completion: { (msg) -> Void in
+                alert = UIAlertController(title: "Share Results", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler: { (action: UIAlertAction!) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -81,7 +97,12 @@ extension FavoritesViewController : UICollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ShoeHeaderView", forIndexPath: indexPath) as! ShoeHeaderView
-        headerView.label.text = "Favorites"
+        if let name = self.name {
+            headerView.label.text = name + "'s Favorites"
+        }
+        else {
+            headerView.label.text = "Favorites"
+        }
         return headerView
     }
     
